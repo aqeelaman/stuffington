@@ -3,7 +3,7 @@ body{
     font-family: 'Jost', arial;
     padding: 0;
     margin: 0;
-    background-color: #dcc494;
+    background-color: #968f8f;
 }
 
 /*navigation bar*/
@@ -14,7 +14,7 @@ body{
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #65471f;
+    background-color: #ffffff;
 }
 
 /*css for <a> tags in navigation bar*/
@@ -22,11 +22,35 @@ body{
     float: left;
     font-size: 17px;
     display: block;
-    color: white;
+    color: rgb(0, 0, 0);
     text-align: center;
     padding: 22px;
     text-decoration: none;
     max-width: fit-content;
+    padding-inline: 20px;
+    transition: transform .5s; /* Animation */
+}
+
+/*navigation bar*/
+.categorynavbar {
+    position:sticky; /*navigation stays on top while scrolling*/
+    width: 70%;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: rgb(231, 227, 227);
+    
+}
+
+.categorynavbar li a {
+
+    font-size: 12px;
+    display: block;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px;
+    text-decoration: none;
     padding-inline: 20px;
     transition: transform .5s; /* Animation */
 }
