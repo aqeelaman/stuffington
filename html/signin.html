@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+
+    <title>Sign In | Stuffington</title>
+    <!-- Link to favicon -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <!-- Link to external style sheet -->
+    <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../css/registeration.css">
+</head>
+
+
+
+
+<body onload="onload()">
+        
+    <!-- Navigation section -->
+    <ul class="navbar">    
+        <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
+        <li><input type="text" class="searchbar" placeholder="Search.."></li>
+        <li style="float:right"><a href="cart.html" >🛒</a></li>
+        <li style="float:right"><a href="registration.html">REGISTER</a></li>
+        <li style="float:right"><a href="login.html">LOGIN</a></li>
+    </ul>
+
+    <ul class="categoryNavbar">    
+        <li><a href="allproducts.html">All Products</a></li>
+        <li><a href="teddybear.html">TeddyBear</a></li>
+        <li><a href="housepets.html">HousePets</a></li>
+        <li><a href="mythical.html">Mythical</a></li>
+    </ul>
+
+
+
+
+<div class="container signup">
+    <div class="form-name">Sign In</div>
+        <form onsubmit="return false" class="signup-form">
+            <input type="text" id="user" name="username" placeholder="Enter Username Here">
+                    <input type="password" id="password" name="" placeholder="Enter Password Here">
+
+
+            <button class="btnn"><a href="#" onclick="login()">Login</a></button>
+            <p class="login-result" id="login-result"></p>
+
+            <p class="link">Don't have an account?<br>
+                <a href="registeration.html">Sign up here</a>
+            </p>
+
+        </form>
+    </div>
+</div>
+
+    
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+
+
+<footer class="footer">
+        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
+</footer>
+
+</body>
+
+</html>
