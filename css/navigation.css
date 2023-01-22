@@ -27,7 +27,7 @@ body{
     display: block;
     color: rgb(0, 0, 0);
     text-align: center;
-    padding: 22px;
+    padding: 24.5px;
     text-decoration: none;
     max-width: fit-content;
     padding-inline: 20px;
@@ -98,7 +98,7 @@ input.searchbar{
 /*navigation bar*/
 .categoryNavbar {
     /* top: 64.8px; */
-    top:9.1%;
+    top:8%;
     position:sticky; /*navigation stays on top while scrolling*/
     list-style-type: none;
     padding: 0;
@@ -129,10 +129,6 @@ input.searchbar{
     box-shadow: 0 4px 8px 0 black; /*black shadow on hover*/
 }
 
-
-
-
-
 .featured_container{
     margin: auto;
     margin-top: 40px;
@@ -140,6 +136,7 @@ input.searchbar{
     width: 70%;
     border: 7px;
     border-style: solid;
+    border-radius: 5px;
 }
 
 .featured_container img{
@@ -154,7 +151,7 @@ input.searchbar{
     font-size: 50px;
     text-align: center;
     font-weight: lighter;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 0;
     color: #ffffff;
 }
@@ -162,9 +159,10 @@ input.searchbar{
 .products{
     width: 70%;
     margin: auto;
-    margin-top: 50px;
     display: table;
-    
+    margin-bottom: 4%;
+    margin-top: 10px;
+    background-color: rgb(111, 143, 111);
 }
 
 .card{
@@ -173,15 +171,24 @@ input.searchbar{
     margin: 26px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
-    background-color:#65471f;
+    background-color:rgb(204, 202, 202);
     width: 20%;
     height: 10%;
     text-align: center;
     transition: transform .5s;
+    border-radius:25;
+}
+.card p{
+    margin-top: -6%;
 }
 
 .card h1{
-    font-size: medium;
+    font-size: x-large;
+    margin-top:7px;
+}
+
+.card p button{
+    padding: 2%;
 }
 
 .card:hover{
@@ -192,9 +199,9 @@ input.searchbar{
 }
 
 .footer{
-    position: sticky;
+    position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: 1;
     padding: 0;
     overflow: hidden;
     text-align: center;
