@@ -176,8 +176,6 @@ input.searchbar{
     background-color: lightgreen;
 }
 
-
-
 /*css for heading of the page*/
 .heading{
     font-size: 50px;
@@ -238,7 +236,7 @@ input.searchbar{
     box-shadow: 0 4px 8px 0 black; /*black shadow on hover*/
 }
 
-.footer{
+footer{
     position: absolute;
     bottom: 1;
     overflow: hidden;
@@ -246,4 +244,5 @@ input.searchbar{
     color: whitesmoke;
     background-color:#65471f;
     width: 100%;
+    margin-top: 5%;
 }
