@@ -237,6 +237,7 @@ input.searchbar{
 }
 
 footer{
+    margin-top: 40px;
     position: absolute;
     bottom: 1;
     overflow: hidden;
