@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Home | Stuffington</title>
+    <!-- Link to external style sheet -->
+    <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../css/productDisplay.css">
+</head>
+
+<body>
+
+    <!-- Navigation section -->
+    <ul class="navbar">
+        <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
+        <li><input type="text" class="searchbar" placeholder="Search.."></li>
+        <li style="float:right"><a href="cart.html">🛒</a></li>
+        <li style="float:right"><a href="registration.html">REGISTER</a></li>
+        <li style="float:right"><a href="login.html">LOGIN</a></li>
+    </ul>
+    <ul class="categoryNavbar">
+        <li><a href="allproducts.html">All Products</a></li>
+        <li><a href="teddybear.html">Teddy Bear</a></li>
+        <li><a href="housepets.html">House Pets</a></li>
+        <li><a class="selected" href="mythical.html">Mythical</a></li>
+    </ul>
+
+    <!-- Contents of the page -->
+    <h1 class="heading">MYTHICAL</h1>
+
+    <div class="productDisplayContainer">
+        <div class="sidebar">
+            <h1>Filter By</h1>
+            <p>Category:</p>
+            <label><input type="checkbox" id="teddyBear">TeddyBear</label>
+            <label><input type="checkbox" id="housePets">HousePets</label>
+            <label><input type="checkbox" id="mythical">Mythical</label>
+            <br>
+            <br>
+
+            <p>Sizes:</p>
+            <label><input type="checkbox" id="4inches">4 Inches</label>
+            <label><input type="checkbox" id="8inches">8 Inches</label>
+            <label><input type="checkbox" id="12inches">12 Inches</label>
+            <br>
+            <br>
+
+            <p>Colour:</p>
+            <label><input type="checkbox" id="brown">Brown</label>
+            <label><input type="checkbox" id="blue">Blue</label>
+            <label><input type="checkbox" id="white">White</label>
+            <br>
+            <br>
+
+            <p>Price:</p>
+            <label><input type="checkbox" id="1-25"> 01 - 25</label>
+            <label><input type="checkbox" id="26-50"> 26 - 50</label>
+            <label><input type="checkbox" id="51-75"> 51 - 75</label>
+            <br>
+            <br>
+        </div>
+
+        <div class="mainContainer">
+            <div class="card">
+                <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
+                <h1>Black Dragon</h1>
+                <p class="price">AED39.99</p>
+                <p><button>Add to Cart</button></p>
+            </div>
+            <div class="card">
+                <img src="../images/StuffedToys/Mythical/WhiteUnicorn.jpg" alt="WhiteUnicorn" style="width: 100%;">
+                <h1>White Unicorn</h1>
+                <p class="price">AED39.99</p>
+                <p><button>Add to Cart</button></p>
+            </div>
+            <div class="card">
+                <img src="../images/StuffedToys/Mythical/RainbowKitycorn.jpg" alt="RainbowKitycorn" style="width: 100%;">
+                <h1>Rainbow Kitycorn</h1>
+                <p class="price">AED39.99</p>
+                <p><button>Add to Cart</button></p>
+            </div>
+            <div class="card">
+                <img src="../images/StuffedToys/Mythical/BrownGrogu.jpg" alt="BrownGrogu" style="width: 100%;">
+                <h1>Brown Grogu</h1>
+                <p class="price">AED39.99</p>
+                <p><button>Add to Cart</button></p>
+            </div>
+    
+        </div>
+    </div>
+    <div class="footer">
+        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
+    </div>
+</body>
+
+</html>
