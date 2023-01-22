@@ -42,16 +42,16 @@
 }
 
 .container {
+    position: absolute;
     width: 57%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    position: absolute;
     background: rgba(0, 0, 0, 0.239);
     box-shadow: 0 0 10px #000000b5;
     border-radius: 20px;
     padding: 20px;
-
+    margin-top: 5%;
 }
 
 .form-name {
