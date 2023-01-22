@@ -134,17 +134,49 @@ input.searchbar{
     margin-top: 40px;
     text-align: center;
     width: 70%;
+    height: 500px;
     border: 7px;
     border-style: solid;
     border-radius: 5px;
+    overflow: hidden;    
 }
 
-.featured_container img{
-    display: block;
-    border: 0;
-    margin: auto;
-    padding: 0;
+.image-container {
+    width: 3189.9px;
+    background-color: pink;
+    height: 500px;
+    clear: both;
+    position: relative;
+    transition: left 2s;
 }
+.slide {
+    float: left;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+#slide-1:target ~ .image-container {
+    left: 0px;
+}
+#slide-2:target ~ .image-container {
+    left: -1063.3px;
+}
+#slide-3:target ~ .image-container {
+    left: -2126.6px;
+}
+.dots {
+    position: relative;
+    top: -25px;
+}
+.dots a {
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+    background-color: lightgreen;
+}
+
+
 
 /*css for heading of the page*/
 .heading{

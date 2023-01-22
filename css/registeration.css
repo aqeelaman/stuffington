@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+}
+
+.signup {
+    margin-top: 40px;
+}
+
+.signup-form {
+    width: 70%;
+    margin: auto;
+    text-align: center;
+
+}
+
+.signup-form input {
+    width: 100%;
+    font-size: 18px;
+    margin: 10px 0px;
+    color: #798155;
+    font-family: ui-rounded;
+    padding: 7px;
+}
+
+.signup-form input.btn-success {
+    color: #798155;
+    font-weight: bold;
+    max-width: 300px;
+    border-radius: 5px;
+}
+
+.signup-form input.btn-success:hover {
+    background-color: #65471f;
+}
+
+.register-result {
+    color: #65471f;
+    font-family: ui-rounded;
+    padding: 7px;
+    font-size: 15px;
+    display: block;
+}
+
+.container {
+    width: 57%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    background: rgba(0, 0, 0, 0.239);
+    box-shadow: 0 0 10px #000000b5;
+    border-radius: 20px;
+    padding: 20px;
+
+}
+
+.form-name {
+    color: #65471f;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 40px;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.field-name-block {
+    text-align: right;
+    padding-right: 20px;
+    width: 40%;
+    display: inline-block;
+}
+
+.field-name {
+    color: #65471f;
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.field-input-block {
+    display: inline-block;
+}
+
+.input {
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    border-radius: 20px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.button-block {
+    text-align: center;
+}
+
+.button {
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid #798155;
+    background: rgba(255, 255, 255, 0.5);
+    color: #798155;
+    outline: none;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 150px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.button:hover {
+    color: black;
+    background: white;
+}
+
+.warning {
+    color: red;
+    border-color: white;
+    background-size: 20px;
+    border-radius: 50%;
+}
+
+.warning-hide {
+    display: none !important;
+}
