@@ -200,9 +200,7 @@ input.searchbar{
 
 .footer{
     position: absolute;
-    left: 0;
     bottom: 1;
-    padding: 0;
     overflow: hidden;
     text-align: center;
     color: whitesmoke;

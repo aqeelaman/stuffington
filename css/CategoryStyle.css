@@ -1,0 +1,49 @@
+.productDisplayContainer{
+    display: inline-flex;
+    margin-top: 2%;
+    left: 5%;
+}
+.sidebar{
+    display: block;
+    width:20%; 
+    height: 100%;
+    position: relative;
+    overflow-x: hidden;
+    margin-left: 2%;
+    margin-bottom: 4%;
+    background-color: rgb(204, 202, 202);
+    border-radius: 10px;
+}
+
+.sidebar h1{
+    padding-left: 10%;
+}
+
+.sidebar p{
+    padding-left: 10%;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.sidebar input{
+    vertical-align: middle;
+    position: relative;
+    bottom: 1px;
+}
+.sidebar label{
+    margin-left: auto;
+    display: block;
+    font-size: 18px;
+    padding-left: 15%;
+}
+
+.mainContainer{
+    width: 70%;
+    margin: auto;
+    margin-left: 4%;
+    margin-bottom: 4%;
+    display: block;
+    background-color: rgb(111, 143, 111);
+    border-radius: 10px;
+
+}
