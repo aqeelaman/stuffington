@@ -42,7 +42,7 @@
 }
 
 .container {
-    position: absolute;
+    position: relative;
     width: 57%;
     top: 50%;
     left: 50%;
@@ -51,7 +51,7 @@
     box-shadow: 0 0 10px #000000b5;
     border-radius: 20px;
     padding: 20px;
-    margin-top: 5%;
+    margin-top: 18%;
 }
 
 .form-name {
@@ -158,4 +158,26 @@
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
+}
+
+.footer1 {
+    /* position: ;
+    bottom: 0;
+    margin-top: 40px;
+    overflow: hidden;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #65471f;
+    width: 100%;
+    margin-top: 15%;
+    padding: 20px; */
+    margin-top: 40px;
+    position: absolute;
+    bottom: 1;
+    overflow: hidden;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #65471f;
+    width: 100%;
+    padding: 15px;
 }

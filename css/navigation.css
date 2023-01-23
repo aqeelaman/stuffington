@@ -103,7 +103,7 @@ input.searchbar {
 /*navigation bar*/
 .categoryNavbar {
     /* top: 64.8px; */
-    top:8%;
+    top:9.7%;
     position:sticky; /*navigation stays on top while scrolling*/
     list-style-type: none;
     padding: 0;
@@ -254,7 +254,6 @@ input.searchbar {
 }
 
 footer {
-    margin-top: 40px;
     position: absolute;
     bottom: 1;
     overflow: hidden;
@@ -263,17 +262,4 @@ footer {
     background-color: #65471f;
     width: 100%;
     margin-top: 5%;
-}
-
-.footer1 {
-    position: fixed;
-    bottom: 0;
-    margin-top: 40px;
-    overflow: hidden;
-    text-align: center;
-    color: whitesmoke;
-    background-color: #65471f;
-    width: 100%;
-    margin-top: 5%;
-    padding: 5px;
 }
