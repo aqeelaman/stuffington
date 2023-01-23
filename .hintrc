@@ -17,6 +17,14 @@
           "max-width: fit-content"
         ]
       }
-    ]
+    ],
+    "axe/forms": [
+      "default",
+      {
+        "select-name": "off"
+      }
+    ],
+    "no-inline-styles": "off",
+    "button-type": "off"
   }
 }
