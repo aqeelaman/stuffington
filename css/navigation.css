@@ -5,6 +5,9 @@ body {
     margin: 0;
     background-color: #798155;
 }
+a{
+    text-decoration: none;
+}
 
 /*navigation bar*/
 .navbar {
