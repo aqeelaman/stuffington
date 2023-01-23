@@ -1,5 +1,5 @@
-/* font for body of all pages*/ 
-body{
+/* font for body of all pages*/
+body {
     font-family: 'Jost', arial;
     padding: 0;
     margin: 0;
@@ -10,7 +10,8 @@ body{
 .navbar {
     left: 0;
     top: 0;
-    position:sticky; /*navigation stays on top while scrolling*/
+    position: sticky;
+    /*navigation stays on top while scrolling*/
     width: 100%;
     list-style-type: none;
     margin: 0;
@@ -31,12 +32,13 @@ body{
     text-decoration: none;
     max-width: fit-content;
     padding-inline: 20px;
-    transition: transform .5s; /* Animation */
+    transition: transform .5s;
+    /* Animation */
 }
 
 
 /* searchbar inside navbar */
-.searchbar{
+.searchbar {
     float: left;
     font-size: 16px;
     border: 0;
@@ -45,24 +47,25 @@ body{
     padding-inline: 30px;
     border-radius: 15px;
     margin: 12px;
-    background-color: rgb(231, 227, 227); 
-    text-decoration: rgb(91, 99, 40); 
+    background-color: rgb(231, 227, 227);
+    text-decoration: rgb(91, 99, 40);
 }
 
-input.searchbar{
+input.searchbar {
     color: #65471f;
 }
-.searchbar::placeholder{
+
+.searchbar::placeholder {
     color: #65471f;
 }
 
 /* aligning searchbar in navbar */
-.navbar li:nth-child(2){
+.navbar li:nth-child(2) {
     padding-left: 13%;
-}  
+}
 
 /* css for logo container*/
-.navbar li:first-child a  {
+.navbar li:first-child a {
     padding: 0;
     padding-top: 5px;
     padding-left: 30px;
@@ -76,7 +79,7 @@ input.searchbar{
 }
 
 /* css for logo */
-.navbar li a img{
+.navbar li a img {
     width: 110px;
     height: 55px;
 }
@@ -91,19 +94,21 @@ input.searchbar{
 .navbar li a:hover {
     color: #ffffff;
     background-color: rgb(68, 1, 1);
-    transform: scale(1.1); /* 110% zoom */
-    box-shadow: 0 4px 8px 0 black; /*black shadow on hover*/
+    transform: scale(1.1);
+    /* 110% zoom */
+    box-shadow: 0 4px 8px 0 black;
+    /*black shadow on hover*/
 }
 
 /*navigation bar*/
 .categoryNavbar {
     /* top: 64.8px; */
-    top:9.7%;
+    top:8%;
     position:sticky; /*navigation stays on top while scrolling*/
     list-style-type: none;
     padding: 0;
     padding-left: 20%;
-    margin:auto;
+    margin: auto;
     overflow: hidden;
     background-color: rgb(231, 227, 227);
     z-index: 1;
@@ -118,18 +123,21 @@ input.searchbar{
     padding: 10px;
     text-decoration: none;
     padding-inline: 85px;
-    transition: transform .5s; /* Animation */
-} 
+    transition: transform .5s;
+    /* Animation */
+}
 
 /* Change the link color to black on hover */
 .categoryNavbar li a:hover {
     color: #ffffff;
     background-color: rgb(70, 46, 46);
-    transform: scale(1.1); /* 110% zoom */
-    box-shadow: 0 4px 8px 0 black; /*black shadow on hover*/
+    transform: scale(1.1);
+    /* 110% zoom */
+    box-shadow: 0 4px 8px 0 black;
+    /*black shadow on hover*/
 }
 
-.featured_container{
+.featured_container {
     margin: auto;
     margin-top: 40px;
     text-align: center;
@@ -138,7 +146,7 @@ input.searchbar{
     border: 7px;
     border-style: solid;
     border-radius: 5px;
-    overflow: hidden;    
+    overflow: hidden;
 }
 
 .image-container {
@@ -149,25 +157,31 @@ input.searchbar{
     position: relative;
     transition: left 2s;
 }
+
 .slide {
     float: left;
     margin: 0px;
     padding: 0px;
     position: relative;
 }
-#slide-1:target ~ .image-container {
+
+#slide-1:target~.image-container {
     left: 0px;
 }
-#slide-2:target ~ .image-container {
+
+#slide-2:target~.image-container {
     left: -1063.3px;
 }
-#slide-3:target ~ .image-container {
+
+#slide-3:target~.image-container {
     left: -2126.6px;
 }
+
 .dots {
     position: relative;
     top: -25px;
 }
+
 .dots a {
     display: inline-block;
     height: 15px;
@@ -177,7 +191,7 @@ input.searchbar{
 }
 
 /*css for heading of the page*/
-.heading{
+.heading {
     font-size: 50px;
     text-align: center;
     font-weight: lighter;
@@ -186,7 +200,7 @@ input.searchbar{
     color: #ffffff;
 }
 
-.products{
+.products {
     width: 70%;
     margin: auto;
     display: table;
@@ -196,54 +210,70 @@ input.searchbar{
     box-shadow: 0 1px 5px 0 black;
 }
 
-.card{
-    float: left; 
+.card {
+    float: left;
     display: table-cell;
     margin: 26px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     max-width: 300px;
-    background-color:rgb(204, 202, 202);
+    background-color: rgb(204, 202, 202);
     width: 20%;
     height: 10%;
     text-align: center;
     transition: transform .5s;
-    border-radius:10%;
+    border-radius: 10%;
     box-shadow: 0 4px 8px 0 black;
 }
-.card p{
+
+.card p {
     margin-top: -6%;
 }
 
-.card h1{
+.card h1 {
     font-size: x-large;
-    margin-top:7px;
+    margin-top: 7px;
 }
 
-.card p button{
+.card p button {
     padding: 2%;
 }
 
-.card img{
+.card img {
     border-top-left-radius: 10%;
     border-top-right-radius: 10%;
     box-shadow: 0 1px 5px 0 black;
 }
 
-.card:hover{
+.card:hover {
     color: #ffffff;
     background-color: rgb(70, 46, 46);
-    transform: scale(1.05); /* 105% zoom */
-    box-shadow: 0 4px 8px 0 black; /*black shadow on hover*/
+    transform: scale(1.05);
+    /* 105% zoom */
+    box-shadow: 0 4px 8px 0 black;
+    /*black shadow on hover*/
 }
 
-footer{
+footer {
     margin-top: 40px;
     position: absolute;
     bottom: 1;
     overflow: hidden;
     text-align: center;
     color: whitesmoke;
-    background-color:#65471f;
+    background-color: #65471f;
     width: 100%;
     margin-top: 5%;
+}
+
+.footer1 {
+    position: fixed;
+    bottom: 0;
+    margin-top: 40px;
+    overflow: hidden;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #65471f;
+    width: 100%;
+    margin-top: 5%;
+    padding: 5px;
 }
