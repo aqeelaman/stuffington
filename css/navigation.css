@@ -106,9 +106,10 @@ input.searchbar {
 /*navigation bar*/
 .categoryNavbar {
     /* top: 64.8px; */
-    top:9.7%;
+    
     position:sticky; /*navigation stays on top while scrolling*/
     list-style-type: none;
+    top:4;
     padding: 0;
     padding-left: 20%;
     margin: auto;
