@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Cart | Stuffington</title>
+        <title>Set Order | Stuffington</title>
         <!-- Link to favicon -->
         <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
         <!-- Link to external style sheet -->
@@ -9,5 +9,67 @@
         <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
         <link rel="stylesheet" type="text/css" href="../css/CartStyle.css">
     </head>
+
+    <body>
+        <!-- Navigation section -->
+        <ul class="navbar">
+            <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
+            <li><input type="text" class="searchbar" placeholder="Search.."></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
+            <li style="float:right"><a href="registration.html">REGISTER</a></li>
+            <li style="float:right"><a href="login.html">LOGIN</a></li>
+        </ul>
+        <ul class="categoryNavbar">
+            <li><a class="selected" href="allproducts.html">All Products</a></li>
+            <li><a href="teddybear.html">Teddy Bear</a></li>
+            <li><a href="housepets.html">House Pets</a></li>
+            <li><a href="mythical.html">Mythical</a></li>
+        </ul>
+
+
+        <!-- Content of the Page-->
+        <h1 style="margin-left: 3%; font-size: 35pt;"> Review Order </h1>
+        <h1 style="margin-right: 28%; font-size: 35pt;float: right;"> Review Order </h1>
+        <div class="cartDisplayContainer">
+            <div class="sideCart">
+                <div class="itemImage">
+                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBunny" >
+                </div>
+                <div class="itemText">
+                    <h1>Teddy Bear</h1>
+                    <p class="price">AED47.99</p>
+                    <p style= "float:right; font-size: xx-large;">x2</p>
+                </div>
+            </div>
+
+            <div class="sideCart">
+                <div class="itemImage">
+                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBunny" >
+                </div>
+                <div class="itemText">
+                    <h1>Teddy Bear</h1>
+                    <p class="price">AED47.99</p>
+                    <p style= "float:right; font-size: xx-large;">x2</p>
+                </div>
+            </div>
+
+            <div class="sideCart">
+                <div class="itemImage">
+                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBunny" >
+                </div>
+                <div class="itemText">
+                    <h1>Teddy Bear</h1>
+                    <p class="price">AED47.99</p>
+                    <p style= "float:right; font-size: xx-large;">x2</p>
+                </div>
+            </div>
+        </div>
+
     
+        <div  class="sideSummaryContainer">
+            <div class="sideSummary">
+            </div>
+        </div>
+
+    </body>
 </html>
