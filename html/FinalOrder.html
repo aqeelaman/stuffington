@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="../css/navigation.css">
         <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
         <link rel="stylesheet" type="text/css" href="../css/CartStyle.css">
+        <link rel="stylesheet" type="text/css" href="../css/finalOrder.css">
     </head>
 
     <body>
@@ -28,8 +29,9 @@
 
 
         <!-- Content of the Page-->
-        <h1 style="margin-left: 3%; font-size: 35pt;"> Review Order </h1>
-        <h1 style="margin-right: 28%; font-size: 35pt;float: right;"> Review Order </h1>
+        <h1 style="margin-left: 3%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
+        <h1 style=" font-size: 35pt;float: right;margin-right: 22%; margin-bottom: 10px;"> Shipping Address </h1>
+        
         <div class="cartDisplayContainer">
             <div class="sideCart">
                 <div class="itemImage">
@@ -66,8 +68,39 @@
         </div>
 
     
-        <div  class="sideSummaryContainer">
+        <div class="sideSummaryContainer">
             <div class="sideSummary">
+
+                <p style="float: left;"> Building No, Flat no, Area </p>
+                <p style="float: left; margin-left: 170px ;"> Street </p>
+                <input type="text" class="basicAddress" placeholder="Building No / Flat no / Area " required>
+                <input type="text" class="street" placeholder="Street" required>
+
+                <p style="float: left;"> Emirate </p>
+                <p style="float: left; margin-left: 170px ;"> Phone / Telephone number </p>
+                <select class="emirate" required>
+                    <option value="" disabled selected hidden>-Select-</option>
+                    <option value="text" selected="selected"> Abu Dhabi </option>
+                    <option value="text">Dubai</option>
+                    <option value="text">Sharjah</option>
+                    <option value="text">Ajman</option>
+                    <option value="text">Ras Al Khaimah</option>
+                    <option value="text">Umm Al-Quwain</option>
+                    <option value="text">Fujairah</option>
+                </select>
+                <input type="text" class="phoneNum" placeholder="Street" required>
+            </div>
+        </div>
+
+        <h1 style=" font-size: 35pt;float: right;margin-right: 25.5%; margin-bottom: -8px; margin-top: -40px;"> Delivery Option </h1>
+
+        <div class="sideDeliveryContainer">
+            <div class="sideDelivery">
+                <input type="checkbox" name="deliver" value="deliver" class="checkbox">
+                <label for="deliver" class="deliveryText"> Ship to my address.</label><br>
+                <span><p style="margin-top: 30px;" >Your order will be delivered straight to your door-step.</p></span>
+
+
             </div>
         </div>
 
