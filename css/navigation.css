@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
+
 /* font for body of all pages*/
 body {
-    font-family: 'Jost', arial;
+    font-family: 'Josefin Sans', sans-serif;
     padding: 0;
     margin: 0;
     background-color: #798155;
+}
+
+/*navigation container containing navbar and category bar*/
+.navigationContainer{
+    position:sticky;
+    top: 0;
+    overflow: hidden;
+    z-index: 1;
 }
 
 /*navigation bar*/
@@ -113,7 +123,7 @@ input.searchbar {
     
     position:sticky; /*navigation stays on top while scrolling*/
     list-style-type: none;
-    top:4;
+    
     padding: 0;
     padding-left: 20%;
     margin: auto;
@@ -206,6 +216,7 @@ input.searchbar {
     margin-top: 20px;
     margin-bottom: 0;
     color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
 .products {
