@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="../CSS/navigation.css">
-    <link rel="stylesheet" href="../CSS/container.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
   
@@ -112,82 +111,81 @@
 
 
 
-    <div class="form">
-      <div class="title">Add a new product to the StuffingTon Family</div>
+   <table class="table">
 
-      <div class="input-container ic1">
-        <input id="productID" class="input" type="text" placeholder=" " />
-        <div class="cut"></div>
-        <label for="productID" class="placeholder">Product ID</label>
-      </div>
+    <thead>
+      <th>Name</th>  
+      <th>Age</th> 
+      <th>Username</th>                  
+      <th>Email Address)</th>  
+      <th>Password</th> 
+    </thead>
 
-      <div class="input-container ic1">
-        <input id="image" class="input" type="text" placeholder=" " />
-        <div class="cut"></div>
-        <label for="image" class="placeholder">Place an image of the new Product</label>
-      </div>
+    <tbody>
+	     <tr>
+           <td data-label="Name">Marry</td>
+           <td data-label="Age">22</td>
+           <td data-label="Username">marry.v</td>
+           <td data-label="Email Address">mv_2348@gmail.com</td>
+           <td data-label="Password">309472M_v</td>
+         </tr>
+         
+         <tr>
+           <td data-label="Name">Jackson</td>
+           <td data-label="Age">20</td>
+           <td data-label="Username">jack_son</td>
+           <td data-label="Email Address">jackm234@outlook.com</td>
+           <td data-label="Password">jk293@son</td>
+         </tr>
 
-      <div class="input-container ic1">
-        <input id="name" class="input" type="text" placeholder=" " />
-        <div class="cut"></div>
-        <label for="name" class="placeholder">Name</label>
-      </div>
+         <tr>
+           <td data-label="Name">Mehvish</td>
+           <td data-label="Age">19</td>
+           <td data-label="Username">meh345</td>
+           <td data-label="Email Address">meh345@gmail.com</td>
+           <td data-label="Password">wish36991d</td>
+         </tr>
 
-      <div class="input-container ic1">
-        <input id="price" class="input" type="text" placeholder=" " />
-        <div class="cut"></div>
-        <label for="price" class="placeholder">Price in AED</label>
-      </div>
+         <tr>
+           <td data-label="Name">Gorge</td>
+           <td data-label="Age">30</td>
+           <td data-label="Username">gorge.g</td>
+           <td data-label="Email Address">gomez_gorge@yahoo.com</td>
+           <td data-label="Password">gg2033#554</td>
+         </tr>
 
-      <div class="input-container ic2">
-        <input id="category" class="input" type="text" placeholder=" " />
-        <div class="cut"></div>
-        <label for="category" class="placeholder">Category</label>
-      </div>
+         <tr>
+           <td data-label="Name">Noah</td>
+           <td data-label="Age">21</td>
+           <td data-label="Username">nm.noah</td>
+           <td data-label="Email Address">noahmaghen@gmail.com</td>
+           <td data-label="Password">nmnmnm3019</td>
+         </tr>
 
-      <div class="input-container ic2">
-        <input id="size" class="input" type="text" placeholder=" " />
-        <div class="cut cut-short"></div>
-        <label for="size" class="placeholder">Size in inches</>
-      </div>
+         <tr>
+           <td data-label="Name">Emma</td>
+           <td data-label="Age">18</td>
+           <td data-label="Username">emma</td>
+           <td data-label="Email Address">emmajames@outlook.com</td>
+           <td data-label="Password">dp6541ox</td>
+         </tr>
 
-      <div class="input-container ic2">
-        <input id="colour" class="input" type="text" placeholder=" " />
-        <div class="cut cut-short"></div>
-        <label for="colour" class="placeholder">Colour of Product</>
-      </div>
+         <tr>
+           <td data-label="Name">Brian</td>
+           <td data-label="Age">15</td>
+           <td data-label="Username">bb.brian</td>
+           <td data-label="Email Address">brianadams@gmail.com</td>
+           <td data-label="Password">brian2654</td>
+         </tr>
 
-      <div class="input-container ic2">
-        <input id="stock" class="input" type="text" placeholder=" " />
-        <div class="cut cut-short"></div>
-        <label for="stock" class="placeholder">Stock Available</>
-      </div>
+        </tbody>
 
-      <a href="main.html">
-        <button type="button" class="submit" href="product.html">Add to Stock</button>
-      </a>
-
-
-    </div>
+  </table>
 
 
 
 <script src='../JS/navigation.js'></script>
-  <!-- <script>
-    let arrow = document.querySelectorAll(".arrow");
-    for (var i = 0; i < arrow.length; i++) {
-      arrow[i].addEventListener("click", (e)=>{
-     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-     arrowParent.classList.toggle("showMenu");
-      });
-    }
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
-    sidebarBtn.addEventListener("click", ()=>{
-      sidebar.classList.toggle("close");
-    });
-  </script> -->
+
 
 </body>
 </html>
