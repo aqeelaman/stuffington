@@ -1,11 +1,23 @@
+.categoryNavbar{
+    margin-bottom: 20px;
+}
+
 .heading1{
     text-align: center;
     font-size: 50px;
     font-weight: bolder;
+    background-color: antiquewhite;
+    width: 20%;
+    margin: auto;
+    padding: 10px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
 }
 
 .imageDiv{
-    margin-top: -2%;
+    margin-top: 1%;
     text-align: center;
 }
 
@@ -16,16 +28,48 @@
     border-width: 2px;
 }
 
-.contentDiv{
-    background-color:aquamarine;
-    margin-left: 10%;
-    margin-right: 10%;
-    
+.contentDiv{    
+    margin-left: 9%;
+    margin-right: 9%;
 }
 
 .contentDiv p{
+    font-size: x-large;
     margin: 15px;
-    margin-top: 15px;
+    margin-top: 0px;
     background-color: beige;
     text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
 }
+
+.heading2{
+    text-align: center;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: antiquewhite;
+    width: 70%;
+    margin-left: 25%;
+    margin-top: 5px;
+    padding: 10px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 10px;
+    margin: auto;
+}
+
+.tableDiv{
+    margin: auto;
+    margin-left: 150px;
+    margin-right: 150px;
+    padding: 10px;
+    text-align: center;
+}
+
+
+
+
