@@ -9,6 +9,7 @@
 	margin: auto;
 	width: auto;
 	color: #ddd;
+	text-align: center;
 }
 
 
@@ -118,7 +119,6 @@ body {
 	border: 2px solid #11101dc9;
 	margin-top: 15px;
 	color: #fff;
-	display: inline-flexbox;
 	font-size: 15px;
 	border-bottom-right-radius: 5px;
 	border-bottom-right-radius: 5px;
