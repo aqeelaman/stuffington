@@ -121,17 +121,16 @@
 
 
 .footer1 {
-    margin-top: 40px;
-    position: fixed;
-    bottom: 1;
+    position: relative;
+    bottom: 0px;
     overflow: hidden;
     text-align: center;
     color: whitesmoke;
     background-color: #65471f;
     width: 100%;
-    padding: 15px;
+    padding-top: 17px;
+    padding-bottom: 17px;
 }
-
 
 
 

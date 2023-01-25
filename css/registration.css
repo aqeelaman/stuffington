@@ -161,23 +161,13 @@
 }
 
 .footer1 {
-    /* position: ;
-    bottom: 0;
-    margin-top: 40px;
-    overflow: hidden;
-    text-align: center;
-    color: whitesmoke;
-    background-color: #65471f;
-    width: 100%;
-    margin-top: 15%;
-    padding: 20px; */
-    margin-top: 40px;
     position: absolute;
-    bottom: 1;
+    bottom: 0px;
     overflow: hidden;
     text-align: center;
     color: whitesmoke;
     background-color: #65471f;
     width: 100%;
-    padding: 15px;
+    padding-top: 17px;
+    padding-bottom: 17px;
 }
