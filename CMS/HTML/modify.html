@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>CMS | StuffingTon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="stylesheet" href="../CSS/navigation.css">
+    <link rel="stylesheet" href="../CSS/container.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+  
+
+<body>
+
+  <div class="bg-image"></div>
+
+    <div class="title">
+    <h1>Modify Details</h1>
+  </div>
+
+  <div class="sidebar close">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">StuffingTon</span>
+    </div>
+
+
+    <ul class="nav-links">
+      <!--StuffingTon-->
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Product</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">StuffingTon</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Customers</a></li>
+          <li><a href="#">Orders</a></li>
+        </ul>
+      </li>
+
+      <!-- user info
+      <li>
+        <a href="#">
+          <i class='bx bx-grid-alt' ></i>
+          <span class="link_name">User</span>
+        </a>
+        <ul class="sub-menu blank">
+          <li><a class="link_name" href="#">User Information</a></li>
+        </ul>
+      </li> -->
+
+      <!-- Category -->
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">Category</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Category</a></li>
+          <li><a href="#">Home Pets</a></li>
+          <li><a href="#">Mythical</a></li>
+          <li><a href="#">Teddy Bear</a></li>
+        </ul>
+      </li>
+
+      <!-- Stock -->
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-plug' ></i>
+            <span class="link_name">Plugins</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Update Stock</a></li>
+          <li><a href="#">Add Product</a></li>
+          <li><a href="#">Modify Details</a></li>
+          <li><a href="#">Delete Product</a></li>
+        </ul>
+      </li>  
+
+      <!-- Admin -->
+      <li>
+        <div class="iocn-link">
+          <a href="#">
+            <i class='bx bx-collection' ></i>
+            <span class="link_name">StuffingTon Admin</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">StuffingTon Admin</a></li>
+          <li><a href="#">Aqeel Aman Ali - M00850498</a></li>
+          <li><a href="#">Kurt Patawaran - M00850500</a></li>
+          <li><a href="#">Hooda AbdulShakoor - M00849592</a></li>
+        </ul>
+      </li>
+
+    </ul>
+  </div>
+
+
+
+    <div class="form">
+      <div class="title">Modify the Details of the Product</div>
+
+      <div class="input-container ic1">
+        <input id="productID" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="productID" class="placeholder">Product ID</label>
+      </div>
+
+      <div class="input-container ic1">
+        <input id="image" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="image" class="placeholder">Place an image of the new Product</label>
+      </div>
+
+      <div class="input-container ic1">
+        <input id="name" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="name" class="placeholder">Name</label>
+      </div>
+
+      <div class="input-container ic1">
+        <input id="price" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="price" class="placeholder">Price in AED</label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="category" class="input" type="text" placeholder=" " />
+        <div class="cut"></div>
+        <label for="category" class="placeholder">Category</label>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="size" class="input" type="text" placeholder=" " />
+        <div class="cut cut-short"></div>
+        <label for="size" class="placeholder">Size in inches</>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="colour" class="input" type="text" placeholder=" " />
+        <div class="cut cut-short"></div>
+        <label for="colour" class="placeholder">Colour of Product</>
+      </div>
+
+      <div class="input-container ic2">
+        <input id="stock" class="input" type="text" placeholder=" " />
+        <div class="cut cut-short"></div>
+        <label for="stock" class="placeholder">Stock Available</>
+      </div>
+
+
+
+      <a href="main.html">
+        <button type="button" class="submit" href="main.html">Modify Entry</button>
+      </a>
+
+
+
+      
+    </div>
+
+
+
+<script src='../JS/navigation.js'></script>
+  <!-- <script>
+    let arrow = document.querySelectorAll(".arrow");
+    for (var i = 0; i < arrow.length; i++) {
+      arrow[i].addEventListener("click", (e)=>{
+     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+     arrowParent.classList.toggle("showMenu");
+      });
+    }
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".bx-menu");
+    console.log(sidebarBtn);
+    sidebarBtn.addEventListener("click", ()=>{
+      sidebar.classList.toggle("close");
+    });
+  </script> -->
+
+</body>
+</html>
