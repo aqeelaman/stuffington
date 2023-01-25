@@ -5,9 +5,6 @@ body {
     margin: 0;
     background-color: #798155;
 }
-a{
-    text-decoration: none;
-}
 
 /*navigation bar*/
 .navbar {
@@ -76,7 +73,14 @@ input.searchbar {
 
 /* css for cart */
 .navbar li:nth-child(3) a {
-    padding: 10px;
+    padding: 13px;
+    padding-inline: 20px;
+    font-size: 30px;
+}
+
+/* css for profile */
+.navbar li:nth-child(4) a {
+    padding: 13px;
     padding-inline: 20px;
     font-size: 30px;
 }
@@ -120,7 +124,7 @@ input.searchbar {
 
 .categoryNavbar li a {
     float: left;
-    font-size: 13px;
+    font-size: 17px;
     display: block;
     color: rgb(0, 0, 0);
     text-align: center;
