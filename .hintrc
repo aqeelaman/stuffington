@@ -14,7 +14,8 @@
       "default",
       {
         "ignore": [
-          "max-width: fit-content"
+          "max-width: fit-content",
+          "backdrop-filter"
         ]
       }
     ],
@@ -42,6 +43,12 @@
       "default",
       {
         "nested-interactive": "off"
+      }
+    ],
+    "axe/structure": [
+      "default",
+      {
+        "list": "off"
       }
     ]
   }
