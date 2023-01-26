@@ -34,6 +34,7 @@ body {
 	overflow-y: auto;
 	margin: auto;
 	margin-top: 15px;
+	align-content: center;
 }
 
 .table td,
