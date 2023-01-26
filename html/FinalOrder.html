@@ -1,70 +1,72 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Set Order | Stuffington</title>
-        <!-- Link to favicon -->
-        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-        <!-- Link to external style sheet -->
-        <link rel="stylesheet" type="text/css" href="../css/navigation.css">
-        <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
-        <link rel="stylesheet" type="text/css" href="../css/CartStyle.css">
-        <link rel="stylesheet" type="text/css" href="../css/finalOrder.css">
-    </head>
 
-    <body>
-        
-        <div class="navigationContainer">
-            <!-- Navigation section -->
-            <ul class="navbar">    
-                <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
-                <li><input type="text" class="searchbar" placeholder="Search.."></li>
-                <li style="float:right"><a href="cart.html" >🛒</a></li>
-                <li style="float:right"><a href="profile.html">👤</a></li>
-                <li style="float:right"><a href="login.html">SIGN IN</a></li>
-                <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
-            </ul>
-            <ul class="categoryNavbar">    
-                <li><a href="allproducts.html">All Products</a></li>
-                <li><a href="teddybear.html">Teddy Bear</a></li>
-                <li><a href="housepets.html">House Pets</a></li>
-                <li><a href="mythical.html">Mythical</a></li>
-            </ul>
-        </div>
+<head>
+    <title>Set Order | Stuffington</title>
+    <!-- Link to favicon -->
+    <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+    <!-- Link to external style sheet -->
+    <link rel="stylesheet" type="text/css" href="../css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/CartStyle.css">
+    <link rel="stylesheet" type="text/css" href="../css/finalOrder.css">
+</head>
 
-        <!-- Content of the Page-->
-        <h1 style="margin-left: 3%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
-        <h1 style=" font-size: 35pt;float: right;margin-right: 23%; margin-bottom: 10px;"> Shipping Address </h1>
-        
-        
+<body>
+
+    <div class="navigationContainer">
+        <!-- Navigation section -->
+        <ul class="navbar">
+            <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
+            <li><input type="text" class="searchbar" placeholder="Search.."></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
+            <li style="float:right"><a href="profile.html">👤</a></li>
+            <li style="float:right"><a href="login.html">SIGN IN</a></li>
+            <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
+        </ul>
+        <ul class="categoryNavbar">
+            <li><a href="allproducts.html">All Products</a></li>
+            <li><a href="teddybear.html">Teddy Bear</a></li>
+            <li><a href="housepets.html">House Pets</a></li>
+            <li><a href="mythical.html">Mythical</a></li>
+        </ul>
+    </div>
+
+    <!-- Content of the Page-->
+    <h1 style="margin-left: 3%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
+    <h1 style=" font-size: 35pt;float: right;margin-right: 23%; margin-bottom: 10px;"> Shipping Address </h1>
+
+    <div style="display: flex;">
         <div class="cartDisplayContainer">
             <div class="sideCart">
                 <div class="itemImage">
-                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBunny" >
+                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBunny">
                 </div>
                 <div class="itemText">
                     <h1>Teddy Bear</h1>
                     <p class="price">AED47.99</p>
-                    <p style= "float:right; font-size: xx-large;">x2</p>
+                    <p style="float:right; font-size: xx-large;">x2</p>
                 </div>
             </div>
 
             <div class="sideCart">
                 <div class="itemImage">
-                    <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" >
+                    <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon">
                 </div>
                 <div class="itemText">
                     <h1>Black Dragon</h1>
                     <p class="price">AED47.99</p>
-                    <p style= "float:right; font-size: xx-large;">x2</p>
+                    <p style="float:right; font-size: xx-large;">x2</p>
                 </div>
             </div>
 
-            
+
         </div>
 
-    
-        <div class="sideSummaryContainer">
-            <div class="sideSummary">
+
+        <div style="display: block; width: 47%;">
+
+            <div class="sideAddressContainer">
 
                 <p style="float: left;"> Building No, Flat no, Area </p>
                 <p style="float: left; margin-left: 170px ;"> Street </p>
@@ -83,34 +85,54 @@
                     <option value="text">Umm Al-Quwain</option>
                     <option value="text">Fujairah</option>
                 </select>
-                <input type="tel" class="phoneNum" placeholder="05-/---/----" style="float: left; margin-left: 135px ;" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <input type="tel" class="phoneNum" placeholder="05-/---/----" style="float: left; margin-left: 135px ;"
+                    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             </div>
-        </div>
 
-        <h1 style=" font-size: 35pt;float: right;margin-right: 25.5%; margin-top: -40px;"> Delivery Option </h1>
 
-        <div class="sideDeliveryContainer">
-            <div class="sideDelivery">
-                <input type="radio" name="deliver" value="deliver" class="radio">
-                <label for="deliver" class="deliveryText"> Ship to my address.</label><br>
-                <span><p style="margin-top: 0; float: left; margin-left: 55px; width: 100%;" >Your order will be delivered straight to your door-step.</p></span>
-                
-                <input type="radio" name="deliver" value="deliver" class="radio">
-                <label for="deliver" class="deliveryText"> Deliver to a nearby Stuffington Store</label><br>
-                <span><p style="margin-top: 0; float: left; margin-left: 50px; margin-right: 50px;" >You will be able to collect your order from the nearest Stuffington Store from the address you have provided.</p></span>
+            <h1 style=" font-size: 35pt; margin-left: 9%; margin-top: 9%;"> Delivery Option </h1>
+
+            <div class="sideDeliveryContainer">
+                <div class="sideDelivery">
+                    <input type="radio" name="deliver" value="deliver" class="radio">
+                    <label for="deliver" class="deliveryText"> Ship to my address.</label><br>
+                    <span>
+                        <p style="margin-top: 0; float: left; margin-left: 55px; width: 100%;">Your order will be
+                            delivered
+                            straight to your door-step.</p>
+                    </span>
+
+                    <input type="radio" name="deliver" value="deliver" class="radio">
+                    <label for="deliver" class="deliveryText"> Deliver to a nearby Stuffington Store</label><br>
+                    <span>
+                        <p style="margin-top: 0; float: left; margin-left: 50px; margin-right: 50px;">You will be able
+                            to
+                            collect your order from the nearest Stuffington Store from the address you have provided.
+                        </p>
+                    </span>
+                </div>
             </div>
-        </div>
 
-        <div class="placeOrderContainer">
-            <div class="amount">
+            <div class="placeOrderContainer">
+                <div class="amount">
                     <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;AED</div>
                     <div class="totalPrice" style="float: right;"> 130.00&nbsp;&nbsp;</div>
+                </div>
+                <div class="placeOrderBtn">
+                    <a href="orderPlaced.html"><button> Place Order </button></a>
+                </div>
+                <div style=" font-size: larger;margin-left: 4%;">
+                    <p style="margin-top: -5px;">Total Amount (VAT inclusive)</p>
+                </div>
             </div>
-            <div class="placeOrderBtn">
-                <a href="orderPlaced.html"><button> Place Order </button></a>
-            </div>
-            <div style=" font-size: larger;margin-left: 4%;"><p style="margin-top: -10px;">Total Amount (VAT inclusive)</p></div>
-        </div>
 
-    </body>
+        </div>
+    </div>
+
+    <footer>
+        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
+    </footer>
+
+</body>
+
 </html>

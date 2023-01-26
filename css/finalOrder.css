@@ -1,9 +1,21 @@
 .sideSummaryContainer{
 height:auto;
-width: 48%;
+width: 45%;
+display:flexbox;
 }
 
-.sideSummary p{
+.sideAddressContainer{
+    background-color: rgb(204, 202, 202);
+    width: auto;
+    padding: 10px;
+    margin: auto;
+    margin-left: 9%;
+    
+    border-radius: 5px;
+    box-shadow: 0 2px 8px 0 black;
+    overflow: hidden;
+}
+.sideAddressContainer p{
     font-size: large;
     font-weight: bold;
     margin-left: 15px;
@@ -38,12 +50,11 @@ width: 48%;
 } 
 
 .sideDeliveryContainer{
-    float: right;
+    float: left;
     height: auto;
-    margin-right: -45%;
-    margin-top: 20px;
+    margin-left: 9%;
     margin-bottom: 5%;
-    width: 45%;
+    width: auto;
     background-color: rgb(204, 202, 202);
     box-shadow: 0 4px 8px 0 black;
     border-radius: 20px;
@@ -68,12 +79,12 @@ width: 48%;
 }
 
 .placeOrderContainer{
-    float: right;
+    float: left;
     height: auto;
-    margin-right: -41%;
-    margin-top: 250px;
+    overflow: hidden;
+    margin-left: 25%;
     margin-bottom: 5%;
-    width: 37%;
+    width: 60%;
     background-color: rgb(204, 202, 202);
     box-shadow: 0 4px 8px 0 black;
     border-radius: 10px;
@@ -81,6 +92,7 @@ width: 48%;
 
 .amount{
     float: left;
+    display: flex;
     height: 50px;
     width: 45%;
     margin-top: 3%;
@@ -89,21 +101,23 @@ width: 48%;
     border-color: black;
     border-radius: 10px;
     background-color: rgb(236, 241, 245);
+    overflow: hidden;
 }
 
 .placeOrderBtn{
     float: left;
-    margin-top: 6%;
+    margin-top: 3%;
     margin-left: 5%;
     width: 40%;
     height: 60px;
+    overflow: hidden;
     
 }
 
 .placeOrderBtn button{
-    height: 80%;
+    height: 90%;
     width: 100%;
-    font-size: xx-large;
+    font-size:23px;
     color:azure;
     background-color: brown;
     border-radius: 10px;
