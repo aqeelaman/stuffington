@@ -1,14 +1,11 @@
 /* Container for the whole content of the page*/
 .cartDisplayContainer{
     margin-left: 3%;
-    margin-top: -2%;
-    margin-right: auto;
     background-color: rgb(111, 143, 111);
     border-radius: 2%;
     width:45%;
     box-shadow: 0 4px 8px 0 black;
     padding: 5px;
-    margin-bottom: -5%;
 }
 /* Content of selected items displayed in the side cart*/
 .sideCart{
@@ -58,8 +55,6 @@
 .sideSummaryContainer{
     display: flex;
     margin-right: 3%;
-    margin-top: -55%;
-    margin-bottom: 5%;
     margin-left:auto;
     width: 45%;
 }
