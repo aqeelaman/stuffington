@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <meta charset="utf-8">
 
     <title>Sign In | Stuffington</title>
@@ -13,18 +14,18 @@
 
 
 <body onload="onload()">
-        
+
     <div class="navigationContainer">
         <!-- Navigation section -->
-        <ul class="navbar">    
+        <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
             <li><input type="text" class="searchbar" placeholder="Search.."></li>
-            <li style="float:right"><a href="cart.html" >🛒</a></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
             <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
         </ul>
-        <ul class="categoryNavbar">    
+        <ul class="categoryNavbar">
             <li><a href="allproducts.html">All Products</a></li>
             <li><a href="teddybear.html">Teddy Bear</a></li>
             <li><a href="housepets.html">House Pets</a></li>
@@ -32,95 +33,94 @@
         </ul>
     </div>
 
-<div class="container signup">
-    <div class="form-name">Sign In</div>
+    <div class="container signup">
+        <div class="form-name">Sign In</div>
         <form onsubmit="return false" class="signup-form">
             <input type="text" id="user" name="username" placeholder="Username...">
-                    <input type="password" id="password" name="" placeholder="Password...">
+            <input type="password" id="password" name="" placeholder="Password...">
 
 
             <button class="btnn"><a href="index.html" onclick="login()">Login</a></button>
             <button class="btnn"><a href="../CMS/HTML/login.html" onclick="login()">Admin Login</a></button>
             <p class="login-result" id="login-result"></p>
 
-            <p>Don't have an account?<br>
-                <a style="font-size:20px ;"href="registration.html">Sign up here</a>
+            <p style="font-size: 23px;">Don't have an account?<br>
+                <a style="font-size:23px ;" href="registration.html">Sign up here</a>
             </p>
 
         </form>
+
     </div>
-</div>
 
 
-<script>
-    var registeredUserList=[];
+    <script>
+        var registeredUserList = [];
         // var regisetredUsers=localStorage['RegisteredUsers'];
 
-        if(regisetredUsers !=null || regisetredUsers!=undefined){
-            var registeredUserList=JSON.parse(regisetredUsers);
+        if (regisetredUsers != null || regisetredUsers != undefined) {
+            var registeredUserList = JSON.parse(regisetredUsers);
         }
 
-    function login()
-    {
-        if(validateLogin()){
-    var username =  document.getElementById("user").value;
-            //  localStorage['LoggedInUser']=username;
+        function login() {
+            if (validateLogin()) {
+                var username = document.getElementById("user").value;
+                //  localStorage['LoggedInUser']=username;
 
-            window.location.href = 'game.php';
-        }
-        else{
-            document.getElementById('login-result').innerHTML="<span style='color:red; font-size:12px; text-align:center'>Invalid Username or Password!</span>";
-        }
-    }
-
-    function validateLogin(){
-
-        if (userobj.username == '') {
-            alert ("Username must be filled out");
-            return false;
-        }
-        else if(userobj.password == '') {
-            alert ("Password must be filled out");
-            return;
-        
+                window.location.href = 'game.php';
+            }
+            else {
+                document.getElementById('login-result').innerHTML = "<span style='color:red; font-size:12px; text-align:center'>Invalid Username or Password!</span>";
+            }
         }
 
+        function validateLogin() {
+
+            if (userobj.username == '') {
+                alert("Username must be filled out");
+                return false;
+            }
+            else if (userobj.password == '') {
+                alert("Password must be filled out");
+                return;
+
+            }
 
 
-        if(regisetredUsers ==null || regisetredUsers==undefined){
-            return false;
-         }
 
-         registeredUserList=JSON.parse(regisetredUsers);
+            if (regisetredUsers == null || regisetredUsers == undefined) {
+                return false;
+            }
 
-        if(registeredUserList.length <= 0){
-            return false;
-        }
-        else{
+            registeredUserList = JSON.parse(regisetredUsers);
 
-         var username =  document.getElementById("user").value;
-         var password =  document.getElementById("password").value;
+            if (registeredUserList.length <= 0) {
+                return false;
+            }
+            else {
 
-          var registeredUser = registeredUserList.filter(user => user.username == username)[0];
+                var username = document.getElementById("user").value;
+                var password = document.getElementById("password").value;
 
-          if(registeredUser ==null || registeredUser == undefined) return false;
+                var registeredUser = registeredUserList.filter(user => user.username == username)[0];
 
-          if(registeredUser.password == password) return true;
+                if (registeredUser == null || registeredUser == undefined) return false;
 
-          return false;
+                if (registeredUser.password == password) return true;
 
-        }
-    } 
-</script> 
+                return false;
+
+            }
+        } 
+    </script>
 
 
-    
+
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
 
-<div class="footer1">
-    <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
-</div>
+    <div class="footer1">
+        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
+    </div>
 
 </body>
 

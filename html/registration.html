@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="Generator" content="EditPlus">
     <meta name="Author" content="">
@@ -20,18 +21,18 @@
 
 
 <body onload="onload()">
-        
+
     <div class="navigationContainer">
         <!-- Navigation section -->
-        <ul class="navbar">    
+        <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
             <li><input type="text" class="searchbar" placeholder="Search.."></li>
-            <li style="float:right"><a href="cart.html" >🛒</a></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
             <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
         </ul>
-        <ul class="categoryNavbar">    
+        <ul class="categoryNavbar">
             <li><a href="allproducts.html">All Products</a></li>
             <li><a href="teddybear.html">Teddy Bear</a></li>
             <li><a href="housepets.html">House Pets</a></li>
@@ -42,100 +43,100 @@
 
     <div class="container">
         <div class="form-name">Registration</div>
-            <form onsubmit="return false" class="signup-form">
-                <input type="text" id="name" name="Fullname" placeholder="Name" required> <br>
-                <input type="number" id="age" name="age" placeholder="Age"><br>
-                <input type="text" id="user" name="username" placeholder="Username" required><br>
-                <input type="email" id="mail" name="mail" placeholder="Email Address" required><br>
-                <input type="password" id="pass" name="password" placeholder="Password" required><br>
-                <input type="submit" class= "btn btn-success"  value="Register" onclick="registeruser()">
-                <spam id="result" class="register-result"></spam>
-            </form>
+        <form onsubmit="return false" class="signup-form">
+            <input type="text" id="name" name="Fullname" placeholder="Name" required> <br>
+            <input type="number" id="age" name="age" placeholder="Age"><br>
+            <input type="text" id="user" name="username" placeholder="Username" required><br>
+            <input type="email" id="mail" name="mail" placeholder="Email Address" required><br>
+            <input type="password" id="pass" name="password" placeholder="Password" required><br>
+            <input type="submit" class="btn btn-success" value="Register" onclick="registeruser()">
+            <spam id="result" class="register-result"></spam>
+        </form>
     </div>
 
-<footer class="footer1">
-<p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
-</footer>
+    <footer class="footer1">
+        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
+    </footer>
 
 
 
 
     <script>
-        
-        var registeredUserList=[];
-        var regisetredUsers=localStorage['RegisteredUsers'];
 
-        if(regisetredUsers !=null || regisetredUsers!=undefined){
-            registeredUserList=JSON.parse(regisetredUsers);
+        var registeredUserList = [];
+        var regisetredUsers = localStorage['RegisteredUsers'];
+
+        if (regisetredUsers != null || regisetredUsers != undefined) {
+            registeredUserList = JSON.parse(regisetredUsers);
         }
 
-        function registeruser(){
+        function registeruser() {
 
-         var userobj = {};
-         userobj.fullname = document.getElementById("name").value;
-         userobj.age = document.getElementById("age").value;
-         userobj.username = document.getElementById("user").value;
-         userobj.email = document.getElementById("mail").value;
-         userobj.password = document.getElementById("pass").value;
-    
-         if (userobj.username == '') {
-            alert ("Username must be filled out");
-            return false;
-        }
-        else if(userobj.password == '') {
-            alert ("Password must be filled out");
-            return;
-        
-        }
-        else if(userobj.fullname == '') {
-            alert ("Name must be filled out");
-            return;
-        
-        }
-        else if(userobj.email == '') {
-            alert ("Email must be filled out");
-            return;
-        
-        }
+            var userobj = {};
+            userobj.fullname = document.getElementById("name").value;
+            userobj.age = document.getElementById("age").value;
+            userobj.username = document.getElementById("user").value;
+            userobj.email = document.getElementById("mail").value;
+            userobj.password = document.getElementById("pass").value;
 
-        else{
-            if(validateUsername()){
-
-            registeredUserList.push(userobj);
-         localStorage['RegisteredUsers']=JSON.stringify(registeredUserList);
-         regisetredUsers=localStorage['RegisteredUsers'];
-
-         document.getElementById("result").innerHTML = "User Registered successfully. Please <a href='signin.html'>click here</a> to login. ";
+            if (userobj.username == '') {
+                alert("Username must be filled out");
+                return false;
             }
-            else{
-                document.getElementById("result").innerHTML = "<span style='color:red'>This user  exist! Please <a href='login.html'>click here</a> to login.</span>";
+            else if (userobj.password == '') {
+                alert("Password must be filled out");
+                return;
+
+            }
+            else if (userobj.fullname == '') {
+                alert("Name must be filled out");
+                return;
+
+            }
+            else if (userobj.email == '') {
+                alert("Email must be filled out");
+                return;
+
+            }
+
+            else {
+                if (validateUsername()) {
+
+                    registeredUserList.push(userobj);
+                    localStorage['RegisteredUsers'] = JSON.stringify(registeredUserList);
+                    regisetredUsers = localStorage['RegisteredUsers'];
+
+                    document.getElementById("result").innerHTML = "User Registered successfully. Please <a href='signin.html'>click here</a> to login. ";
+                }
+                else {
+                    document.getElementById("result").innerHTML = "<span style='color:red'>This user  exist! Please <a href='login.html'>click here</a> to login.</span>";
+                }
             }
         }
-    }
 
-    function validateUsername(){
-         if(regisetredUsers ==null || regisetredUsers==undefined){
-            return true;
-         }
+        function validateUsername() {
+            if (regisetredUsers == null || regisetredUsers == undefined) {
+                return true;
+            }
 
-         registeredUserList=JSON.parse(regisetredUsers);
+            registeredUserList = JSON.parse(regisetredUsers);
 
-        if(registeredUserList.length <= 0){
-            return true;
+            if (registeredUserList.length <= 0) {
+                return true;
+            }
+            else {
+
+                var username = document.getElementById("user").value;
+
+                var registeredUser = registeredUserList.filter(user => user.username == username)[0];
+
+                if (registeredUser == null || registeredUser == undefined) return true;
+
+                return false;
+
+            }
+
         }
-        else{
-
-         var username =  document.getElementById("user").value;
-
-          var registeredUser = registeredUserList.filter(user => user.username == username)[0];
-
-          if(registeredUser ==null || registeredUser == undefined) return true;
-
-          return false;
-
-        }
-
-    }
 
     </script>
 

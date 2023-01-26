@@ -52,6 +52,7 @@
     border-radius: 20px;
     padding: 20px;
     margin-top: 18%;
+    overflow: hidden;
 }
 
 .form-name {
@@ -161,7 +162,7 @@
 }
 
 .footer1 {
-    position: absolute;
+    position: fixed;
     bottom: 0px;
     overflow: hidden;
     text-align: center;
