@@ -11,14 +11,15 @@
 }
 
 .footer {
-    width: 90%;
+    width: auto;
     height: 20vh;
     background-color: #65471f;
     color: #fff;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    margin: 0 auto;
+    
+    margin-left: auto;
 }
 
 .footer-heading {

@@ -239,15 +239,14 @@ input.searchbar {
     width: 20%;
     height: 10%;
     text-align: center;
-    text-decoration: none;
-    color: black;
     transition: transform .5s;
     border-radius: 10%;
     box-shadow: 0 4px 8px 0 black;
 }
 
 .card p {
-    margin-top: -6%;
+    margin: 6%;
+
 }
 
 .card h1 {
@@ -276,11 +275,9 @@ input.searchbar {
 
 footer {
     position: absolute;
-    bottom: 1;
     overflow: hidden;
     text-align: center;
     color: whitesmoke;
     background-color: #65471f;
     width: 100%;
-    margin-top: 5%;
 }
