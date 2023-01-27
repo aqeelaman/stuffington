@@ -1,13 +1,15 @@
 .orderPlacedContainer{
     margin: auto;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-right: auto;
     background-color: rgb(111, 143, 111);
     border-radius: 2%;
     width:60%;
     box-shadow: 0 4px 8px 0 black;
     padding: 5px;
+    padding-top: 35px;
     margin-bottom: 5%;
+
 }
 
 .itemCard{

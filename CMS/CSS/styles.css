@@ -116,6 +116,7 @@ body {
 .btn {
 	width: 250px;
 	height: 40px;
+	text-decoration: none;
 	background: #11101dc9;
 	border: 2px solid #11101dc9;
 	margin-top: 15px;
@@ -126,6 +127,7 @@ body {
 	transition: 0.2s ease;
 	cursor: pointer;
 	margin: auto;
+	margin-left: 20px;
 }
 
 .btn:hover {
