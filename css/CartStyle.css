@@ -141,6 +141,8 @@ text-align: center;
     transition: transform .5s;
     border-radius: 10%;
     box-shadow: 0 4px 8px 0 black;
+    text-decoration: none;
+    color: black;
 }
 
 .recommendationCard p {

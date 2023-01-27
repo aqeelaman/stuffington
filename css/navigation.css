@@ -197,7 +197,7 @@ input.searchbar {
 
 .dots {
     position: relative;
-    top: -25px;
+    top: -35px;
 }
 
 .dots a {
@@ -242,6 +242,8 @@ input.searchbar {
     transition: transform .5s;
     border-radius: 10%;
     box-shadow: 0 4px 8px 0 black;
+    text-decoration: none;
+    color: black;
 }
 
 .card p {
@@ -273,3 +275,12 @@ input.searchbar {
     /*black shadow on hover*/
 }
 
+footer {
+    position: absolute;
+    overflow: hidden;
+    text-align: center;
+    color: whitesmoke;
+    background-color: #65471f;
+    width: 100%;
+    margin-top: 5%;
+}
