@@ -6,6 +6,7 @@
     margin-top: 40px;
 }
 
+/* form */
 .signup-form {
     width: 70%;
     margin: auto;
@@ -13,6 +14,7 @@
 
 }
 
+/* input feild */
 .signup-form input {
     width: 100%;
     font-size: 18px;
@@ -22,6 +24,7 @@
     padding: 7px;
 }
 
+/* submit subbon */
 .signup-form input.btn-success {
     color: #798155;
     font-weight: bold;
@@ -29,10 +32,12 @@
     border-radius: 5px;
 }
 
+/* hover effect */
 .signup-form input.btn-success:hover {
     background-color: #65471f;
 }
 
+/* submit register */
 .register-result {
     color: #65471f;
     font-family: ui-rounded;
@@ -41,6 +46,7 @@
     display: block;
 }
 
+/* content box */
 .container {
     position: relative;
     width: 40%;
@@ -55,6 +61,7 @@
     overflow: hidden;
 }
 
+/* form heading */
 .form-name {
     color: #65471f;
     text-align: center;
@@ -71,6 +78,7 @@
     display: inline-block;
 }
 
+/* input feild name */
 .field-name {
     color: #65471f;
     font-size: 25px;
@@ -84,6 +92,7 @@
     display: inline-block;
 }
 
+/* registeration input style */
 .input {
     margin: 10px;
     padding: 10px;
@@ -100,6 +109,7 @@
     text-align: center;
 }
 
+/* register btn */
 .button {
     margin: 20px;
     padding: 10px;
@@ -113,11 +123,13 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+/* hover effect */
 .button:hover {
     color: black;
     background: white;
 }
 
+/* warning for not entering input or wrong input */
 .warning {
     color: red;
     border-color: white;
@@ -137,6 +149,7 @@
     text-align: center;
 }
 
+/* signin btn */
 .btnn {
     margin: 20px;
     padding: 10px;
@@ -150,20 +163,22 @@
     font-family: 'Times New Roman', Times, serif;
 }
 
+/* hover */
 .btnn:hover {
     color: black;
     background: white;
 }
 
+/* link */
 .btnn a {
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
 }
 
+/* signin and registeration footer*/
 .footer1 {
     position: absolute;
-    
     overflow: hidden;
     text-align: center;
     color: whitesmoke;

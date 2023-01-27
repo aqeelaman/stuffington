@@ -9,7 +9,7 @@
 }
 
 
-
+/* details of user */
 .user-details {
     font-size: 50px;
     margin-top: 30px;
@@ -20,8 +20,7 @@
 
 }
 
-
-
+/* div for content in user information feild */
 .wrapper {
     position: absolute;
     top: 50%;
@@ -33,6 +32,7 @@
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
 }
 
+/* left side content */
 .wrapper .left {
     width: 35%;
     background: linear-gradient(to right, #65471f, #65471f);
@@ -44,19 +44,23 @@
     padding: 5%;
 }
 
+/* left image background */
 .wrapper .left img {
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
+/* h4 style - left */
 .wrapper .left h4 {
     margin-bottom: 10px;
 }
 
+/* paragraph style - left */
 .wrapper .left p {
     font-size: 12px;
 }
 
+/* right side content */
 .wrapper .right {
     width: 65%;
     background: #fff;
@@ -92,6 +96,7 @@
     width: 45%;
 }
 
+/* details */
 .wrapper .right .info_data .data h4,
 .wrapper .right .projects_data .data h4 {
     color: #353c4e;
@@ -106,7 +111,7 @@
 }
 
 
-
+/* recomended products */
 .recommendContainer {
     bottom: auto;
     width: 70%;
@@ -119,7 +124,7 @@
 }
 
 
-
+/* footer */
 .footer1 {
     position: relative;
     bottom: 0px;
