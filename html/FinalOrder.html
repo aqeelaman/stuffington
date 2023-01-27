@@ -33,9 +33,13 @@
     </div>
 
     <!-- Content of the Page-->
+
+    <!--Headers-->
     <h1 style="margin-left: 3%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
     <h1 style=" font-size: 35pt;float: right;margin-right: 23%; margin-bottom: 10px;"> Shipping Address </h1>
 
+
+    <!--Cart display on the left that shows what product are about to be placed for order-->
     <div style="display: flex;">
         <div class="cartDisplayContainer">
             <div class="sideCart">
@@ -63,7 +67,7 @@
 
         </div>
 
-
+        <!--A div that contains input fields that retrieves addres and contact information from the user who ordered-->
         <div style="display: block; width: 47%;">
 
             <div class="sideAddressContainer">
@@ -89,9 +93,8 @@
                     required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
             </div>
 
-
+            <!--A div that would let the user to select a delivery option-->
             <h1 style=" font-size: 35pt; margin-left: 9%; margin-top: 9%;"> Delivery Option </h1>
-
             <div class="sideDeliveryContainer">
                 <div class="sideDelivery">
                     <input type="radio" name="deliver" value="deliver" class="radio">
@@ -113,6 +116,7 @@
                 </div>
             </div>
 
+            <!--A div that will display the final amount and a button for order submission-->
             <div class="placeOrderContainer">
                 <div class="amount">
                     <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;AED</div>
@@ -129,6 +133,7 @@
         </div>
     </div>
 
+    <!--Footer-->
     <footer>
         <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
     </footer>

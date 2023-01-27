@@ -32,18 +32,23 @@
 
     <!-- Content of the Page-->
 
+    <!--A header that indicates what the content below it is-->
     <h1 style="margin-left: 3%; font-size: 35pt;"> Cart </h1>
 
+    <!--A cart container would be placed on the left side of the screen showing what content the user has added to the cart-->
+    <!--This consist of a div and many more div inside it to be able to adjust their position easily-->
     <div style="display: flex">
         <div class="cartDisplayContainer">
+
+            <!--each lsited product would be created with a div called sideCart-->
             <div class="sideCart">
-                <div class="itemImage">
-                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear">
+                <div class="itemImage">     <!-- Shows the image of the product-->
+                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear">       
                 </div>
-                <div class="itemText">
+                <div class="itemText">          <!--Div to control the texts of the product listed-->
                     <h1>Brown Bear</h1>
                     <p class="price">AED70.95</p>
-                    <p><select style="width: 8%; text-align: center;">
+                    <p><select style="width: 8%; text-align: center;">              <!-- A drop down menu that allows the user to select the quantity of each product-->
                             <option value="#"> 1 </option>
                             <option value="#" selected="selected">2</option>
                             <option value="#">3</option>
@@ -54,18 +59,20 @@
                             <option value="#">8</option>
                             <option value="#">9</option>
                         </select></p>
-                    <button style="float:right; left: 100%;">Remove</button>
+                    <button style="float:right; left: 100%;">Remove</button>        <!--Button created that would delete / remove the item from the cart-->
                 </div>
             </div>
 
+                        <!--each lsited product would be created with a div called sideCart-->
+
             <div class="sideCart">
-                <div class="itemImage">
+                <div class="itemImage">         <!-- Shows the image of the product-->
                     <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon">
                 </div>
-                <div class="itemText">
+                <div class="itemText">              <!--Div to control the texts of the product listed-->
                     <h1>Black Dragon</h1>
                     <p class="price">AED75.00</p>
-                    <p><select style="width: 8%; text-align: center;">
+                    <p><select style="width: 8%; text-align: center;">              <!-- A drop down menu that allows the user to select the quantity of each product-->
                             <option value="#" selected="selected"> 1 </option>
                             <option value="#">2</option>
                             <option value="#">3</option>
@@ -76,23 +83,23 @@
                             <option value="#">8</option>
                             <option value="#">9</option>
                         </select></p>
-                    <button style="float:right; left: 100%;">Remove</button>
+                    <button style="float:right; left: 100%;">Remove</button>        <!--Button created that would delete / remove the item from the cart-->
                 </div>
             </div>
         </div>
 
         <!-- Item Summary -->
         <div class="sideSummaryContainer">
-            <div class="sideSummary">
+            <div class="sideSummary">           <!--This will be on the right side of the page, a header that indicates the order summary-->
                 <div style="margin-bottom: -7%;margin-top: -4%; margin-left: 3%; font-size:40px; ">
                     <p> Order Summary </p>
                 </div>
                 <div style="margin-top: -4%; margin-left: 4%;">
                     <p> Total Amount VAT Inclusive</p>
                 </div>
-                <div>
-                    <table>
-                        <thead>
+                <div>               <!--A Div is made to dispaly the order summary in a table-->
+                    <table>             <!--Below are the items stored in the table-->
+                        <thead>             
                             <tr>
                                 <td style="width: 33%;">Item Name</td>
                                 <td>Quantity</td>
@@ -114,15 +121,16 @@
                         </thead>
                     </table>
                 </div>
-                <div class="totalContainer">
+                <div class="totalContainer">        <!--Total Container to display the Final price of the order-->
                     <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
                     <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
                 </div>
 
-                <div class="checkoutBtn">
+                <div class="checkoutBtn">       <!--A button that would be clicked to confirm and lead to final checkout-->
                     <a href="finalOrder.html"><button> Check Out </button></a>
                 </div>
-
+            
+                <!--A container that would have product recommendations-->
                 <h1 style="margin-left: 3%; margin-bottom: -1%;">People also Buy</h1>
                 <div class="productRecommendation">
                     <a href="Products/brownBunny.html">

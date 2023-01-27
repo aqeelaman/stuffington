@@ -18,14 +18,15 @@
     display: flex;
     overflow: hidden;
     box-shadow: 0 4px 8px 0 black;
-
 }
 
-/* Adjustments of the image in the cart*/
+/* Adjustments of the image div in the cart*/
 .itemImage{
     margin: 0;
     width: 40%;
 }
+
+/* Adjustments of the image in the cart*/
 .itemImage img{
     width:100%;
     margin-top: 2%;
@@ -34,24 +35,27 @@
 
 }
 
+/* Adjustments of the text for each product in the cart*/
 .itemText{
     margin-left: 7%;
     display: block;
     width:80%;
 }
 
+/* Adjustments of the header in the cart*/
 .itemText h1{
     font-size: xx-large;
 }
 
+/* Adjustments of the text for each product in the cart*/
 .itemText p{
     font-size: large;
     margin-top: -4%;
     margin-bottom: 10%;
 }
 
-/*Side Item summary*/
 
+/*Side Item summary*/
 .sideSummaryContainer{
     display: flex;
     margin-right: 3%;
@@ -59,6 +63,7 @@
     width: 45%;
 }
 
+/* modification for the div in side Summary */
 .sideSummary{
     background-color: rgb(204, 202, 202);
     width: 89%;
@@ -71,16 +76,18 @@
 
 }
 
+/* modification for the table div in summary */
 table{
     padding: 15px;
 }
 
+/* modification for Header in the side suammary */
 .sideSummary h1{
     font-size: xx-large;
 }
 
+/* modification for the table in summary */
 .sideSummary table{
-
 border-color: black;
 border-style: solid;
 margin-left: 5%;
@@ -88,6 +95,7 @@ width: 90%;
 text-align: center;
 }
 
+/* modificaitons for totalContainer div */
 .totalContainer{
    
     width:80%;
@@ -98,6 +106,7 @@ text-align: center;
     border:solid;
 }
 
+/* modificaitons for total price in the total container */
 .totalPrice{
     font-size: 25px;
     text-align: center;
@@ -106,6 +115,7 @@ text-align: center;
     
 }
 
+/* modificaitons for checkout button div  */
 .checkoutBtn{
     margin-top: 3%;
     margin-left: 10.5%;
@@ -113,12 +123,14 @@ text-align: center;
     height: 70px;
 }
 
+/* modificaitons for checkout button in total container  */
 .checkoutBtn button{
     height: 80%;
     width: 100%;
     font-size: xx-large;
 }
 
+/* modification for product recommendation div */
 .productRecommendation {
     width: 95%;
     margin-left: 3%;
@@ -128,6 +140,7 @@ text-align: center;
     
 }
 
+/* div for each production placed in the recommendation div*/
 .recommendationCard {
     float: left;
     display: table-cell;
@@ -145,25 +158,31 @@ text-align: center;
     color: black;
 }
 
+/* recommendation text adjustments */
 .recommendationCard p {
     margin-top: -6%;
 }
+
+/* recommendation text adjustments */
 
 .recommendationCard h1 {
     font-size: x-large;
     margin-top: 7px;
 }
 
+/* recommendation button adjustments */
 .recommendationCard p button {
     padding: 2%;
 }
 
+/* recommendation img adjustments */
 .recommendationCard img {
     border-top-left-radius: 10%;
     border-top-right-radius: 10%;
     box-shadow: 0 1px 5px 0 black;
 }
 
+/* hover effect on cards in recommendations */
 .recommendationCard:hover {
     color: #ffffff;
     background-color: rgb(70, 46, 46);

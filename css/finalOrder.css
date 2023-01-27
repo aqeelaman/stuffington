@@ -1,9 +1,11 @@
+/* div for side summary information */
 .sideSummaryContainer{
 height:auto;
 width: 45%;
 display:flexbox;
 }
 
+/* div for address container */
 .sideAddressContainer{
     background-color: rgb(204, 202, 202);
     width: auto;
@@ -15,6 +17,8 @@ display:flexbox;
     box-shadow: 0 2px 8px 0 black;
     overflow: hidden;
 }
+
+/* text modification in address container */
 .sideAddressContainer p{
     font-size: large;
     font-weight: bold;
@@ -24,24 +28,28 @@ display:flexbox;
     margin-bottom: 5px;
 }
 
+/* address inpuit field */
 .basicAddress{
     margin-left: 15px;
     width: 350px;
     height: 30px;
 }
 
+/* street input field */
 .street{
     margin-left: 30px;
     width: 200px;
     height: 30px;
 }
 
+/* emirate input field */
 .emirate{
     margin-left: 15px;
     width: 200px;
     height: 30px;
 }
 
+/* phone number input field */
 .phoneNum{
     margin-left: 30px;
     width: 200px;
@@ -49,6 +57,7 @@ display:flexbox;
     margin-bottom: 10px;
 } 
 
+/* delivery option container modification */
 .sideDeliveryContainer{
     float: left;
     height: auto;
@@ -60,6 +69,7 @@ display:flexbox;
     border-radius: 20px;
 }
 
+/* Text adjustments for delivery div */
 .deliveryText{
     font-size: 25px;
     font-weight: bold;
@@ -69,6 +79,7 @@ display:flexbox;
     float:left;
 }
 
+/* Radio adjustment for delivery options */
 .radio{
     float: left;
     margin-left: 15px;
@@ -78,6 +89,7 @@ display:flexbox;
     border-radius: 50%;
 }
 
+/* div for the container place order*/
 .placeOrderContainer{
     float: left;
     height: auto;
@@ -90,6 +102,7 @@ display:flexbox;
     border-radius: 10px;
 }
 
+/* adjustment for final price */
 .amount{
     float: left;
     display: flex;
@@ -104,6 +117,7 @@ display:flexbox;
     overflow: hidden;
 }
 
+/* adjustmetns for button div */
 .placeOrderBtn{
     float: left;
     margin-top: 3%;
@@ -114,6 +128,7 @@ display:flexbox;
     
 }
 
+/* adjustmetns for button div */
 .placeOrderBtn button{
     height: 90%;
     width: 100%;
