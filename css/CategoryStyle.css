@@ -1,8 +1,10 @@
-.productDisplayContainer{
+/* css for main conatiner dispalying categories */
+.categoryDisplayContainer{
     display: inline-flex;
     margin-top: 2%;
     left: 5%;
 }
+/* css for sidebar for filters */
 .sidebar{
     display: block;
     width:20%; 
@@ -16,21 +18,26 @@
     box-shadow: 0 1px 5px 0 black;
 }
 
+/* css for h1 text in sidebar */
 .sidebar h1{
     padding-left: 10%;
 }
 
+/* css for p text in sidebar */
 .sidebar p{
     padding-left: 10%;
     font-size: 25px;
     font-weight: bold;
 }
 
+/* css for input buttons in sidebar */
 .sidebar input{
     vertical-align: middle;
     position: relative;
     bottom: 1px;
 }
+
+/* css for labels in sidebar */
 .sidebar label{
     margin-left: auto;
     display: block;
@@ -38,6 +45,7 @@
     padding-left: 15%;
 }
 
+/* css for displaying all products */
 .mainContainer{
     width: 70%;
     margin: auto;
