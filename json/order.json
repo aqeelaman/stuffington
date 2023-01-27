@@ -1,0 +1,83 @@
+db.order.insert([
+    {
+        "customer_id": ObjectId("63d3e761caa7adf4d417f546"),
+        "shipping_address": "Al Barsha, Dubai",
+        "date":"23/01/2023",
+        "time":"15:34",
+        "price": 62.00,
+        "products":[
+            {
+                "product_id":  ObjectId("63d3bc492354b0f36cb6dc6f"),
+                "quantity": 2
+            },
+            {
+                "product_id": ObjectId("63d3bc492354b0f36cb6dc62"),
+                "quantity":1
+            }
+        ]
+    },
+    {
+        "customer_id": ObjectId("63d3e761caa7adf4d417f547"),
+        "shipping_address": "Dubailand, Dubai",
+        "date":"24/01/2023",
+        "time":"09:10",
+        "price": 231.67,
+        "products":[
+            {
+                "product_id":  ObjectId("63d3bc492354b0f36cb6dc6b"),
+                "quantity": 1
+            },
+            {
+                "product_id": ObjectId("63d3bc492354b0f36cb6dc6f"),
+                "quantity":1
+            }
+        ]
+    },
+    {
+        "customer_id": ObjectId("63d3e761caa7adf4d417f548"),
+        "shipping_address": "Marsa, Dubai",
+        "date":"24/01/2023",
+        "time":"20:41",
+        "price": 65.25,
+        "products":[
+            {
+                "product_id":  ObjectId("63d3bc492354b0f36cb6dc6a"),
+                "quantity": 1
+            }
+        ]
+    },
+    {
+        "customer_id": ObjectId("63d3e761caa7adf4d417f549"),
+        "shipping_address": "Al Barsha, Dubai",
+        "date":"25/01/2023",
+        "time":"21:34",
+        "price": 231.67,
+        "products":[
+            {
+                "product_id":  ObjectId("63d3bc492354b0f36cb6dc70"),
+                "quantity": 1
+            },
+            {
+                "product_id": ObjectId("63d3bc492354b0f36cb6dc69"),
+                "quantity": 1
+            },
+            {
+                "product_id":  ObjectId("63d3bc492354b0f36cb6dc6c"),
+                "quantity": 1
+            }
+        ]
+    },
+    {
+        "customer_id": ObjectId("63d3e761caa7adf4d417f54c"),
+        "shipping_address": "Jumeirah Lakes and Towers, Dubai",
+        "date":"26/01/2023",
+        "time":"04:14",
+        "price": 231.67,
+        "products":[
+            {
+                "product_id":  ObjectId("63d3bc492354b0f36cb6dc64"),
+                "quantity": 1
+            }
+        ]
+    }
+])

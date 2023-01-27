@@ -1,0 +1,19 @@
+db.cart.insert([
+    {
+        "customer_id" :  ObjectId("63d3e761caa7adf4d417f54e"),
+        "session_id": "auh234p823y5p9734y93fih",
+        "date": "27/01/2023",
+        "time": "19:47",
+        "cost": 216.90,
+        "products":[
+            {
+                "product_id": ObjectId("63d3bc492354b0f36cb6dc62"),
+                "quantity": 2
+            },
+            {
+                "product_id": ObjectId("63d3bc492354b0f36cb6dc6d"),
+                "quantity": 1
+            }
+        ]
+    }
+])
