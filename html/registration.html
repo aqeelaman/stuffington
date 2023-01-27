@@ -17,6 +17,7 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/registration.css">
+        <link rel="stylesheet" type="text/css" href="../css/footer.css">
 </head>
 
 
@@ -45,8 +46,7 @@
         <div class="form-name">Registration</div>
         <form onsubmit="return false" class="signup-form">
             <input type="text" id="name" name="Fullname" placeholder="Name" required> <br>
-            <input type="number" id="age" name="age" placeholder="Age"><br>
-            <input type="text" id="user" name="username" placeholder="Username" required><br>
+            <input type="number" id="age" name="age" placeholder="Date of Birth"><br>
             <input type="email" id="mail" name="mail" placeholder="Email Address" required><br>
             <input type="password" id="pass" name="password" placeholder="Password" required><br>
             <input type="submit" class="btn btn-success" value="Register" onclick="registeruser()">
@@ -54,36 +54,47 @@
         </form>
     </div>
 
-    <footer class="footer1">
-        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
-    </footer>
+    <div class="footer-container">
+        <div class="footer">
+             <div class="footer-heading footer-1">
+                 <h2>Stuffed Toys</h2><br>
+                 <a href="teddybear.html">Teddy Bear</a>
+                 <a href="housepets.html">House Pets</a>
+                 <a href="mythical.html">Mythical</a>
+             </div>
+             <div class="footer-heading footer-2">
+                 <h2>Contact Us</h2><br>
+                 <a href="#">helpDesk@stuffington.ae</a>
+                 <a href="#">+971 54 362 3300</a>
+             </div>
+             <div class="footer-heading footer-3">
+                 <h2>Social Media</h2><br>
+                 <a href="#">Instagram</a>
+                 <a href="#">Facebook</a>
+                 <a href="#">Youtube</a>
+                 <a href="#">Twitter</a>
+             </div>
+             <div class="footer-email-form">
+                 <h2>Join our newsletter</h2>
+                 <input type="email" placeholder="Enter your Email Address" id="footer-email">
+                 <input type="submit" value="Sign Up" id="footer-email-btn">
+             </div>
+        </div>
+    </div>
 
 
 
 
     <script>
-
-        var registeredUserList = [];
-        var regisetredUsers = localStorage['RegisteredUsers'];
-
-        if (regisetredUsers != null || regisetredUsers != undefined) {
-            registeredUserList = JSON.parse(regisetredUsers);
-        }
-
         function registeruser() {
 
             var userobj = {};
             userobj.fullname = document.getElementById("name").value;
-            userobj.age = document.getElementById("age").value;
-            userobj.username = document.getElementById("user").value;
+            userobj.age = document.getElementById("dob").value;
             userobj.email = document.getElementById("mail").value;
             userobj.password = document.getElementById("pass").value;
 
-            if (userobj.username == '') {
-                alert("Username must be filled out");
-                return false;
-            }
-            else if (userobj.password == '') {
+            if (userobj.password == '') {
                 alert("Password must be filled out");
                 return;
 
@@ -96,47 +107,10 @@
             else if (userobj.email == '') {
                 alert("Email must be filled out");
                 return;
-
-            }
-
-            else {
-                if (validateUsername()) {
-
-                    registeredUserList.push(userobj);
-                    localStorage['RegisteredUsers'] = JSON.stringify(registeredUserList);
-                    regisetredUsers = localStorage['RegisteredUsers'];
-
-                    document.getElementById("result").innerHTML = "User Registered successfully. Please <a href='signin.html'>click here</a> to login. ";
-                }
-                else {
-                    document.getElementById("result").innerHTML = "<span style='color:red'>This user  exist! Please <a href='login.html'>click here</a> to login.</span>";
-                }
             }
         }
 
-        function validateUsername() {
-            if (regisetredUsers == null || regisetredUsers == undefined) {
-                return true;
-            }
 
-            registeredUserList = JSON.parse(regisetredUsers);
-
-            if (registeredUserList.length <= 0) {
-                return true;
-            }
-            else {
-
-                var username = document.getElementById("user").value;
-
-                var registeredUser = registeredUserList.filter(user => user.username == username)[0];
-
-                if (registeredUser == null || registeredUser == undefined) return true;
-
-                return false;
-
-            }
-
-        }
 
     </script>
 
