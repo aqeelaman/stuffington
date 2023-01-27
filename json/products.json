@@ -1,0 +1,12 @@
+db.products.insert([
+    {
+        "name": "Brown Bear",
+        "image_url":"/images/StuffedToys/TeddyBear/BrownBear.jpg",
+        "category": "Teddy Bear",
+        "size": 4,
+        "price": 70.95,
+        "colour": "Brown",
+        "stock":20
+    }
+    
+])
