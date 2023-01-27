@@ -273,11 +273,3 @@ input.searchbar {
     /*black shadow on hover*/
 }
 
-footer {
-    position: absolute;
-    overflow: hidden;
-    text-align: center;
-    color: whitesmoke;
-    background-color: #65471f;
-    width: 100%;
-}
