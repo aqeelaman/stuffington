@@ -5,6 +5,8 @@ body {
 	padding: 20px;
 	background-size: 100%;
 }
+
+
 .animate {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;

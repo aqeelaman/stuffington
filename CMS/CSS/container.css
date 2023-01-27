@@ -4,7 +4,6 @@
 }
 
 
-
 body {
     align-items: center;
     background-color: #000;
@@ -13,6 +12,7 @@ body {
     height: 120vh;
 }
 
+/* form for Add and Modify pages */
 .form {
     background-color: #15172bec;
     border-radius: 20px;
@@ -24,16 +24,7 @@ body {
 }
 
 
-.form-delete {
-    background-color: #15172bec;
-    border-radius: 20px;
-    box-sizing: border-box;
-    height: 400px;
-    padding-top: 20px;
-    margin: auto;
-    width: 1000px;
-}
-
+/* form title */
 .title {
     color: #eee;
     margin-bottom: 20px;
@@ -44,6 +35,7 @@ body {
     text-align: center;
 }
 
+/* input feild*/
 .input-container {
     height: 30px;
     position: relative;
@@ -60,6 +52,7 @@ body {
     margin-top: 30px;
 }
 
+/* new data */
 .input {
     background-color: #41435b7d;
     border-radius: 12px;
@@ -120,6 +113,7 @@ body {
     color: #dc2f55;
 }
 
+/* button: submit */
 .submit {
     background-color: #08d;
     border-radius: 12px;
