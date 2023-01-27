@@ -2,12 +2,15 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>CMS | StuffingTon</title>
+  <title>Modify | CMS</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- custom css -->
   <link rel="stylesheet" href="../CSS/styles.css">
   <link rel="stylesheet" href="../CSS/navigation.css">
   <link rel="stylesheet" href="../CSS/container.css">
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
   <!-- Link to favicon -->
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
@@ -18,8 +21,8 @@
   <div class="bg-image"></div>
 
     <div class="title">
-    <h1>Modify Details</h1>
-  </div>
+      <h1>Modify Details</h1>
+    </div>
 
   <!-- navigation bar -->
   <div class="sidebar close">
@@ -104,51 +107,60 @@
 
 
 
+    <!-- Product modification -->
     <div class="form">
       <div class="title">Modify the Details of the Product</div>
 
+      <!-- ProductID to be modified -->
       <div class="input-container ic1">
         <input id="productID" class="input" type="text" placeholder=" " />
         <div class="cut"></div>
         <label for="productID" class="placeholder">Product ID</label>
       </div>
 
+      <!-- image -->
       <div class="input-container ic1">
         <input id="image" class="input" type="text" placeholder=" " />
         <div class="cut"></div>
         <label for="image" class="placeholder">Place an image of the new Product</label>
       </div>
 
+      <!-- name of product -->
       <div class="input-container ic1">
         <input id="name" class="input" type="text" placeholder=" " />
         <div class="cut"></div>
         <label for="name" class="placeholder">Name</label>
       </div>
 
+      <!-- price -->
       <div class="input-container ic1">
         <input id="price" class="input" type="text" placeholder=" " />
         <div class="cut"></div>
         <label for="price" class="placeholder">Price in AED</label>
       </div>
 
+      <!-- category -->
       <div class="input-container ic2">
         <input id="category" class="input" type="text" placeholder=" " />
         <div class="cut"></div>
         <label for="category" class="placeholder">Category</label>
       </div>
 
+      <!-- size -->
       <div class="input-container ic2">
         <input id="size" class="input" type="text" placeholder=" " />
         <div class="cut cut-short"></div>
         <label for="size" class="placeholder">Size in inches</>
       </div>
 
+      <!-- colour -->
       <div class="input-container ic2">
         <input id="colour" class="input" type="text" placeholder=" " />
         <div class="cut cut-short"></div>
         <label for="colour" class="placeholder">Colour of Product</>
       </div>
 
+      <!-- stock -->
       <div class="input-container ic2">
         <input id="stock" class="input" type="text" placeholder=" " />
         <div class="cut cut-short"></div>
@@ -157,33 +169,17 @@
 
 
 
-      <a href="main.html">
-        <button type="button" class="submit" href="main.html">Modify Entry</button>
+      <!-- submit btn that redirects to products page and shows the modified data -->
+      <a href="product.html">
+        <button type="button" class="submit" href="product.html">Modify Entry</button>
       </a>
 
 
-
-      
     </div>
 
 
 
 <script src='../JS/navigation.js'></script>
-  <!-- <script>
-    let arrow = document.querySelectorAll(".arrow");
-    for (var i = 0; i < arrow.length; i++) {
-      arrow[i].addEventListener("click", (e)=>{
-     let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
-     arrowParent.classList.toggle("showMenu");
-      });
-    }
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".bx-menu");
-    console.log(sidebarBtn);
-    sidebarBtn.addEventListener("click", ()=>{
-      sidebar.classList.toggle("close");
-    });
-  </script> -->
 
 </body>
 </html>

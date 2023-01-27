@@ -1,0 +1,73 @@
+db.customers.insert([
+    {
+        "name":"Marry",
+        "phone_number":"+971 54 3598368",
+        "email":"mv_2348@gmail.com",
+        "dob":"07/07/2003",
+        "address": "Al Barsha, Dubai",
+    },
+    {
+        "name":"Zara",
+        "phone_number":"+971 55 2948104",
+        "email":"zbs_2348@gmail.com",
+        "dob":"02/12/1999",
+        "address": "Dubailand, Dubai",
+    },
+    {
+        "name":"Jackson",
+        "phone_number":"+971 55 3499173",
+        "email":"jackm234@outlook.com",
+        "dob":"30/06/2000",
+        "address": "Marsa, Dubai",
+    },
+    {
+        "name":"Zania",
+        "phone_number":"+971 50 1038924",
+        "email":"zan_2348@gmail.com",
+        "dob":"12/01/2006",
+        "address": "Al Barsha, Dubai",
+    },
+    {
+        "name":"Mehvish",
+        "phone_number":"+971 56 2973952",
+        "email":"meh345@gmail.com",
+        "dob":"	20/12/2002",
+        "address": "Business Bay, Dubai",
+    },
+    {
+        "name":"Gorge",
+        "phone_number":"+971 50 9927491",
+        "email":"gomez_gorge@yahoo.com",
+        "dob":"23/03/2003",
+        "address": "Jumeirah Village Circle, Dubai",
+    },
+    {
+        "name":"Joe",
+        "phone_number":"+971 54 4449274",
+        "email":"J0e8@gmail.com",
+        "dob":"19/06/2003",
+        "address": "Jumeirah Lakes and Towers, Dubai",
+    },
+    {
+        "name":"Noah",
+        "phone_number":"+971 56 7802859",
+        "email":"noahmaghen@gmail.com",
+        "dob":"10/10/1998",
+        "address": "Reva Residences, Dubai",
+    },
+    {
+        "name":"Emma",
+        "phone_number":"+971 54 3927490",
+        "email":"emmajames@outlook.com",
+        "dob":"24/10/1999",
+        "address": "Dubailand, Dubai",
+    },
+    {
+        "name":"Brian",
+        "phone_number":"+971 58 3591837",
+        "email":"brianadams@gmail.com",
+        "dob":"15/09/2001",
+        "address": "Majaz Waterfront, Sharjah",
+    }
+    
+])
