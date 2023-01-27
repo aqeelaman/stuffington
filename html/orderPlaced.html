@@ -1,102 +1,106 @@
 <!DOCTYPE html>
 <html>
-    <head>
+
+<head>
     <title>Order Placed | Stuffington</title>
     <!-- Link to favicon -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/orderPlaced.css">
-    </head>
+</head>
 
-    <body>
-        
-        <div class="navigationContainer">
-            <!-- Navigation section -->
-            <ul class="navbar">    
-                <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
-                <li><input type="text" class="searchbar" placeholder="Search.."></li>
-                <li style="float:right"><a href="cart.html" >🛒</a></li>
-                <li style="float:right"><a href="profile.html">👤</a></li>
-                <li style="float:right"><a href="login.html">SIGN IN</a></li>
-                <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
-            </ul>
-            <ul class="categoryNavbar">    
-                <li><a href="allproducts.html">All Products</a></li>
-                <li><a href="teddybear.html">Teddy Bear</a></li>
-                <li><a href="housepets.html">House Pets</a></li>
-                <li><a href="mythical.html">Mythical</a></li>
-            </ul>
+<body>
+
+    <div class="navigationContainer">
+        <!-- Navigation section -->
+        <ul class="navbar">
+            <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
+            <li><input type="text" class="searchbar" placeholder="Search.."></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
+            <li style="float:right"><a href="profile.html">👤</a></li>
+            <li style="float:right"><a href="login.html">SIGN IN</a></li>
+            <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
+        </ul>
+        <ul class="categoryNavbar">
+            <li><a href="allproducts.html">All Products</a></li>
+            <li><a href="teddybear.html">Teddy Bear</a></li>
+            <li><a href="housepets.html">House Pets</a></li>
+            <li><a href="mythical.html">Mythical</a></li>
+        </ul>
+    </div>
+
+
+    <h1 style="text-align: center; margin-top: 2%;">Order Placed Successfully !</h1>
+    <h2 style="text-align: center;">Order ID - 40328 <br> Placed On 25/01/2023</h2>
+    <div class="orderPlacedContainer">
+        <div class="cartSummary">
+            <div class="itemCard">
+                <div class="itemImage">
+                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear">
+                </div>
+                <div class="itemText">
+                    <h1>Brown Bear</h1>
+                    <p class="price">AED70.90</p>
+                    <p>x2</p>
+                </div>
+            </div>
+            <div class="itemCard">
+                <div class="itemImage">
+                    <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon">
+                </div>
+                <div class="itemText">
+                    <h1>Black Dragon</h1>
+                    <p class="price">AED75.00</p>
+                    <p>x1</p>
+                </div>
+            </div>
         </div>
-        
-        <div class="orderPlacedContainer">
-            <h1 style="text-align: center;">Order Placed Successfully !</h1>
-            <h2 style="text-align: center;">Order ID - 40328 <br> Placed On 25/01/2023</h2>
 
-            <div class="cartSummary">
-                <div class="itemCard">
-                    <div class="itemImage">
-                        <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBunny" >
-                    </div>
-                    <div class="itemText">
-                        <h1>Teddy Bear</h1>
-                        <p class="price">AED47.99</p>
-                        <p>x2</p>
-                    </div>
-                </div>
-                <div class="itemCard">
-                    <div class="itemImage">
-                        <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" >
-                    </div>
-                    <div class="itemText">
-                        <h1>Black Dragon</h1>
-                        <p class="price">AED47.99</p>
-                        <p>x1</p>
-                    </div>
-                </div>
-            </div>
+        <div class="shippingSummary">
+            <p style="margin-bottom: 0%; margin-top: 0%; font-size:40px;">Shipping Address: </p>
+            <p>Enter Shipping Details Here</p>
+            <p style="font-size: 20px;">Delivered in 1 - 2 Days</p>
+        </div>
 
-            <div class="shippingSummary">
-                <p style="margin-bottom: 0%; margin-top: 0%; font-size:40px;">Shipping Address: </p>
-                <p>Enter Shipping Details Here</p>
-                <p style="font-size: 20px;">Delivered in 1 - 2 Days</p>
-            </div>
-
-            <div class="totalSummary">
-                <p style="margin-bottom: 0%; margin-top: 0%; margin-left: 2%; font-size:40px;"> Order Summary</p>
-                <p style="margin-top:0% ; margin-left: 3%;"> Total Amount VAT Inclusive</p>
-                <div>
-                    <table>
-                        <thead>
-                          <tr>
+        <div class="totalSummary">
+            <p style="margin-bottom: 0%; margin-top: 0%; margin-left: 2%; font-size:40px;"> Order Summary</p>
+            <p style="margin-top:0% ; margin-left: 3%;"> Total Amount VAT Inclusive</p>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
                             <th style="width: 33%;">Item Name</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                          </tr>
-                          <tr>
-                            <td>Teddy Bear</td>
+                        </tr>
+                        <tr>
+                            <td>Brown Bear</td>
                             <td>x2</td>
-                            <td>40.00</td>
-                          </tr>
-                          <tr>
+                            <td>141.90</td>
+                        </tr>
+                        <tr>
                             <td>Black Dragon</td>
                             <td>x1</td>
-                            <td>50.00</td>
-                          </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="totalPriceContainer">
-                    <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
-                    <div class="totalPrice" style="float: right;"> 130.00 AED&nbsp;&nbsp;&nbsp; </div>
-                </div>
+                            <td>75.00</td>
+                        </tr>
+                    </thead>
+                </table>
             </div>
- 
+            <div class="totalPriceContainer">
+                <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
+                <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
+            </div>
         </div>
-        <a href="index.html"><p style="text-align: center; color: #000; font-size: 35px; ">Back To Home</p></a>
-        
+
+    </div>
+    <a href="index.html">
+        <p style="text-align: center; color: #000; font-size: 35px; ">Back To Home</p>
+    </a>
+
+    <footer>
+        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
         <footer>
-            <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
-        <footer>
-    </body>
+</body>
+
 </html>
