@@ -25,7 +25,7 @@ body {
 }
 
 
-
+/* table style for product, customer & order */
 .table {
 	width: 78%;
 	border-collapse: collapse;
@@ -56,6 +56,7 @@ body {
 	cursor: pointer;
 }
 
+/* hover annimation */
 .table tr:hover {
 	background-color: rgba(242, 242, 242, 0.794);
 	transform: scale(1);
@@ -101,18 +102,9 @@ body {
 	}
 }
 
-/* .btn {
-	padding: 10px;
-	background-color: #11101d;
-	margin-top: 10px;
-	display: flex;
-	color: #ddd;
-	border-radius: 10px;
-	text-align: center;
-	display: inline-block;
-} */
 
 
+/* button styles */
 
 .btn {
 	width: 250px;
@@ -140,14 +132,3 @@ body {
 }
 
 
-/* a {
-	cursor: pointer;
-	background: #00A885;
-	width: 100%;
-	border: 0;
-	padding: 10px 15px;
-	color: #fff;
-	font-size: 20px;
-	-webkit-transition: 0.3s linear;
-	transition: 0.3s linear;
-} */

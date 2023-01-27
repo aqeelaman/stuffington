@@ -6,7 +6,7 @@ body {
 	background-size: 100%;
 }
 
-
+/* annimation */
 .animate {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
@@ -31,17 +31,19 @@ body {
 .clearfix {
   display: inline-block;
 }
-/* start commented backslash hack \*/
+
 * html .clearfix {
   height: 1%;
 }
 .clearfix {
   display: block;
 }
-/* close commented backslash hack */
+
 a {
   color: #00A885;
 }
+
+/* hover effect */
 a:hover,
 a:focus {
   color: #00755d;
@@ -75,6 +77,7 @@ a {
   transition: 0.3s linear;
 }
 
+/* validation */
 span.validate-tooltip {
   background: #D91717;
   width: 100%;
@@ -89,6 +92,8 @@ span.validate-tooltip {
   -webkit-animation: tooltipanimation 0.3s 1;
   animation: tooltipanimation 0.3s 1;
 }
+
+/* input container */
 .input-group {
   position: relative;
   margin-bottom: 20px;
@@ -105,6 +110,8 @@ span.validate-tooltip {
   -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
 }
+
+/* input container - input */
 .input-group input {
   outline: none;
   display: block;
@@ -164,18 +171,7 @@ span.validate-tooltip {
   color: #8E8E8E;
   cursor: pointer;
 }
-.wrapper .remember-me {
-  cursor: pointer;
-}
-.wrapper input[type="checkbox"] {
-  float: left;
-  margin-right: 5px;
-  margin-top: 2px;
-  cursor: pointer;
-}
-.wrapper label[for="rememberMe"] {
-  cursor: pointer;
-}
+
 .wrapper .signup-wrapper {
   padding: 10px;
   font-size: 14px;

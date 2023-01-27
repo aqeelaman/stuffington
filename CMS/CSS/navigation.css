@@ -81,6 +81,7 @@
     background: #1d1b31;
 }
 
+/* categories under navigation */
 .sidebar .nav-links li .iocn-link {
     display: flex;
     align-items: center;
@@ -116,6 +117,7 @@
     text-decoration: none;
 }
 
+/* category style */
 .sidebar .nav-links li a .link_name {
     font-size: 18px;
     font-weight: 400;
