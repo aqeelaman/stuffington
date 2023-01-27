@@ -55,25 +55,6 @@
 
 
     <script>
-        var registeredUserList = [];
-        // var regisetredUsers=localStorage['RegisteredUsers'];
-
-        if (regisetredUsers != null || regisetredUsers != undefined) {
-            var registeredUserList = JSON.parse(regisetredUsers);
-        }
-
-        function login() {
-            if (validateLogin()) {
-                var username = document.getElementById("user").value;
-                //  localStorage['LoggedInUser']=username;
-
-                window.location.href = 'game.php';
-            }
-            else {
-                document.getElementById('login-result').innerHTML = "<span style='color:red; font-size:12px; text-align:center'>Invalid Username or Password!</span>";
-            }
-        }
-
         function validateLogin() {
 
             if (userobj.username == '') {
@@ -83,35 +64,8 @@
             else if (userobj.password == '') {
                 alert("Password must be filled out");
                 return;
-
             }
-
-
-
-            if (regisetredUsers == null || regisetredUsers == undefined) {
-                return false;
-            }
-
-            registeredUserList = JSON.parse(regisetredUsers);
-
-            if (registeredUserList.length <= 0) {
-                return false;
-            }
-            else {
-
-                var username = document.getElementById("user").value;
-                var password = document.getElementById("password").value;
-
-                var registeredUser = registeredUserList.filter(user => user.username == username)[0];
-
-                if (registeredUser == null || registeredUser == undefined) return false;
-
-                if (registeredUser.password == password) return true;
-
-                return false;
-
-            }
-        } 
+        }
     </script>
 
 
