@@ -162,8 +162,8 @@
 }
 
 .footer1 {
-    position: fixed;
-    bottom: 0px;
+    position: absolute;
+    
     overflow: hidden;
     text-align: center;
     color: whitesmoke;
