@@ -9,11 +9,11 @@
     <meta name="Description" content="">
     <link rel="stylesheet" href="l:\fontawesome-free-5.13.0-web\fontawesome-free-6.2.1-web\css\all.min.css">
     <script type="text/javascript" src="validation.js"></script>
-
-
     <title>Sign Up | Stuffington</title>
+
     <!-- Link to favicon -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/registration.css">
@@ -42,8 +42,11 @@
 
 
     <div class="container">
+        <!-- Registeration Container -->
         <div class="form-name">Registration</div>
+        <!-- signup form -->
         <form onsubmit="return false" class="signup-form">
+            <!-- input feilds -->
             <input type="text" id="name" name="Fullname" placeholder="Name" required> <br>
             <input type="email" id="mail" name="mail" placeholder="Email Address" required><br>
             <input type="password" id="pass" name="password" placeholder="Password" required><br>
@@ -61,8 +64,8 @@
 
 
 
+    <!-- validation for registeration fillout -->
     <script>
-
         var registeredUserList = [];
         var regisetredUsers = localStorage['RegisteredUsers'];
 
@@ -97,20 +100,6 @@
                 alert("Email must be filled out");
                 return;
 
-            }
-
-            else {
-                if (validateUsername()) {
-
-                    registeredUserList.push(userobj);
-                    localStorage['RegisteredUsers'] = JSON.stringify(registeredUserList);
-                    regisetredUsers = localStorage['RegisteredUsers'];
-
-                    document.getElementById("result").innerHTML = "User Registered successfully. Please <a href='signin.html'>click here</a> to login. ";
-                }
-                else {
-                    document.getElementById("result").innerHTML = "<span style='color:red'>This user  exist! Please <a href='login.html'>click here</a> to login.</span>";
-                }
             }
         }
 
