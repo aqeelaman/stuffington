@@ -1,3 +1,4 @@
+/* css for product display container */
 .productDisplayContainer{
     background-color: rgb(204, 202, 202);
     width: 60%;
@@ -11,31 +12,37 @@
     border-radius: 20px;
 }
 
+/* css to display the image of product */
 .imageDisplayContainer{
     margin: 0; 
     padding-left: 2%;
     width: 40%;
 }
+/* css for image in conatiner */
 .imageDisplayContainer img{
     width:100%;
     box-shadow: 0 4px 8px 0 black;
     border-radius: 15px;
 }
 
+/* css for product text container */
 .textDisplayContainer{
     padding-left: 9%;
     width: 60%;
 }
 
+/* css to display the price of a product */
 .itemPrice{
     font-size:x-large;
 }
 
+/* quantity box */
 .textDisplayContainer select{
     border-radius: 20px;
     font-size: 25px;
 }
 
+/* css for add to cart button */
 .addToCartBtn{
     margin-left: 5%;
     border-radius: 20px;
@@ -43,21 +50,26 @@
     width: 40%;
 }
 
+/* css for description box */
 .descriptionBox{
     background-color: aliceblue;
     padding: 3%;
     width: 70%;
     border-radius: 20px;
 }
+
+/* css to align table in container */
 .descriptionBox table{
     margin-right: auto;
 }
 
+/* css for table */
 .descriptionBox td{
     padding-left: 30px;
     padding-right: 30px;
 }
 
+/* css for recommendations container */
 .recommendContainer{
     width: 70%;
     margin: auto;
