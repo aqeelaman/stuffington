@@ -43,7 +43,7 @@
 
 .container {
     position: relative;
-    width: 57%;
+    width: 40%;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
