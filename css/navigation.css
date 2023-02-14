@@ -255,14 +255,19 @@ input.searchbar {
     transition: transform .5s;
     border-radius: 10%;
     box-shadow: 0 4px 8px 0 black;
+    color: black;
     text-decoration: none;
+}
+
+/* css for removing purple line <a> tag */
+.card a { 
+    text-decoration: none; 
     color: black;
 }
 
 /* css for displaying card text */
 .card p {
     margin: 6%;
-
 }
 
 /* css for displaying card text */
@@ -291,6 +296,11 @@ input.searchbar {
     /* 105% zoom */
     box-shadow: 0 4px 8px 0 black;
     /*black shadow on hover*/
+}
+
+/* color change on <a> tag on hover */
+.card:hover a{
+    color: #ffffff;
 }
 
 /* css for footer */
