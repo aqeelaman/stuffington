@@ -15,25 +15,25 @@
 <body>
     <!-- Navigation section -->
     <div class="navigationContainer">
-        
-        <ul class="navbar">    
+
+        <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
             <li><input type="text" class="searchbar" placeholder="Search.."></li>
-            <li style="float:right"><a href="cart.html" >🛒</a></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
             <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
         </ul>
-        <ul class="categoryNavbar">    
-            <li><a href="allproducts.html">All Products</a></li>
-            <li><a href="teddybear.html">Teddy Bear</a></li>
-            <li><a href="housepets.html">House Pets</a></li>
-            <li><a href="mythical.html">Mythical</a></li>
+        <ul class="categoryNavbar">
+            <li><a id="allProductsBtn">All Products</a></li>
+            <li><a id="teddyBearBtn">Teddy Bear</a></li>
+            <li><a id="housePetsBtn">House Pets</a></li>
+            <li><a id="mythicalBtn">Mythical</a></li>
         </ul>
     </div>
 
     <!-- Contents of the page -->
-    <h1 class="heading">MYTHICAL</h1>
+    <h1 class="heading" id="heading">MYTHICAL</h1>
 
     <!-- div for the contents of the page -->
     <div class="categoryDisplayContainer">
@@ -70,8 +70,8 @@
         </div>
 
         <!-- div for the main contents of the page which displays all the mythical products -->
-        <div class="mainContainer">
-            <a href="Products/blackDragon.html"><div class="card">
+        <div class="mainContainer" id="mainContainer">
+            <!-- <a href="Products/blackDragon.html"><div class="card">
                 <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
                 <h1>Black Dragon</h1>
                 <p class="price">AED75.00</p>
@@ -94,9 +94,103 @@
                 <h1>Rainbow Kitycorn</h1>
                 <p class="price">AED70.00</p>
                 <p><button>Add to Cart</button></p>
-            </div></a>
+            </div></a> -->
         </div>
     </div>
+
+    <script type="module">
+        "use strict";
+
+        let pageHeading = document.getElementById("heading");
+        let container = document.getElementById("mainContainer");
+
+        let allProductsBtn = document.getElementById("allProductsBtn");
+        allProductsBtn.onclick = () => {
+            productCategory("");
+            pageHeading.innerText = "ALL PRODUCTS";
+        };
+
+        let teddyBearBtn = document.getElementById("teddyBearBtn");
+        teddyBearBtn.onclick = () => {
+            productCategory("Teddy Bear");
+            pageHeading.innerText = "TEDDY BEAR";
+        };
+
+        let housePetsBtn = document.getElementById("housePetsBtn");
+        housePetsBtn.onclick = () => {
+            productCategory("House Pets");
+            pageHeading.innerText = "HOUSE PETS";
+        };
+
+        let mythicalBtn = document.getElementById("mythicalBtn");
+        mythicalBtn.onclick = () => {
+            productCategory("Mythical");
+            pageHeading.innerText = "MYTHICAL";
+        };
+
+        window.onload = init;
+
+        //Downloads JSON description of products from server
+        function init() {
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+                    //Add data from server to page
+                    displayProducts(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+
+            //Set up request and send it
+            request.open("GET", "../php/products.php?category=Mythical");
+            request.send();
+        }
+
+        function productCategory(category) {
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+
+            request.onload = () => {
+                displayProducts(request.responseText);
+            }
+
+            let url = "../php/products.php?category=" + category;
+
+            //Set up request and send it
+            request.open("GET", url, true);
+            request.send();
+        }
+
+        //Loads products into page
+        function displayProducts(jsonProducts) {
+
+            //Convert JSON to array of product objects
+            let prodArray = JSON.parse(jsonProducts);
+            console.log(prodArray);
+            let htmlStr = "";
+
+            //Create HTML table containing product data
+            for (let i = 0; i < prodArray.length; i++) {
+
+                htmlStr += '<div class="card">';
+                htmlStr += '<a href="' + prodArray[i].linkPage + '">';
+                htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name + '" style="width: 100%;">';
+                htmlStr += '<h1>' + prodArray[i].name + '</h1>';
+                htmlStr += '<p class="price">AED' + prodArray[i].price + '</p></a>';
+                htmlStr += '<p><button>Add to Cart</button></p></div>';
+            }
+
+            container.innerHTML = htmlStr;
+        }
+
+    </script>
 
     <!-- footer -->
     <footer>

@@ -23,7 +23,7 @@
             <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
         </ul>
         <ul class="categoryNavbar">
-            <li><a href="allproducts.html">All Products</a></li>
+            <li><a id="allProductsBtn">All Products</a></li>
             <li><a id="teddyBearBtn">Teddy Bear</a></li>
             <li><a id="housePetsBtn">House Pets</a></li>
             <li><a id="mythicalBtn">Mythical</a></li>
@@ -79,6 +79,12 @@
 
         let pageHeading = document.getElementById("heading");
         let container = document.getElementById("mainContainer");
+
+        let allProductsBtn = document.getElementById("allProductsBtn");
+        allProductsBtn.onclick = () => {
+            productCategory("");
+            pageHeading.innerText = "ALL PRODUCTS";
+        };
 
         let teddyBearBtn = document.getElementById("teddyBearBtn");
         teddyBearBtn.onclick = () => { 
