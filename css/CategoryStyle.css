@@ -1,12 +1,13 @@
 /* css for main conatiner dispalying categories */
 .categoryDisplayContainer{
-    display: inline-flex;
+    display: flex;
     margin-top: 2%;
-    left: 5%;
+    flex-wrap: wrap;
 }
 /* css for sidebar for filters */
 .sidebar{
     display: block;
+    float: left;
     width:20%; 
     height: 100%;
     position: relative;
@@ -48,10 +49,11 @@
 /* css for displaying all products */
 .mainContainer{
     width: 70%;
+    display: block;
+    float: left;
     margin: auto;
     margin-left: 4%;
     margin-top: 0;
-    display: block;
     background-color: rgb(111, 143, 111);
     border-radius: 10px;
     box-shadow: 0 1px 5px 0 black;

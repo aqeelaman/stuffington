@@ -1,7 +1,7 @@
 db.products.insert([
     {
         "name": "Brown Bear",
-        "image_url":"/images/StuffedToys/TeddyBear/BrownBear.jpg",
+        "image_url":"../images/StuffedToys/TeddyBear/BrownBear.jpg",
         "category": "Teddy Bear",
         "size": 12,
         "price": 70.95,
@@ -11,8 +11,8 @@ db.products.insert([
     },
     {
         "name": "Rainbow Bear",
-        "image_url":"/images/StuffedToys/TeddyBear/RainbowBear.jpg",
-        "category": "Rainbow Bear",
+        "image_url":"../images/StuffedToys/TeddyBear/RainbowBear.jpg",
+        "category": "Teddy Bear",
         "size": 4,
         "price": 20.25,
         "colour": "Rainbow",
@@ -21,7 +21,7 @@ db.products.insert([
     },
     {
         "name": "Black Bear",
-        "image_url":"/images/StuffedToys/TeddyBear/BlackBear.jpg",
+        "image_url":"../images/StuffedToys/TeddyBear/BlackBear.jpg",
         "category": "Teddy Bear",
         "size": 4,
         "price": 15.95,
@@ -31,7 +31,7 @@ db.products.insert([
     },
     {
         "name": "Pink Bear",
-        "image_url":"/images/StuffedToys/TeddyBear/PinkBear.jpg",
+        "image_url":"../images/StuffedToys/TeddyBear/PinkBear.jpg",
         "category": "Teddy Bear",
         "size": 8,
         "price": 45.99,
@@ -41,7 +41,7 @@ db.products.insert([
     },
     {
         "name": "Grey Bear",
-        "image_url":"/images/StuffedToys/TeddyBear/GreyBear.jpg",
+        "image_url":"../images/StuffedToys/TeddyBear/GreyBear.jpg",
         "category": "Teddy Bear",
         "size": 4,
         "price": 23.90,
@@ -51,7 +51,7 @@ db.products.insert([
     },
     {
         "name": "Brown Bunny",
-        "image_url":"/images/StuffedToys/HousePets/BrownBunny.jpg",
+        "image_url":"../images/StuffedToys/HousePets/BrownBunny.jpg",
         "category": "House Pets",
         "size": 12,
         "price": 50.00,
@@ -61,7 +61,7 @@ db.products.insert([
     },
     {
         "name": "Brown Dog",
-        "image_url":"/images/StuffedToys/HousePets/BrownDog.jpg",
+        "image_url":"../images/StuffedToys/HousePets/BrownDog.jpg",
         "category": "House Pets",
         "size": 4,
         "price": 17.95,
@@ -71,7 +71,7 @@ db.products.insert([
     },
     {
         "name": "White Dog",
-        "image_url":"/images/StuffedToys/HousePets/WhiteDog.jpg",
+        "image_url":"../images/StuffedToys/HousePets/WhiteDog.jpg",
         "category": "House Pets",
         "size": 8,
         "price": 33.00,
@@ -81,7 +81,7 @@ db.products.insert([
     },
     {
         "name": "Grey Cat",
-        "image_url":"/images/StuffedToys/HousePets/GreyCat.jpg",
+        "image_url":"../images/StuffedToys/HousePets/GreyCat.jpg",
         "category": "House Pets",
         "size": 12,
         "price": 65.25,
@@ -91,7 +91,7 @@ db.products.insert([
     },
     {
         "name": "Blue Bunny",
-        "image_url":"/images/StuffedToys/HousePets/BlueBunny.jpg",
+        "image_url":"../images/StuffedToys/HousePets/BlueBunny.jpg",
         "category": "House Pets",
         "size": 4,
         "price": 30.00,
@@ -101,7 +101,7 @@ db.products.insert([
     },
     {
         "name": "Pastel Cat",
-        "image_url":"/images/StuffedToys/HousePets/PastelCat.jpg",
+        "image_url":"../images/StuffedToys/HousePets/PastelCat.jpg",
         "category": "House Pets",
         "size": 8,
         "price": 50.65,
@@ -111,7 +111,7 @@ db.products.insert([
     },
     {
         "name": "Black Dragon",
-        "image_url":"/images/StuffedToys/Mythical/BlackDragon.jpg",
+        "image_url":"../images/StuffedToys/Mythical/BlackDragon.jpg",
         "category": "Mythical",
         "size": 12,
         "price": 75.00,
@@ -121,7 +121,7 @@ db.products.insert([
     },
     {
         "name": "White Unicorn",
-        "image_url":"/images/StuffedToys/Mythical/WhiteUnicorn.jpg",
+        "image_url":"../images/StuffedToys/Mythical/WhiteUnicorn.jpg",
         "category": "Mythical",
         "size": 8,
         "price": 52.95,
@@ -131,7 +131,7 @@ db.products.insert([
     },
     {
         "name": "Brown Grogu",
-        "image_url":"/images/StuffedToys/HousePets/BrownGrogu.jpg",
+        "image_url":"../images/StuffedToys/Mythical/BrownGrogu.jpg",
         "category": "Mythical",
         "size": 8,
         "price": 39.00,
@@ -142,14 +142,14 @@ db.products.insert([
     },
     {
         "name": "Rainbow Kitycorn",
-        "image_url":"/images/StuffedToys/HousePets/RainbowKitycorn.jpg",
+        "image_url":"../images/StuffedToys/Mythical/RainbowKitycorn.jpg",
         "category": "Mythical",
         "size": 12,
         "price": 70.00,
         "colour": "Rainbow",
         "stock":80,
         "keywords": "rainbow kitycorn; mythical; large kitycorn; kitty; unicorn"
-        "stock":20
+        
     }
     
 ])

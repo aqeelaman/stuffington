@@ -6,6 +6,7 @@ body {
     padding: 0;
     margin: 0;
     background-color: #798155;
+    overflow-x: hidden;
 }
 
 /*navigation container containing navbar and category bar*/

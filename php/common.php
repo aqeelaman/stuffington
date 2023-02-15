@@ -12,6 +12,7 @@ function outputHeader($title)
     echo '<link rel="icon" type="image/x-icon" href="../images/favicon.ico">';
     echo '<!-- Link to external style sheet -->';
     echo '<link rel="stylesheet" type="text/css" href="../css/navigation.css">';
+    echo '<link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">';
     echo '</head>';
     echo '<body>';
 }
@@ -30,9 +31,9 @@ function navigationBar()
     echo '</ul>';
     echo '<ul class="categoryNavbar"> ';
     echo '<li><a href="allproducts.html">All Products</a></li>';
-    echo '<li><a href="teddybear.html">Teddy Bear</a></li>';
-    echo '<li><a href="housepets.html">House Pets</a></li>';
-    echo '<li><a href="mythical.html">Mythical</a></li>';
+    echo '<li><a id="teddyBearBtn" href="allproducts.php?category=Teddy Bear">Teddy Bear</a></li>';
+    echo '<li><a id="housePetsBtn">House Pets</a></li>';
+    echo '<li><a id="mythicalBtn">Mythical</a></li>';
     echo '</ul>';
     echo '</div>';
 }
