@@ -156,7 +156,8 @@
             for (let i = 0; i < prodArray.length; i++) {
                 
                 htmlStr += '<div class="card">';
-                htmlStr += '<a href="' + prodArray[i].linkPage + '">';
+                // htmlStr += '<span style="visibility: hidden;" id="itemId">'+ prodArray[i]._id.$oid +'</span>';
+                htmlStr += '<a href="productDisplay.html?name=' + prodArray[i].name + '">';
                 htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name +'" style="width: 100%;">';
                 htmlStr += '<h1>' + prodArray[i].name + '</h1>';
                 htmlStr += '<p class="price">AED' + prodArray[i].price +'</p></a>';

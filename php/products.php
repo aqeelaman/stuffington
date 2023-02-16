@@ -11,7 +11,7 @@ $db = $mongoClient->stuffington;
 
 //Extract the data that was sent to the server
 $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
-
+$name = filter_input(INPUT_GET,'name',FILTER_SANITIZE_STRING);
 
 if ($category != "") {
     //Create a PHP array with our search criteria
@@ -19,10 +19,20 @@ if ($category != "") {
         'category' => $category
     ];
 
-    //Find all of the customers that match  this criteria
+    //Find all of the products that match  this criteria
     $cursor = $db->products->find($findCriteria);
     
 } 
+else if ($name != ""){
+    //Create a PHP array with our search criteria
+    $findCriteria = [
+        'name' => $name
+    ];
+
+    //Find all of the customers that match  this criteria
+    $cursor = $db->products->find($findCriteria);
+    
+}
 else {
     //find all products
     $cursor = $db->products->find();
