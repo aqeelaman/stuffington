@@ -9,6 +9,8 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
+<!-- 
+    <script src="../js/filter.js"></script> -->
 
     <script>
         function getParams() {
@@ -72,19 +74,14 @@
             <br>
             <br>
 
-            <p>Colour:</p>
-            <label><input type="checkbox" id="brown">Brown</label>
-            <label><input type="checkbox" id="blue">Blue</label>
-            <label><input type="checkbox" id="white">White</label>
-            <br>
-            <br>
-
             <p>Price:</p>
             <label><input type="checkbox" id="1-25"> 01 - 25 AED</label>
             <label><input type="checkbox" id="26-50"> 26 - 50 AED</label>
             <label><input type="checkbox" id="51-75"> 51 - 75 AED</label>
             <br>
             <br>
+
+            <button style="align-self: center;" id="filterApplyBtn" >APPLY</button>
         </div>
 
 
@@ -99,6 +96,17 @@
 
         let pageHeading = document.getElementById("heading");
         let container = document.getElementById("mainContainer");
+
+
+        import{apply} from "../js/filter.js";
+
+        document.getElementById("filterApplyBtn").onclick = event =>{
+            
+            var url = apply();
+            console.log(url);
+            filterSearch(url);
+            
+        }
 
         if (category === "undefined") {
             category = "";
@@ -141,7 +149,8 @@
                 if (request.status === 200) {
 
                     //Add data from server to page
-                    displayProducts(request.responseText);// console.log(request.responseText);
+                    console.log(request.responseText);
+                    displayProducts(request.responseText);
                 }
                 else
                     alert("Error communicating with server: " + request.status);
@@ -153,27 +162,27 @@
             request.send();
         }
 
-        // function productCategory(category){
-        //     //Create request object 
-        //     let request = new XMLHttpRequest();
+        function filterSearch(url){
+            //Create request object 
+            let request = new XMLHttpRequest();
 
+            request.onload = () => {
+                
+                console.log(request.responseText);
+                displayProducts(request.responseText);
+                // //check HTTP status code
+                // if (request.status === 200){
+                //     //Add data from server to page
+                    
+                // }
+                // else
+                //     alert("Error communicating with server: " + request.status);
+            };
 
-        //     request.onload = () => {
-        //         //check HTTP status code
-        //         if (request.status === 200){
-        //             //Add data from server to page
-        //             displayProducts(request.responseText);
-        //         }
-        //         else
-        //             alert("Error communicating with server: " + request.status);
-        //     };
-
-        //     let url = "../php/products.php?category=" + category;
-
-        //     //Set up request and send it
-        //     request.open("GET", url, true);
-        //     request.send();
-        // }
+            //Set up request and send it
+            request.open("GET", "../php/products.php?" + url, true);
+            request.send();
+        }
 
         //Loads products into page
         function displayProducts(jsonProducts) {

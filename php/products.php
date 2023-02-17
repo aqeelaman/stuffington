@@ -10,37 +10,37 @@ $mongoClient = (new MongoDB\Client);
 $db = $mongoClient->stuffington;
 
 //Extract the data that was sent to the server
+
 $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
 $name = filter_input(INPUT_GET,'name',FILTER_SANITIZE_STRING);
+$sizeStr = filter_input(INPUT_GET,'size',FILTER_SANITIZE_NUMBER_INT);
+$size = intval($sizeStr);
 
+
+
+$findCriteria = [];
 // search by category
 if ($category != "") {
     //Create a PHP array with our search criteria
-    $findCriteria = [
-        'category' => $category
-    ];
-
-    //Find all of the products that match  this criteria
-    $cursor = $db->products->find($findCriteria);
-    
+    $findCriteria =['category' => $category];   
 } 
 
 //search by name 
 else if ($name != ""){
     //Create a PHP array with our search criteria
-    $findCriteria = [
-        'name' => $name
-    ]; 
-
-    //Find all of the products that match  this criteria
-    $cursor = $db->products->find($findCriteria);
-    
-}
-else {
-    //find all products
-    $cursor = $db->products->find();
+    $findCriteria =['name' => $name,];  
 }
 
+//search by size
+else if ($size > 0){
+    //Create a PHP array with our search criteria
+    $findCriteria = ['size' => $size]; 
+}
+
+
+
+// $cursor = $db->products->find($findCriteria);
+$cursor = $db->products->find($findCriteria);
 
 //Output each product as a JSON object
 $jsonProducts = '[';
