@@ -27,7 +27,7 @@ else if ($name != ""){
     //Create a PHP array with our search criteria
     $findCriteria = [
         'name' => $name
-    ];
+    ]; 
 
     //Find all of the customers that match  this criteria
     $cursor = $db->products->find($findCriteria);

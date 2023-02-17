@@ -44,9 +44,9 @@
         </ul>
         <ul class="categoryNavbar">
             <li><a href="allproducts.html">All Products</a></li>
-            <li><a href="teddybear.html">Teddy Bear</a></li>
-            <li><a href="housepets.html">House Pets</a></li>
-            <li><a href="mythical.html">Mythical</a></li>
+            <li><a href="allproducts.html?category=Teddy Bear">Teddy Bear</a></li>
+            <li><a href="allproducts.html?category=House Pets">House Pets</a></li>
+            <li><a href="allproducts.html?category=Mythical">Mythical</a></li>
         </ul>
     </div>
 
@@ -116,6 +116,7 @@
                 //Check HTTP status code
                 if (request.status === 200) {
                     //Add data from server to page
+                    console.log(request.responseText);
                     displayProduct(request.responseText);
                 }
                 else

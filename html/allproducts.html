@@ -9,6 +9,26 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
+
+    <script>
+        function getParams() {
+            var idx = document.URL.indexOf('?');
+            var params = new Array();
+            if (idx != -1) {
+                var pairs = document.URL.substring(idx + 1, document.URL.length).split('&');
+                for (var i = 0; i < pairs.length; i++) {
+                    nameVal = pairs[i].split('=');
+                    params[nameVal[0]] = nameVal[1];
+                }
+            }
+            return params;
+        }
+        params = getParams();
+        console.log(params);
+        var category = unescape(params["category"]);
+
+    </script>
+
 </head>
 
 <body>
@@ -67,10 +87,10 @@
             <br>
         </div>
 
-        
+
         <!-- div for the main contents of the page which displays all the products -->
-        <div id ="mainContainer" class="mainContainer" >
-            
+        <div id="mainContainer" class="mainContainer">
+
         </div>
     </div>
 
@@ -80,28 +100,32 @@
         let pageHeading = document.getElementById("heading");
         let container = document.getElementById("mainContainer");
 
+        if (category === "undefined") {
+            category = "";
+        }
+
         let allProductsBtn = document.getElementById("allProductsBtn");
         allProductsBtn.onclick = () => {
-            productCategory("");
-            pageHeading.innerText = "ALL PRODUCTS";
+            category = "";
+            init();
         };
 
         let teddyBearBtn = document.getElementById("teddyBearBtn");
-        teddyBearBtn.onclick = () => { 
-            productCategory("Teddy Bear");
-            pageHeading.innerText= "TEDDY BEAR";
+        teddyBearBtn.onclick = () => {
+            category = "Teddy Bear";
+            init();
         };
 
         let housePetsBtn = document.getElementById("housePetsBtn");
-        housePetsBtn.onclick = () => { 
-            productCategory("House Pets");
-            pageHeading.innerText="HOUSE PETS";
+        housePetsBtn.onclick = () => {
+            category = "House Pets";
+            init();
         };
 
         let mythicalBtn = document.getElementById("mythicalBtn");
-        mythicalBtn.onclick = () => { 
-            productCategory("Mythical");
-            pageHeading.innerText="MYTHICAL";
+        mythicalBtn.onclick = () => {
+            category = "Mythical";
+            init();
         };
 
         window.onload = init;
@@ -116,36 +140,56 @@
                 //Check HTTP status code
                 if (request.status === 200) {
                     //Add data from server to page
+                    console.log(request.responseText);
                     displayProducts(request.responseText);
                 }
                 else
                     alert("Error communicating with server: " + request.status);
             };
 
-            
+
             //Set up request and send it
-            request.open("GET", "../php/products.php");
+            request.open("GET", "../php/products.php?category=" + category);
             request.send();
         }
 
-        function productCategory(category){
-            //Create request object 
-            let request = new XMLHttpRequest();
+        // function productCategory(category){
+        //     //Create request object 
+        //     let request = new XMLHttpRequest();
 
-            
-            request.onload = () => {
-                displayProducts(request.responseText);
-            }
 
-            let url = "../php/products.php?category=" + category;
-            
-            //Set up request and send it
-            request.open("GET", url, true);
-            request.send();
-        }
+        //     request.onload = () => {
+        //         //check HTTP status code
+        //         if (request.status === 200){
+        //             //Add data from server to page
+        //             displayProducts(request.responseText);
+        //         }
+        //         else
+        //             alert("Error communicating with server: " + request.status);
+        //     };
+
+        //     let url = "../php/products.php?category=" + category;
+
+        //     //Set up request and send it
+        //     request.open("GET", url, true);
+        //     request.send();
+        // }
 
         //Loads products into page
         function displayProducts(jsonProducts) {
+
+            if (category == "Teddy Bear") {
+                pageHeading.innerText = "TEDDY BEAR";
+            }
+            else if (category == "House Pets") {
+                pageHeading.innerText = "HOUSE PETS";
+            }
+            else if (category == "Mythical") {
+                pageHeading.innerText = "MYTHICAL";
+            }
+            else {
+                pageHeading.innerText = "ALL PRODUCTS";
+            }
 
             //Convert JSON to array of product objects
             let prodArray = JSON.parse(jsonProducts);
@@ -154,13 +198,13 @@
 
             //Create HTML table containing product data
             for (let i = 0; i < prodArray.length; i++) {
-                
+
                 htmlStr += '<div class="card">';
                 // htmlStr += '<span style="visibility: hidden;" id="itemId">'+ prodArray[i]._id.$oid +'</span>';
                 htmlStr += '<a href="productDisplay.html?name=' + prodArray[i].name + '">';
-                htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name +'" style="width: 100%;">';
+                htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name + '" style="width: 100%;">';
                 htmlStr += '<h1>' + prodArray[i].name + '</h1>';
-                htmlStr += '<p class="price">AED' + prodArray[i].price +'</p></a>';
+                htmlStr += '<p class="price">AED' + prodArray[i].price + '</p></a>';
                 htmlStr += '<p><button>Add to Cart</button></p></div>';
             }
 
