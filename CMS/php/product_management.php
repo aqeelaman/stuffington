@@ -4,7 +4,7 @@
 $mongoClient = new MongoDB\Client("mongodb://127.0.0.1:55864");
 
 // select database and collection
-$database = $mongoClient->selectDatabase("yourshopping");
+$database = $mongoClient->selectDatabase("yourshopping-db");
 $productCollection = $database->selectCollection("product");
 
 // get all products
@@ -33,18 +33,22 @@ $productData = array(
     "colour" => "black",
     "stock" => 12,
 );
-$result = $productsCollection->insertOne($productData);
+$result = $productCollection->insertOne($productData);
 echo "Inserted new product with ID: " . $result->getInsertedId();
 
 // update a product
-$productsCollection->updateOne(
+$productCollection->updateOne(
     array('name' => 'Product A'),
     array('$set' => array('price' => 24.99))
 );
 echo "Updated product A price to 24.99";
 
 // delete a product
-$productsCollection->deleteOne(array('name' => 'Product B'));
+$productCollection->deleteOne(array('name' => 'Product B'));
 echo "Deleted product B";
 
 ?>
+
+
+
+
