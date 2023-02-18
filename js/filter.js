@@ -36,20 +36,17 @@ export function apply() {
     var min = 1;
     var max = 0;
     if (priceFilter1.checked == true) {
-        if (min < 1) { min = 1 };
-        if (max < 25) { max = 25 };
+        str += 'min=1&max=25&';
     };
     if (priceFilter2.checked == true) {
-        if (min < 26) { min = 26 };
-        if (max < 50) { max = 50 };
+        str += 'min=26&max=50&';
     };
     if (priceFilter3.checked == true) {
-        if (min > 51) { min = 51 };
-        if (max < 75) { max = 75 };
+        str += 'min=51&max=75&';
     };
 
-    // str.slice(0,-1) +
-    var url = min.toString() + "-" + max.toString();
+    //  +min.toString() + "-" + max.toString();
+    var url = str.slice(0,-1);
     console.log(url);
     return url;
 }

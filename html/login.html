@@ -21,7 +21,7 @@
         <!-- Navigation section -->
         <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
-            <li><input type="text" class="searchbar" placeholder="Search.."></li>
+            <li><input type="search" id="searchbar" class="searchbar" placeholder="Search.."></li>
             <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
@@ -61,7 +61,17 @@
 
     </div>
 
+    <!-- js for searchbar functionality -->
+    <script type="module">
+        "use strict"
 
+        // import search function from searchbar.js
+        import { search } from "../js/searchbar.js"
+        //searchbar functionality
+        let searchBar = document.getElementById("searchbar");
+        searchBar.onsearch = search;
+    </script>
+    
     <script>
         function validateLogin() {
 
