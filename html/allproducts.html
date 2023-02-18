@@ -128,26 +128,22 @@
 
         let allProductsBtn = document.getElementById("allProductsBtn");
         allProductsBtn.onclick = () => {
-            category = "";
-            init();
+            filterSearch("");
         };
 
         let teddyBearBtn = document.getElementById("teddyBearBtn");
         teddyBearBtn.onclick = () => {
-            category = "Teddy Bear";
-            init();
+            filterSearch("category=Teddy Bear");
         };
 
         let housePetsBtn = document.getElementById("housePetsBtn");
         housePetsBtn.onclick = () => {
-            category = "House Pets";
-            init();
+            filterSearch("category=House Pets");
         };
 
         let mythicalBtn = document.getElementById("mythicalBtn");
         mythicalBtn.onclick = () => {
-            category = "Mythical";
-            init();
+            filterSearch("category=Mythical");
         };
 
         window.onload = init;
@@ -175,7 +171,7 @@
             if(search!="" && search!= "undefined"){
                 request.open("GET", "../php/products.php?search=" + search);
             }
-            else if(category!="" && category!="undefined"){
+            if(category!="" && category!="undefined"){
                 request.open("GET", "../php/products.php?category=" + category);
             }
             else{
