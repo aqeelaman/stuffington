@@ -1,3 +1,8 @@
+.timeout{
+    text-align: center;
+    visibility: collapse;
+}
+
 /* css for main conatiner dispalying categories */
 .categoryDisplayContainer{
     display: flex;
@@ -29,13 +34,15 @@
     padding-left: 10%;
     font-size: 25px;
     font-weight: bold;
+    margin-bottom: 5%;
 }
 
 /* css for input buttons in sidebar */
 .sidebar input{
     vertical-align: middle;
     position: relative;
-    bottom: 1px;
+    margin-bottom: -9%;
+    margin-left: 10%; 
 }
 
 /* css for labels in sidebar */
@@ -43,7 +50,18 @@
     margin-left: auto;
     display: block;
     font-size: 18px;
-    padding-left: 15%;
+    padding-left: 17%;
+}
+
+/* css for button in sidebar */
+.sidebar button {
+    font-size: 20px;
+    border-radius: 20px;
+    margin-left: 28.5%;
+    margin-bottom: 8%;
+    margin-top: 8%;
+    padding: 6px;
+    padding-inline: 30px;
 }
 
 /* css for displaying all products */

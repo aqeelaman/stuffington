@@ -15,7 +15,7 @@
     <div class="navigationContainer">
         <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
-            <li><input type="text" class="searchbar" placeholder="Search.."></li>
+            <li><input type="search" class="searchbar" id="searchbar" placeholder="Search.." ></li>
             <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
@@ -54,7 +54,7 @@
     <div class="products">
         <div class="card">
             <a href="productDisplay.html?name=Brown Bunny">
-                <img src="../images/StuffedToys/HousePets/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
+                <img src="../images/StuffedToys/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
                 <h1 id="lol">Brown Bunny</h1>
                 <p class="price">AED50.00</p>
             </a>
@@ -62,15 +62,15 @@
         </div>
         <div class="card">
             <a href="Products/blackDragon.html">
-                <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
+                <img src="../images/StuffedToys/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
                 <h1>Black Dragon</h1>
                 <p class="price">AED75.00</p>
             </a>
-            <p><button onclick="addTocart()" >Add to Cart</button></p>
+            <p><button onclick="addTocart()">Add to Cart</button></p>
         </div>
         <div class="card">
             <a href="Products/brownBear.html">
-                <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear" style="width: 100%;">
+                <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear" style="width: 100%;">
                 <h1>Brown Bear</h1>
                 <p class="price">AED70.95</p>
             </a>
@@ -78,7 +78,7 @@
         </div>
         <div class="card">
             <a href="Products/brownDog.html">
-                <img src="../images/StuffedToys/HousePets/BrownDog.jpg" alt="BrownDog" style="width: 100%;">
+                <img src="../images/StuffedToys/BrownDog.jpg" alt="BrownDog" style="width: 100%;">
                 <h1>Brown Dog</h1>
                 <p class="price">AED17.95</p>
             </a>
@@ -86,10 +86,15 @@
         </div>
     </div>
 
-    <script>
-        function addTocart() {
-            document.getElementById("lol").innerHTML = "cart";
-        }
+    <!-- js for searchbar functionality -->
+    <script type="module">
+        "use strict"
+
+        // import search function from searchbar.js
+        import { search } from "../js/searchbar.js"
+        //searchbar functionality
+        let searchBar = document.getElementById("searchbar");
+        searchBar.onsearch = search;
     </script>
 
     <!-- footer -->

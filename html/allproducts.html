@@ -9,8 +9,6 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
-<!-- 
-    <script src="../js/filter.js"></script> -->
 
     <script>
         function getParams() {
@@ -28,6 +26,7 @@
         params = getParams();
         console.log(params);
         var category = unescape(params["category"]);
+        var search = unescape(params["search"]);
 
     </script>
 
@@ -38,7 +37,7 @@
     <div class="navigationContainer">
         <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
-            <li><input type="text" class="searchbar" placeholder="Search.."></li>
+            <li><input type="search" id="searchbar" class="searchbar" placeholder="Search.."></li>
             <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
@@ -54,6 +53,7 @@
 
     <!-- Contents of the page -->
     <h1 class="heading" id="heading">ALL STUFFED TOYS</h1>
+    <p class="timeout" id="timeout"></p>
 
     <!-- div for the contents of the page -->
     <div class="categoryDisplayContainer">
@@ -61,27 +61,33 @@
         <div class="sidebar">
             <h1>Filter By</h1>
             <p>Category:</p>
-            <label><input type="checkbox" id="teddyBear">Teddy Bear</label>
-            <label><input type="checkbox" id="housePets">House Pets</label>
-            <label><input type="checkbox" id="mythical">Mythical</label>
-            <br>
+            <input type="radio" id="teddyBear" name="filterBtns"/>
+            <label for="teddyBear">Teddy Bear</label>
+            <input type="radio" id="housePets" name="filterBtns"/>
+            <label for="housePets">House Pets</label>
+            <input type="radio" id="mythical" name="filterBtns"/>
+            <label for="mythical">Mythical</label>
             <br>
 
             <p>Sizes:</p>
-            <label><input type="checkbox" id="4inches">04 Inches</label>
-            <label><input type="checkbox" id="8inches">08 Inches</label>
-            <label><input type="checkbox" id="12inches">12 Inches</label>
-            <br>
+            <input type="radio" id="4inches" name="filterBtns"/>
+            <label for="4inches">04 Inches</label>
+            <input type="radio" id="8inches" name="filterBtns"/>
+            <label for="8inches">08 Inches</label>
+            <input type="radio" id="12inches" name="filterBtns"/>
+            <label for="12inches">12 Inches</label>
             <br>
 
             <p>Price:</p>
-            <label><input type="checkbox" id="1-25"> 01 - 25 AED</label>
-            <label><input type="checkbox" id="26-50"> 26 - 50 AED</label>
-            <label><input type="checkbox" id="51-75"> 51 - 75 AED</label>
-            <br>
+            <input type="radio" id="1-25" name="filterBtns"/>
+            <label for="1-25"> 01 - 25 AED</label>
+            <input type="radio" id="26-50" name="filterBtns"/>
+            <label for="26-50"> 26 - 50 AED</label>
+            <input type="radio" id="51-75" name="filterBtns"/>
+            <label for="51-75"> 51 - 75 AED</label>
             <br>
 
-            <button style="align-self: center;" id="filterApplyBtn" >APPLY</button>
+            <button id="filterApplyBtn">APPLY</button>
         </div>
 
 
@@ -96,44 +102,48 @@
 
         let pageHeading = document.getElementById("heading");
         let container = document.getElementById("mainContainer");
+        let timeoutText = document.getElementById("timeout");
+        
 
+        import { apply } from "../js/filter.js";
 
-        import{apply} from "../js/filter.js";
-
-        document.getElementById("filterApplyBtn").onclick = event =>{
-            
+        document.getElementById("filterApplyBtn").onclick = event => {
             var url = apply();
             console.log(url);
             filterSearch(url);
-            
         }
 
-        if (category === "undefined") {
-            category = "";
+
+        let searchBar = document.getElementById("searchbar");
+        if(search!="" && search!="undefined"){
+            searchBar.value = search;
         }
+        searchBar.onsearch = () =>{
+            console.log(searchBar.value);
+            if(searchBar.value!=""){
+                filterSearch("search="+searchBar.value);
+            }
+        }
+
 
         let allProductsBtn = document.getElementById("allProductsBtn");
         allProductsBtn.onclick = () => {
-            category = "";
-            init();
+            filterSearch("");
         };
 
         let teddyBearBtn = document.getElementById("teddyBearBtn");
         teddyBearBtn.onclick = () => {
-            category = "Teddy Bear";
-            init();
+            filterSearch("category=Teddy Bear");
         };
 
         let housePetsBtn = document.getElementById("housePetsBtn");
         housePetsBtn.onclick = () => {
-            category = "House Pets";
-            init();
+            filterSearch("category=House Pets");
         };
 
         let mythicalBtn = document.getElementById("mythicalBtn");
         mythicalBtn.onclick = () => {
-            category = "Mythical";
-            init();
+            filterSearch("category=Mythical");
         };
 
         window.onload = init;
@@ -158,25 +168,26 @@
 
 
             //Set up request and send it
-            request.open("GET", "../php/products.php?category=" + category);
+            if(search!="" && search!= "undefined"){
+                request.open("GET", "../php/products.php?search=" + search);
+            }
+            if(category!="" && category!="undefined"){
+                request.open("GET", "../php/products.php?category=" + category);
+            }
+            else{
+                request.open("GET", "../php/products.php");
+            }            
             request.send();
         }
 
-        function filterSearch(url){
+        function filterSearch(url) {
             //Create request object 
             let request = new XMLHttpRequest();
 
+            //Create event handler that specifies what should happen when server responds
             request.onload = () => {
-                
                 console.log(request.responseText);
                 displayProducts(request.responseText);
-                // //check HTTP status code
-                // if (request.status === 200){
-                //     //Add data from server to page
-                    
-                // }
-                // else
-                //     alert("Error communicating with server: " + request.status);
             };
 
             //Set up request and send it
@@ -187,6 +198,18 @@
         //Loads products into page
         function displayProducts(jsonProducts) {
 
+            if(jsonProducts== "]"){
+                pageHeading.innerText = "No Results Available";
+                timeoutText.style.visibility = "visible";
+                timeoutText.innerText ="Refreshing in 5 seconds";
+                setTimeout(()=>{
+                    timeoutText.style.visibility = "hidden";
+                    filterSearch("");
+                },5000)
+                
+                return;
+            }
+            
             if (category == "Teddy Bear") {
                 pageHeading.innerText = "TEDDY BEAR";
             }
