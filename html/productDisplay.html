@@ -30,7 +30,7 @@
 </head>
 
 <body>
-    
+
     <!-- Navigation section -->
     <div class="navigationContainer">
 
@@ -102,75 +102,14 @@
         </div>
     </div>
 
-    <!-- js for searchbar functionality -->
-    <script type="module">
-        "use strict"
-        //Import recommender class
-        import { Recommender } from '../js/searchbar.js';
-
-        //Create recommender object - it loads its state from session storage
-        let recommender = new Recommender();
-
-        //searchbar functionality
-        let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
-            //add keyword to sessionStorage
-            recommender.addKeyword(searchBar.value);
-            //display searched product
-            recommender.search();
-        }
-    </script>
-
-    <script type="module">
-        "use strict";
-        window.onload = init;
-
-        function init(){
-
-            //Create request object 
-            let request = new XMLHttpRequest();
-
-            //Create event handler that specifies what should happen when server responds
-            request.onload = () => {
-                //Check HTTP status code
-                if (request.status === 200) {
-                    //Add data from server to page
-                    console.log(request.responseText);
-                    displayProduct(request.responseText);
-                }
-                else
-                    alert("Error communicating with server: " + request.status);
-            };
-
-            let url = "../php/products.php?name=" + unescape(params["name"]);
-            //Set up request and send it
-            request.open("GET", url);
-            request.send();
-        }
-
-        function displayProduct(jsonProduct){
-            let prodArray = JSON.parse(jsonProduct);
-            console.log(prodArray);
-
-            document.title = prodArray[0].name + " | Stuffington";
-            // document.getElementById("itemId").innerText = prodArray[0]._id.$oid;
-            document.getElementById("itemImage").src= prodArray[0].image_url;
-            document.getElementById("itemName").innerText= prodArray[0].name;
-            document.getElementById("itemPrice").innerText= "AED" + prodArray[0].price;
-            document.getElementById("itemSize").innerText= prodArray[0].size;
-            document.getElementById("itemColour").innerText= prodArray[0].colour;
-            document.getElementById("itemCategory").innerText= prodArray[0].category;
-        }
-    </script>
-
 
     <!-- Recommendations -->
     <br><br>
     <h1 style="text-align: center;">People Also Buy</h1>
 
     <!-- container for recommendations  -->
-    <div class="recommendContainer">
-        <a href="rainbowBear.html">
+    <div id="recommendationContainer" class="recommendationContainer">
+        <!-- <a href="rainbowBear.html">
             <div class="card">
                 <img src="../images/StuffedToys/RainbowBear.jpg" alt="RainbowBear" style="width: 100%;">
                 <h1>Rainbow Bear</h1>
@@ -201,8 +140,125 @@
                 <p class="price">AED17.95</p>
                 <p><button>Add to Cart</button></p>
             </div>
-        </a>
+        </a> -->
     </div>
+
+    <script type="module">
+        "use strict"
+        //Import recommender class
+        import { Recommender } from '../js/searchbar.js';
+
+        //Create recommender object - it loads its state from session storage
+        let recommender = new Recommender();
+
+        //searchbar functionality
+        let searchBar = document.getElementById("searchbar");
+        searchBar.onsearch = function () {
+            //add keyword to sessionStorage
+            recommender.addKeyword(searchBar.value);
+            //display searched product
+            recommender.search();
+        }
+
+
+        window.onload = init;
+
+        function init() {
+
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+                    //Add data from server to page
+                    console.log(request.responseText);
+                    displayProduct(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+            let url = "../php/products.php?name=" + unescape(params["name"]);
+            //Set up request and send it
+            request.open("GET", url);
+            request.send();
+        }
+
+        function displayProduct(jsonProduct) {
+            let prodArray = JSON.parse(jsonProduct);
+            console.log(prodArray);
+
+            document.title = prodArray[0].name + " | Stuffington";
+            // document.getElementById("itemId").innerText = prodArray[0]._id.$oid;
+            document.getElementById("itemImage").src = prodArray[0].image_url;
+            document.getElementById("itemName").innerText = prodArray[0].name;
+            document.getElementById("itemPrice").innerText = "AED" + prodArray[0].price;
+            document.getElementById("itemSize").innerText = prodArray[0].size;
+            document.getElementById("itemColour").innerText = prodArray[0].colour;
+            document.getElementById("itemCategory").innerText = prodArray[0].category;
+
+            
+            recommender.addKeyword(prodArray[0].category);
+            recommender.addKeyword(prodArray[0].name);
+
+            recommendSearch(prodArray[0].category);
+        }
+
+
+        function recommendSearch(category){
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                console.log(request.responseText);
+                displayRecommendProducts(request.responseText);
+            };
+
+            //Set up request and send it
+            request.open("GET", "../php/products.php?category=" + category);
+            request.send();
+
+        }
+
+        function displayRecommendProducts(jsonRecommendProducts){
+
+            //Convert JSON to array of product objects
+            let prodArray = JSON.parse(jsonRecommendProducts);
+            console.log(prodArray);
+            let htmlStr = "";
+            let productName = document.getElementById("itemName").innerText;
+
+            //Create HTML div containing product data
+            for (let i = 0; i < prodArray.length; i++) {
+
+                if(prodArray[i].name=== productName){
+                    continue;
+                }
+                else if(i>4){
+                    break;
+                }
+                htmlStr += '<div class="card">';
+                // htmlStr += '<span style="visibility: hidden;" id="itemId">'+ prodArray[i]._id.$oid +'</span>';
+                htmlStr += '<a href="productDisplay.html?name=' + prodArray[i].name + '">';
+                htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name + '" style="width: 100%;">';
+                htmlStr += '<h1>' + prodArray[i].name + '</h1>';
+                htmlStr += '<p class="price">AED' + prodArray[i].price + '</p></a>';
+                htmlStr += '<p><button>Add to Cart</button></p></div>';
+            }
+
+            document.getElementById("recommendationContainer").innerHTML = htmlStr;
+        }
+    
+    
+    </script>
+
+
+
+
+
 
     <!-- footer -->
     <footer>

@@ -231,8 +231,8 @@ input.searchbar {
     font-family: 'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', sans-serif;
 }
 
-/* css for products container */
-.products {
+/* css for recommendation container */
+.recommendationContainer {
     width: 70%;
     margin: auto;
     display: table;
