@@ -1,12 +1,13 @@
 .timeout{
     text-align: center;
-    visibility: collapse;
+    visibility: hidden;
+    margin: 0%;
 }
 
 /* css for main conatiner dispalying categories */
 .categoryDisplayContainer{
     display: flex;
-    margin-top: 2%;
+    margin-top: 1%;
     flex-wrap: wrap;
 }
 /* css for sidebar for filters */
