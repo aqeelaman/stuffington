@@ -105,12 +105,20 @@
     <!-- js for searchbar functionality -->
     <script type="module">
         "use strict"
+        //Import recommender class
+        import { Recommender } from '../js/searchbar.js';
 
-        // import search function from searchbar.js
-        import { search } from "../js/searchbar.js"
+        //Create recommender object - it loads its state from session storage
+        let recommender = new Recommender();
+
         //searchbar functionality
         let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = search;
+        searchBar.onsearch = function(){
+            //add keyword to sessionStorage
+            recommender.addKeyword(searchBar.value);
+            //display searched product
+            recommender.search();
+        }
     </script>
 
     <script type="module">

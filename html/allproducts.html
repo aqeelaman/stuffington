@@ -99,20 +99,16 @@
 
     <script type="module">
         "use strict";
-
+        
         let pageHeading = document.getElementById("heading");
         let container = document.getElementById("mainContainer");
         let timeoutText = document.getElementById("timeout");
-        
 
-        import { apply } from "../js/filter.js";
+        //Import recommender class
+        import { Recommender } from '../js/searchbar.js';
 
-        document.getElementById("filterApplyBtn").onclick = event => {
-            var url = apply();
-            console.log(url);
-            filterSearch(url);
-        }
-
+        //Create recommender object - it loads its state from session storage
+        let recommender = new Recommender();
 
         let searchBar = document.getElementById("searchbar");
         if(search!="" && search!="undefined"){
@@ -121,28 +117,41 @@
         searchBar.onsearch = () =>{
             console.log(searchBar.value);
             if(searchBar.value!=""){
+                recommender.addKeyword(searchBar.value);
                 filterSearch("search="+searchBar.value);
             }
         }
 
+        import { apply } from "../js/filter.js";
+
+        document.getElementById("filterApplyBtn").onclick = event => {
+            var url = apply();
+            console.log(url);
+            category="";
+            filterSearch(url);
+        }
 
         let allProductsBtn = document.getElementById("allProductsBtn");
         allProductsBtn.onclick = () => {
+            category = "";
             filterSearch("");
         };
 
         let teddyBearBtn = document.getElementById("teddyBearBtn");
         teddyBearBtn.onclick = () => {
+            category = "Teddy Bear";
             filterSearch("category=Teddy Bear");
         };
 
         let housePetsBtn = document.getElementById("housePetsBtn");
         housePetsBtn.onclick = () => {
+            category = "House Pets";
             filterSearch("category=House Pets");
         };
 
         let mythicalBtn = document.getElementById("mythicalBtn");
         mythicalBtn.onclick = () => {
+            category = "Mythical";
             filterSearch("category=Mythical");
         };
 
@@ -159,7 +168,7 @@
                 if (request.status === 200) {
 
                     //Add data from server to page
-                    console.log(request.responseText);
+                    //console.log(request.responseText);
                     displayProducts(request.responseText);
                 }
                 else
@@ -171,7 +180,7 @@
             if(search!="" && search!= "undefined"){
                 request.open("GET", "../php/products.php?search=" + search);
             }
-            if(category!="" && category!="undefined"){
+            else if(category!="" && category!="undefined"){
                 request.open("GET", "../php/products.php?category=" + category);
             }
             else{
@@ -201,6 +210,7 @@
             if(jsonProducts== "]"){
                 pageHeading.innerText = "No Results Available";
                 timeoutText.style.visibility = "visible";
+                container.innerHTML = "";
                 timeoutText.innerText ="Refreshing in 5 seconds";
                 setTimeout(()=>{
                     timeoutText.style.visibility = "hidden";
@@ -209,6 +219,7 @@
                 
                 return;
             }
+
             
             if (category == "Teddy Bear") {
                 pageHeading.innerText = "TEDDY BEAR";
