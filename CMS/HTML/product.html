@@ -119,9 +119,10 @@
       <th>Cancel Product</th>
     </thead>
 
-    <tbody>
+    <tbody id="displayTable">
+     
       <!-- category: teddy bear -->
-      <tr>
+      <!--<tr>
         <td data-label="ProductID">T93847</td>
         <td data-label="Image"><img src="/images/StuffedToys/TeddyBear/BrownBear.jpg" style="width: 40%;"></td>
         <td data-label="Name">Brown Bear</td>
@@ -175,10 +176,10 @@
         <td data-label="Colour">Grey</td>
         <td data-label="Stock">5</td>
         <td data-Label="Cancel Product"><img src="../images/cross.ico" style="width: 30%;"></td>
-      </tr>
+      </tr> -->
 
       <!-- category: house pets -->
-      <tr>
+      <!--<tr>
         <td data-label="ProductID">H20493</td>
         <td data-label="Image"><img src="/images/StuffedToys/HousePets/BrownBunny.jpg" style="width: 40%;"></td>
         <td data-label="Name">Brown Bunny</td>
@@ -243,10 +244,10 @@
         <td data-label="Colour">Pastel</td>
         <td data-label="Stock">40</td>
         <td data-Label="Cancel Product"><img src="../images/cross.ico" style="width: 30%;"></td>
-      </tr>
+      </tr>-->
       
       <!-- category: mythical -->
-      <tr>
+      <!--<tr>
         <td data-label="ProductID">M02947</td>
         <td data-label="Image"><img src="/images/StuffedToys/Mythical/BlackDragon.jpg" style="width: 40%;"></td>
         <td data-label="Name">Black Dragon</td>
@@ -289,14 +290,72 @@
         <td data-label="Colour">Rainbow</td>
         <td data-label="Stock">80</td>
         <td data-Label="Cancel Product"><img src="../images/cross.ico" style="width: 30%;"></td>
-      </tr>
+      </tr> -->
 
     </tbody>
 
   </table>
+  <script type="module">
+
+    
+        let container = document.getElementById("displayTable");
+   window.onload = init;
+
+        //Downloads JSON description of products from server
+        function init() {
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+
+                    //Add data from server to page
+                    console.log(request.responseText);
+                    displayProducts(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
 
 
+            //Set up request and send it
+            
+            request.open("GET", "../php/product_management.php");
+                     
+            request.send();
+        }
 
+        function displayProducts(jsonProducts) {
+
+            
+            //Convert JSON to array of product objects
+            let prodArray = JSON.parse(jsonProducts);
+            console.log(prodArray);
+            let htmlStr = "";
+
+            //Create HTML div containing product data
+            for (let i = 0; i < prodArray.length; i++) {
+
+              htmlStr += '<tr>';
+        htmlStr += '<td data-label="ProductID">' + prodArray[i]._id.$oid + '</td>';
+        htmlStr += '<td data-label="Image"><img src="../' + prodArray[i].image_url + '" style="width: 40%;"></td>';
+        htmlStr += '<td data-label="Name">' + prodArray[i].name + '</td>';
+        htmlStr += '<td data-label="Price (AED)">70.95</td>';
+        htmlStr += '<td data-label="Category">' + prodArray[i].price + '</td>';
+        htmlStr += '<td data-label="Size">' + prodArray[i].size + '</td>';
+        htmlStr += '<td data-label="Colour">' + prodArray[i].colour + '</td>';
+        htmlStr += '<td data-label="Stock">' + prodArray[i].stock + '</td>';
+        htmlStr += '<td data-Label="Cancel Product"><img src="../images/cross.ico" style="width: 30%;"></td>';
+      htmlStr += '</tr>';
+
+            }
+
+            container.innerHTML = htmlStr;
+        }
+
+</script>
 
   <div class="bottomBtnContainer" style="display: table; margin: auto;margin-top: 2%;">
   <a href="add.html">

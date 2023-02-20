@@ -1,53 +1,66 @@
 <?php
 
-// connect to MongoDB
-$mongoClient = new MongoDB\Client("mongodb://127.0.0.1:55864");
+//Include libraries
+require __DIR__ . '/vendor/autoload.php';
 
-// select database and collection
-$database = $mongoClient->selectDatabase("yourshopping-db");
-$productCollection = $database->selectCollection("product");
+//Create instance of MongoDB client
+$mongoClient = (new MongoDB\Client);
+
+//Select a database
+$db = $mongoClient->stuffington;
 
 // get all products
-$products = $productCollection->find();
+$cursor = $db->products->find();
 
 // display products
-foreach ($products as $product) {
-    echo "ProductID: " . $product['ID'] . "<br>";
-    echo "Image: " . $product['image'] . "<br>";
-    echo "Name: " . $product['name'] . "<br>";
-    echo "Price: " . $product['price'] . "<br>";
-    echo "Category: " . $product['category'] . "<br>";
-    echo "Size: " . $product['size'] . "<br>";
-    echo "Colour: " . $product['colour'] . "<br>";
-    echo "Stock: " . $product['stock'] . "<br>"; 
+//Output each product as a JSON object
+$jsonProducts = '[';
+
+//work through products
+foreach ($cursor as $product) {
+    $jsonProducts .= json_encode($product); //Convert PHP representation into JSON 
+    $jsonProducts .= ','; //Separator between each element
 }
 
-// add a new product
-$productData = array(
-    "productID" => "productID",
-    "image" => "product-x.jpg",
-    "name" => "name",
-    "price" => 29.99,
-    "category" => "Teddy",
-    "size" => "12'",
-    "colour" => "black",
-    "stock" => 12,
-);
-$result = $productCollection->insertOne($productData);
-echo "Inserted new product with ID: " . $result->getInsertedId();
+//Remove last comma
+$jsonProducts = substr($jsonProducts, 0, strlen($jsonProducts) - 1);
 
-// update a product
-$productCollection->updateOne(
-    array('name' => 'Product A'),
-    array('$set' => array('price' => 24.99))
-);
-echo "Updated product A price to 24.99";
+//Close array
+$jsonProducts .= ']';
 
-// delete a product
-$productCollection->deleteOne(array('name' => 'Product B'));
-echo "Deleted product B";
+//Echo final string
+echo $jsonProducts;
+
+// // add a new product
+// $productData = array(
+//     "productID" => "productID",
+//     "image" => "product-x.jpg",
+//     "name" => "name",
+//     "price" => 29.99,
+//     "category" => "Teddy",
+//     "size" => "12'",
+//     "colour" => "black",
+//     "stock" => 12,
+// );
+// $result = $productCollection->insertOne($productData);
+// echo "Inserted new product with ID: " . $result->getInsertedId();
+
+// // update a product
+// $productCollection->updateOne(
+//     array('name' => 'Product A'),
+//     array('$set' => array('price' => 24.99))
+// );
+// echo "Updated product A price to 24.99";
+
+// // delete a product
+// $productCollection->deleteOne(array('name' => 'Product B'));
+// echo "Deleted product B";
+
+
 
 ?>
+
+
 
 
 
