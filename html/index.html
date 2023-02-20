@@ -155,11 +155,14 @@
             //Create HTML div containing product data
             let i = 0;
             let index = 0;
-            //(let i = 0; i < prodArray.length; i++)
+            let prodIDs=[];
             do  {
                 
                 if(prodArray.length>4){
                     index = Math.floor(Math.random() * prodArray.length);
+                    if (index in prodIDs){
+                        continue;
+                    }
                 }
                 
                 htmlStr += '<div class="card">';
@@ -169,10 +172,12 @@
                 htmlStr += '<h1>' + prodArray[index].name + '</h1>';
                 htmlStr += '<p class="price">AED' + prodArray[index].price + '</p></a>';
                 htmlStr += '<p><button>Add to Cart</button></p></div>';
+                prodIDs.push(index);
                 index += 1;
                 i += 1;
             }
             while(i<4 && i<prodArray.length);
+            console.log(prodIDs);
 
 
             container.innerHTML = htmlStr;

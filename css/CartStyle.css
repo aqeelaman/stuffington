@@ -159,13 +159,18 @@ text-align: center;
     color: black;
 }
 
+/* recommendation a adjustments */
+.recommendationCard a{
+    text-decoration: none; 
+    color: black;
+}
+
 /* recommendation text adjustments */
 .recommendationCard p {
     margin-top: -6%;
 }
 
 /* recommendation text adjustments */
-
 .recommendationCard h1 {
     font-size: x-large;
     margin-top: 7px;
