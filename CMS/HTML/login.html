@@ -36,33 +36,24 @@
           <span class="lighting"></span>
         </div>
 
-        <button style="background-color:#00A885">
-          <a type="submit" id="login" href="main.html">Log In</a>
-        </button>
+        <input type="button" id="login" style="background-color:#00A885" value="Submit" onclick="checkLogin()">
+
+        <!-- <button style="background-color:#00A885">
+          <a type="submit" id="login" href="">Log In</a>
+        </button> -->
 
     <script>
-      //Following function gets values of the username and password fields and checks to see if they match a hard coded username and password 
-      function authenticate(){
-        var authorised;
-        
-        //get input values
-        var userName = document.getElementById("userName").value;
-        var userName = document.getElementById("userPassword").value;
-        
-        //check to see if the password and username match
-        if(userName == "abcd" && userPassword == "pass12345"){
-        location.reload();
-        }
-        
-        else{ // username or password do not match
-          authorised = false;
-          //alert user
-          alert("Sorry, password is incorrect.");
-        }
-        //return result
-        return authorised;
-      }
-    </script>
+		function checkLogin() {
+			var username = document.getElementById("userName").value;
+			var password = document.getElementById("userPassword").value;
+			if (username === "myusername" && password === "mypassword") {
+				alert("Login successful!");
+				window.location.href = "main.html"; // Redirect to dashboard page
+			} else {
+				alert("Incorrect username or password. Please try again.");
+			}
+		}
+	</script>
 
 
       </form>
