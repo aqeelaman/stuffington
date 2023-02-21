@@ -253,7 +253,7 @@
                 // htmlStr += '<p><button onclick="addToCart("'+prodArray[i]._id.$oid + ','+ prodArray[i].name+')">Add to Cart</button></p></div>';
                 // htmlStr += '<p><button onclick="addToCart('+prodArray[i]._id.$oid + ','+prodArray[i].name+')">Add to Cart</button></p></div>';
                 // htmlStr += '<p><button onclick="addToCart("'+prodArray[i]._id.$oid + '","'+ prodArray[i].name+'")">Add to Cart</button></p></div>';
-                htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '")\'>Add to Cart</button></p></div>';
+                htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '", "' + prodArray[i].price + '")\'>Add to Cart</button></p></div>';
             }
 
             container.innerHTML = htmlStr;

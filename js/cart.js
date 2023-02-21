@@ -26,15 +26,6 @@ function loadCart(){
         htmlStr += "Product name: " + Cart[i].name + "<br>";
         prodIDs.push({id: Cart[i].id, count: 1});//Add to product array
 
-        //check duplicate
-        for(let i=0; i<prodIDs.length; i++){
-            for(let j=i+1; j<prodIDs.length;j++){
-                if(prodIDs[i].id==prodIDs[j].id){
-                    prodIDs[i].count++;
-                    prodIDs.splice(j,1);
-                }
-            }
-        }
     }
     //console.log(prodIDs);
     //Add hidden field to form that contains stringified version of product ids.
@@ -49,12 +40,12 @@ function loadCart(){
 }
 
 //Adds an item to the Cart
-function addToCart(prodID, prodName){
+function addToCart(prodID, prodName, prodPrice){
     let Cart = getCart();//Load or create Cart
     
     //Add product to Cart
     let count=1;
-    Cart.push({id: prodID, name: prodName, qty: count});
+    Cart.push({id: prodID, name: prodName, qty: count, price: prodPrice});
     //check for duplicates
     for(let i=0; i<Cart.length; i++){
         for(let j=i+1; j<Cart.length; j++){

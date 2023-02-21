@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
     <link rel="stylesheet" type="text/css" href="../css/CartStyle.css">
+    <script src="../js/cart.js"></script>
 </head>
 
 <body>
@@ -43,13 +44,14 @@
 
             <!--each lsited product would be created with a div called sideCart-->
             <div class="sideCart">
-                <div class="itemImage">     <!-- Shows the image of the product-->
-                    <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear">       
+                <div class="itemImage"> <!-- Shows the image of the product-->
+                    <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear">
                 </div>
-                <div class="itemText">          <!--Div to control the texts of the product listed-->
+                <div class="itemText"> <!--Div to control the texts of the product listed-->
                     <h1>Brown Bear</h1>
                     <p class="price">AED70.95</p>
-                    <p><select style="width: 8%; text-align: center;">              <!-- A drop down menu that allows the user to select the quantity of each product-->
+                    <p><select style="width: 8%; text-align: center;">
+                            <!-- A drop down menu that allows the user to select the quantity of each product-->
                             <option value="#"> 1 </option>
                             <option value="#" selected="selected">2</option>
                             <option value="#">3</option>
@@ -60,20 +62,22 @@
                             <option value="#">8</option>
                             <option value="#">9</option>
                         </select></p>
-                    <button style="float:right; left: 100%;">Remove</button>        <!--Button created that would delete / remove the item from the cart-->
+                    <button style="float:right; left: 100%;">Remove</button>
+                    <!--Button created that would delete / remove the item from the cart-->
                 </div>
             </div>
 
-                        <!--each lsited product would be created with a div called sideCart-->
+            <!--each lsited product would be created with a div called sideCart-->
 
             <div class="sideCart">
-                <div class="itemImage">         <!-- Shows the image of the product-->
+                <div class="itemImage"> <!-- Shows the image of the product-->
                     <img src="../images/StuffedToys/BlackDragon.jpg" alt="BlackDragon">
                 </div>
-                <div class="itemText">              <!--Div to control the texts of the product listed-->
+                <div class="itemText"> <!--Div to control the texts of the product listed-->
                     <h1>Black Dragon</h1>
                     <p class="price">AED75.00</p>
-                    <p><select style="width: 8%; text-align: center;">              <!-- A drop down menu that allows the user to select the quantity of each product-->
+                    <p><select style="width: 8%; text-align: center;">
+                            <!-- A drop down menu that allows the user to select the quantity of each product-->
                             <option value="#" selected="selected"> 1 </option>
                             <option value="#">2</option>
                             <option value="#">3</option>
@@ -84,23 +88,66 @@
                             <option value="#">8</option>
                             <option value="#">9</option>
                         </select></p>
-                    <button style="float:right; left: 100%;">Remove</button>        <!--Button created that would delete / remove the item from the cart-->
+                    <button style="float:right; left: 100%;">Remove</button>
+                    <!--Button created that would delete / remove the item from the cart-->
                 </div>
             </div>
         </div>
 
         <!-- Item Summary -->
         <div class="sideSummaryContainer">
-                <div class="sideSummary">           <!--This will be on the right side of the page, a header that indicates the order summary-->
+            <div class="sideSummary">
+                <!--This will be on the right side of the page, a header that indicates the order summary-->
+                <div style="margin-bottom: -7%;margin-top: -4%; margin-left: 3%; font-size:40px; ">
+                    <p> Order Summary </p>
+                </div>
+                <div style="margin-top: -4%; margin-left: 4%;">
+                    <p> Total Amount VAT Inclusive</p>
+                </div>
+                <div> <!--A Div is made to dispaly the order summary in a table-->
+                    <table> <!--Below are the items stored in the table-->
+                        <thead>
+                            <tr>
+                                <td style="width: 33%;">Item Name</td>
+                                <td>Quantity</td>
+                                <td>Price</td>
+                            </tr>
+                        </thead>
+                        <tbody id="cartTable">
+                            <!-- <tr>
+                                <td>Brown Bear</td>
+                                <td>x2</td>
+                                <td>141.90</td>
+                            </tr>
+                            <tr>
+                                <td>Black Dragon</td>
+                                <td>x1</td>
+                                <td>75.00</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="totalContainer"> <!--Total Container to display the Final price of the order-->
+                    <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
+                    <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
+                </div>
+                <h1 style="margin-left: 3%; margin-bottom: -1%;">People also Buy</h1>
+                <div id="productRecommendation" class="productRecommendation">
+
+                </div>
+            </div>
+
+            <!--  
+            <div class="sideSummary">           This will be on the right side of the page, a header that indicates the order summary
                     <div style="margin-bottom: -7%;margin-top: -4%; margin-left: 3%; font-size:40px; ">
                         <p> Order Summary </p>
                     </div>
                     <div style="margin-top: -4%; margin-left: 4%;">
                         <p> Total Amount VAT Inclusive</p>
                     </div>
-                    <div>               <!--A Div is made to display the order summary in a table-->
+                    <div>               A Div is made to display the order summary in a table
                         <script>
-                            <table>             <!--Below are the items stored in the table-->
+                            <table>             Below are the items stored in the table
                                 <thead>        
                                         htmlStr += "<tr>";
                                             htmlStr += "<td style="width: 33%;">Item Name</td>";
@@ -124,23 +171,20 @@
                             </table>
                         </script>
                     </div>
-                    <div class="totalContainer">        <!--Total Container to display the Final price of the order-->
+                    <div class="totalContainer">        Total Container to display the Final price of the order
                         <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
                         <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
                     </div>
 
-                    <div class="checkoutBtn">       <!--A button that would be clicked to confirm and lead to final checkout-->
+                    <div class="checkoutBtn">       A button that would be clicked to confirm and lead to final checkout
                         <a href="finalOrder.html"><button> Check Out </button></a>
-                    </div>
-                
-                    <!--A container that would have product recommendations-->
-                    <h1 style="margin-left: 3%; margin-bottom: -1%;">People also Buy</h1>
-                    <div id="productRecommendation" class="productRecommendation">
-                        
-                    </div>
+                    </div>-->
 
-                </div>
+            <!-- A container that would have product recommendations -->
+
+
         </div>
+    </div>
     </div>
 
     <!-- js for searchbar functionality -->
@@ -154,7 +198,7 @@
 
         //searchbar functionality
         let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
+        searchBar.onsearch = function () {
             //add keyword to sessionStorage
             recommender.addKeyword(searchBar.value);
             //display searched product
@@ -193,6 +237,8 @@
                 request.open("GET", "../php/products.php");
             }
             request.send();
+            window.Cart = getCart();
+            displayCartTable();
         }
 
         function displayRecommendedProducts(jsonProducts) {
@@ -212,16 +258,16 @@
             //Create HTML div containing product data
             let i = 0;
             let index = 0;
-            let prodIDs=[];
-            do  {
-                
-                if(prodArray.length>3){
+            let prodIDs = [];
+            do {
+
+                if (prodArray.length > 3) {
                     index = Math.floor(Math.random() * prodArray.length);
-                    if (index in prodIDs){
+                    if (index in prodIDs) {
                         continue;
                     }
                 }
-                
+
                 htmlStr += '<div class="recommendationCard">';
                 // htmlStr += '<span style="visibility: hidden;" id="itemId">'+ prodArray[i]._id.$oid +'</span>';
                 htmlStr += '<a href="productDisplay.html?name=' + prodArray[index].name + '">';
@@ -233,15 +279,33 @@
                 index += 1;
                 i += 1;
             }
-            while(i<3 && i<prodArray.length);
+            while (i < 3 && i < prodArray.length);
             console.log(prodIDs);
-
-
+            console.log(window.Cart);
             container.innerHTML = htmlStr;
 
         }
-    </script>
 
+        function displayCartTable(){
+            let cartTable = document.getElementById("cartTable");
+            let cartList = window.Cart;
+            let htmlStr = "";
+            for (let i=0;i<cartList.length;i++){
+                htmlStr += "<tr>";
+                htmlStr += "<td>" + cartList[i].name + "</td>";
+                htmlStr += "<td>" + cartList[i].qty + "</td>";
+                htmlStr += "<td>" + cartList[i].qty * cartList[i].price + "</td>";
+                htmlStr += "</tr>";
+            }
+            cartTable.innerHTML= htmlStr;
+
+        }
+
+
+
+
+    </script>
+    </div>
     <footer>
         <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
     </footer>
