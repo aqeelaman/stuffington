@@ -129,7 +129,7 @@
                 </div>
                 <div class="totalContainer"> <!--Total Container to display the Final price of the order-->
                     <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
-                    <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
+                    <div class="totalPrice" id="displayTotalAmount" style="float: right;"></div>
                 </div>
                 <h1 style="margin-left: 3%; margin-bottom: -1%;">People also Buy</h1>
                 <div id="productRecommendation" class="productRecommendation">
@@ -289,15 +289,20 @@
         function displayCartTable(){
             let cartTable = document.getElementById("cartTable");
             let cartList = window.Cart;
+            let total = 0;
             let htmlStr = "";
+            
             for (let i=0;i<cartList.length;i++){
                 htmlStr += "<tr>";
                 htmlStr += "<td>" + cartList[i].name + "</td>";
                 htmlStr += "<td>" + cartList[i].qty + "</td>";
                 htmlStr += "<td>" + cartList[i].qty * cartList[i].price + "</td>";
+                total += cartList[i].qty * cartList[i].price;
                 htmlStr += "</tr>";
             }
             cartTable.innerHTML= htmlStr;
+
+            document.getElementById("displayTotalAmount").innerHTML= total + " AED&nbsp;&nbsp;&nbsp;";
 
         }
 
