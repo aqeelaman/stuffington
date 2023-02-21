@@ -31,19 +31,19 @@ $jsonProducts .= ']';
 //Echo final string
 echo $jsonProducts;
 
-// add a new product
-$productData = array(
-    "productID" => "productID",
-    "image" => "product-x.jpg",
-    "name" => "name",
-    "price" => 29.99,
-    "category" => "Teddy",
-    "size" => "12'",
-    "colour" => "black",
-    "stock" => 12,
-);
-$result = $productCollection->insertOne($productData);
-echo "Inserted new product with ID: " . $result->getInsertedId();
+// // add a new product
+// $productData = array(
+//     "productID" => "productID",
+//     "image" => "product-x.jpg",
+//     "name" => "name",
+//     "price" => 29.99,
+//     "category" => "Teddy",
+//     "size" => "12'",
+//     "colour" => "black",
+//     "stock" => 12,
+// );
+// $result = $productCollection->insertOne($productData);
+// echo "Inserted new product with ID: " . $result->getInsertedId();
 
 // // update a product
 // $productCollection->updateOne(
