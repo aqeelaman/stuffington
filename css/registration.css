@@ -165,8 +165,8 @@
 
 /* hover */
 .btnn:hover {
-    color: black;
-    background: white;
+    color: white;
+    background: rgb(68, 1, 1);
 }
 
 /* link */
