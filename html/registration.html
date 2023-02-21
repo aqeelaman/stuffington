@@ -8,7 +8,8 @@
     <meta name="Keywords" content="">
     <meta name="Description" content="">
     <link rel="stylesheet" href="l:\fontawesome-free-5.13.0-web\fontawesome-free-6.2.1-web\css\all.min.css">
-    <script type="text/javascript" src="validation.js"></script>
+
+
     <title>Sign Up | Stuffington</title>
 
     <!-- Link to favicon -->
@@ -20,7 +21,7 @@
 </head>
 
 
-<body onload="onload()">
+<body>
 
     <div class="navigationContainer">
         <!-- Navigation section -->
@@ -45,16 +46,15 @@
         <!-- Registeration Container -->
         <div class="form-name">Registration</div>
         <!-- signup form -->
-        <form onsubmit="return false" class="signup-form">
+        <div class="signup-form"> <!-- onsubmit="return checkDuplicateEmail();return false;" -->
             <!-- input feilds -->
             <input type="text" id="name" name="Fullname" placeholder="Name" required> <br>
             <input type="email" id="mail" name="mail" placeholder="Email Address" required><br>
             <input type="password" id="pass" name="password" placeholder="Password" required><br>
-            <input type="password" id="conpass" name="conpassword" placeholder="Confirm Password" required><br>
             <input type="date" id="age" name="age" placeholder="Date of Birth"><br>
-            <input type="submit" class="btn btn-success" value="Register" onclick="registeruser()">
+            <input type="submit" id="registrationBtn" class="btn btn-success" value="Register">
             <spam id="result" class="register-result"></spam>
-        </form>
+        </div> 
     </div>
 
     <footer class="footer1">
@@ -72,81 +72,116 @@
 
         //searchbar functionality
         let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
+        searchBar.onsearch = function () {
             //add keyword to sessionStorage
             recommender.addKeyword(searchBar.value);
             //display searched product
             recommender.search();
         }
+
+        let regName = document.getElementById("name").value;
+        let regMail = document.getElementById("mail").value;
+        let regPass = document.getElementById("pass").value;
+        let regDOB = document.getElementById("age").value;
+        let regBtn = document.getElementById("registrationBtn");
+        regBtn.onclick = checkDuplicateEmail;
+
+        let resultText = document.getElementById("result");
+
+
+
+        //validation for registeration fillout
+        window.onload = init();
+
+
+        function init() {
+
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+
+                    //Add data from server to page
+                    window.registeredUserList = request.responseText;
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+
+            };
+
+            //Set up request and send it
+            request.open("POST", "../php/customers.php");
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("function=view");
+        }
+
+
+        function checkDuplicateEmail() {
+
+            window.regName = document.getElementById("name").value;
+            window.regMail = document.getElementById("mail").value;
+            window.regPass = document.getElementById("pass").value;
+            window.regDOB = document.getElementById("age").value;
+            if (window.regName === '') {
+                resultText.innerText="Name must be filled out";
+                return;
+            }
+            else if (window.regMail == '') {
+                resultText.innerText="Email must be filled out";
+                return;
+
+            }
+            else if (window.regPass == '') {
+                resultText.innerText="Password must be filled out";
+                return;
+            }
+            else if (window.regDOB == '') {
+                resultText.innerText="DOB must be filled out";
+                return;
+            }
+
+
+            // console.log(window.registeredUserList);
+            if (registeredUserList == "]") {
+                resultText.innerText = "Error retrieving data from database";
+                return;
+            }
+
+
+            let usersList = JSON.parse(registeredUserList);
+
+            for (let i = 0; i < usersList.length; i++) {
+                if (window.regMail === usersList[i].email) {
+                    console.log("same email");
+                    resultText.innerText = "Email already exists, Try another email.";
+                    return;
+                }
+            }
+            addCustomer();
+        }
+
+
+        function addCustomer() {
+
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                console.log(request.responseText);
+                alert(request.responseText);
+                location.reload();
+            };
+
+            //Set up request and send it
+            request.open("POST", "../php/customers.php");
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("function=add" + +"&name=" + window.regName + "&email=" + window.regMail + "&password=" + window.regPass + "&dob=" + window.regDOB);
+        }
+
     </script>
-
-
-    <!-- validation for registeration fillout -->
-    <script>
-        var registeredUserList = [];
-        var regisetredUsers = localStorage['RegisteredUsers'];
-
-        if (regisetredUsers != null || regisetredUsers != undefined) {
-            registeredUserList = JSON.parse(regisetredUsers);
-        }
-
-        function registeruser() {
-
-            var userobj = {};
-            userobj.fullname = document.getElementById("name").value;
-            userobj.age = document.getElementById("age").value;
-            userobj.username = document.getElementById("user").value;
-            userobj.email = document.getElementById("mail").value;
-            userobj.password = document.getElementById("pass").value;
-
-            if (userobj.username == '') {
-                alert("Username must be filled out");
-                return false;
-            }
-            else if (userobj.password == '') {
-                alert("Password must be filled out");
-                return;
-
-            }
-            else if (userobj.fullname == '') {
-                alert("Name must be filled out");
-                return;
-
-            }
-            else if (userobj.email == '') {
-                alert("Email must be filled out");
-                return;
-
-            }
-        }
-
-        function validateUsername() {
-            if (regisetredUsers == null || regisetredUsers == undefined) {
-                return true;
-            }
-
-            registeredUserList = JSON.parse(regisetredUsers);
-
-            if (registeredUserList.length <= 0) {
-                return true;
-            }
-            else {
-
-                var username = document.getElementById("user").value;
-
-                var registeredUser = registeredUserList.filter(user => user.username == username)[0];
-
-                if (registeredUser == null || registeredUser == undefined) return true;
-
-                return false;
-
-            }
-
-        }
-
-    </script>
-
-
-
 
 </html>

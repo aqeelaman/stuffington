@@ -16,8 +16,6 @@
         //Find all products
         $products = $db->products->find();
 
-      
-
     ?>
 
     <body>

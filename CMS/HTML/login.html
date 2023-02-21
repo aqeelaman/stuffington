@@ -47,7 +47,8 @@
           window.onload = init();
 
           function init() {
-            if (sessionStorage.loggedInStaffUsr != "" && sessionStorage.loggedInStaffUsr != "undefined") {
+            
+            if (sessionStorage.loggedInStaffUsr != "" && sessionStorage.loggedInStaffUsr != undefined) {
               window.location.href = "main.html"; // Redirect to dashboard page
             }
 
