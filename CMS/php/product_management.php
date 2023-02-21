@@ -31,6 +31,7 @@ $jsonProducts .= ']';
 //Echo final string
 echo $jsonProducts;
 
+<<<<<<< Updated upstream
 // // add a new product
 // $productData = array(
 //     "productID" => "productID",
@@ -44,6 +45,26 @@ echo $jsonProducts;
 // );
 // $result = $productCollection->insertOne($productData);
 // echo "Inserted new product with ID: " . $result->getInsertedId();
+=======
+// add a new product
+//$product = array(
+  //  "productID" => "productID",
+    //"image" => "product-x.jpg",
+  //  "name" => "name",
+//     "price" => 29.99,
+//     "category" => "Product Category",
+//     "size" => "12'",
+//     "colour" => "Product Colour",
+//     "stock" => 12,
+// );
+// $result = $productCollection->insertOne($product);
+
+// if ($result->getInsertedCount() == 1) {
+//     echo "Prodcut added Successfully";
+// } else {
+//     echo "Product not added.";
+// }
+>>>>>>> Stashed changes
 
 // // update a product
 // $productCollection->updateOne(
