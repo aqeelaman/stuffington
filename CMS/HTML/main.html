@@ -37,10 +37,14 @@
     </a>
 
     <a href="../../html/login.html" style="margin: 10px;text-decoration: none;">
-      <button style="display: block; margin: auto; font-size: 20px; font-weight: bold; color: aliceblue;" class="btn" role="button">Logout</button>
+      <button style="display: block; margin: auto; font-size: 20px; font-weight: bold; color: aliceblue;" class="btn" role="button" onclick="logout()">Logout</button>
     </a>
   </div>
-
+  <script>
+    function logout(){
+      sessionStorage.loggedInStaffUsr="";
+    }
+  </script>
 
 </body>
 </html>
