@@ -52,8 +52,7 @@ if ($function == "view") {
 
     //Echo result back to user
     if ($insertResult->getInsertedCount() == 1) {
-        echo 'Customer added.';
-        echo ' New document id: ' . $insertResult->getInsertedId();
+        echo 'Customer Registered Successfully. Continue Shopping';
     } else {
         echo 'Error adding customer';
     }
