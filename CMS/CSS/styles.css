@@ -133,3 +133,11 @@ body {
 }
 
 
+.cancel_product {
+	font-size: 19px !important;
+}
+
+.cancel_product:hover {
+	color: red;
+
+}
