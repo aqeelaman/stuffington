@@ -32,19 +32,24 @@ $jsonProducts .= ']';
 //Echo final string
 echo $jsonProducts;
 
-// // add a new product
-// $productData = array(
-//     "productID" => "productID",
-//     "image" => "product-x.jpg",
-//     "name" => "name",
+// add a new product
+//$product = array(
+  //  "productID" => "productID",
+    //"image" => "product-x.jpg",
+  //  "name" => "name",
 //     "price" => 29.99,
-//     "category" => "Teddy",
+//     "category" => "Product Category",
 //     "size" => "12'",
-//     "colour" => "black",
+//     "colour" => "Product Colour",
 //     "stock" => 12,
 // );
-// $result = $productCollection->insertOne($productData);
-// echo "Inserted new product with ID: " . $result->getInsertedId();
+// $result = $productCollection->insertOne($product);
+
+// if ($result->getInsertedCount() == 1) {
+//     echo "Prodcut added Successfully";
+// } else {
+//     echo "Product not added.";
+// }
 
 // // update a product
 // $productCollection->updateOne(
