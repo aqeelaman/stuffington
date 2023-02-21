@@ -70,7 +70,7 @@ function addToCart(prodID, prodName){
     sessionStorage.Cart = JSON.stringify(Cart);
     
     //Display Cart in page.
-    //loadCart();      
+    loadCart();      
 }
 
 //Deletes all products from Cart

@@ -91,54 +91,55 @@
 
         <!-- Item Summary -->
         <div class="sideSummaryContainer">
-            <div class="sideSummary">           <!--This will be on the right side of the page, a header that indicates the order summary-->
-                <div style="margin-bottom: -7%;margin-top: -4%; margin-left: 3%; font-size:40px; ">
-                    <p> Order Summary </p>
-                </div>
-                <div style="margin-top: -4%; margin-left: 4%;">
-                    <p> Total Amount VAT Inclusive</p>
-                </div>
-                <div>               <!--A Div is made to dispaly the order summary in a table-->
-                    <table>             <!--Below are the items stored in the table-->
-                        <thead>             
-                            <tr>
-                                <td style="width: 33%;">Item Name</td>
-                                <td>Quantity</td>
-                                <td>Price<br></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>Brown Bear</td>
-                                <td>x2</td>
-                                <td>141.90</td>
-                            </tr>
-                            <tr>
-                                <td>Black Dragon</td>
-                                <td>x1</td>
-                                <td>75.00</td>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-                <div class="totalContainer">        <!--Total Container to display the Final price of the order-->
-                    <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
-                    <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
-                </div>
+                <div class="sideSummary">           <!--This will be on the right side of the page, a header that indicates the order summary-->
+                    <div style="margin-bottom: -7%;margin-top: -4%; margin-left: 3%; font-size:40px; ">
+                        <p> Order Summary </p>
+                    </div>
+                    <div style="margin-top: -4%; margin-left: 4%;">
+                        <p> Total Amount VAT Inclusive</p>
+                    </div>
+                    <div>               <!--A Div is made to display the order summary in a table-->
+                        <script>
+                            <table>             <!--Below are the items stored in the table-->
+                                <thead>        
+                                        htmlStr += "<tr>";
+                                            htmlStr += "<td style="width: 33%;">Item Name</td>";
+                                            htmlStr += "<td>Quantity</td>";
+                                            htmlStr += "<td>Price<br></td>";
+                                            htmlStr += "</tr>";
+                                        htmlStr += "<tr>";
+                                            htmlStr += "<td></td>";"
+                                        htmlStr += "</tr>";
+                                        htmlStr += "<tr>";
+                                            <td>Brown Bear</td>
+                                            <td>x2</td>
+                                            <td>141.90</td>
+                                        htmlStr += "</tr>";
+                                        htmlStr += "<tr>";
+                                            <td>Black Dragon</td>
+                                            <td>x1</td>
+                                            <td>75.00</td>
+                                        htmlStr += "</tr>";
+                                </thead>
+                            </table>
+                        </script>
+                    </div>
+                    <div class="totalContainer">        <!--Total Container to display the Final price of the order-->
+                        <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
+                        <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
+                    </div>
 
-                <div class="checkoutBtn">       <!--A button that would be clicked to confirm and lead to final checkout-->
-                    <a href="finalOrder.html"><button> Check Out </button></a>
-                </div>
-            
-                <!--A container that would have product recommendations-->
-                <h1 style="margin-left: 3%; margin-bottom: -1%;">People also Buy</h1>
-                <div id="productRecommendation" class="productRecommendation">
-                    
-                </div>
+                    <div class="checkoutBtn">       <!--A button that would be clicked to confirm and lead to final checkout-->
+                        <a href="finalOrder.html"><button> Check Out </button></a>
+                    </div>
+                
+                    <!--A container that would have product recommendations-->
+                    <h1 style="margin-left: 3%; margin-bottom: -1%;">People also Buy</h1>
+                    <div id="productRecommendation" class="productRecommendation">
+                        
+                    </div>
 
-            </div>
-
+                </div>
         </div>
     </div>
 
