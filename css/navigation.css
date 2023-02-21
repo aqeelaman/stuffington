@@ -10,8 +10,8 @@ body {
 }
 
 /*navigation container containing navbar and category bar*/
-.navigationContainer{
-    position:sticky;
+.navigationContainer {
+    position: sticky;
     top: 0;
     overflow: hidden;
     z-index: 1;
@@ -123,10 +123,11 @@ input.searchbar {
 /*category bar*/
 .categoryNavbar {
     /* top: 64.8px; */
-    
-    position:sticky; /*navigation stays on top while scrolling*/
+
+    position: sticky;
+    /*navigation stays on top while scrolling*/
     list-style-type: none;
-    
+
     padding: 0;
     padding-left: 20%;
     margin: auto;
@@ -261,8 +262,8 @@ input.searchbar {
 }
 
 /* css for removing purple line <a> tag */
-.card a { 
-    text-decoration: none; 
+.card a {
+    text-decoration: none;
     color: black;
 }
 
@@ -300,7 +301,7 @@ input.searchbar {
 }
 
 /* color change on <a> tag on hover */
-.card:hover a{
+.card:hover a {
     color: #ffffff;
 }
 
@@ -314,3 +315,4 @@ footer {
     width: 100%;
     margin-top: 5%;
 }
+    

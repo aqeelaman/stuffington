@@ -3,37 +3,88 @@
 // Include libraries
 require __DIR__ . '/vendor/autoload.php';
 
+try {
 // Create instance of MongoDB client
-$mongoClient = new MongoDB\Client;
+$mongoClient = new MongoDB\Client('mongodb://localhost:27017');
 
 // Select a database
 $db = $mongoClient->stuffington;
 
 // Select a collection
-$collection = $db->product;
+$collection = $db->products;
+
+    $filename_ext = "";
+if (($_FILES['imageToUpload']['name']!="")){
+// Where the file is going to be stored
+	$target_dir = "../../images/StuffedToys/";
+	$file = $_FILES['imageToUpload']['name'];
+	$path = pathinfo($file);
+	$filename = $path['filename'];
+
+        $filename = str_replace(" ", "", $filename);
+
+	$ext = $path['extension'];
+	$temp_name = $_FILES['imageToUpload']['tmp_name'];
+	$path_filename_ext = $target_dir.$filename.".".$ext;
+	$filename_ext = $filename.".".$ext;
+ 
+    move_uploaded_file($temp_name,$path_filename_ext);
+}
+
+//Collect Inputs
+$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+$price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING);
+$category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
+$size = filter_input(INPUT_POST, 'size', FILTER_SANITIZE_STRING);
+$colour = filter_input(INPUT_POST, 'colour', FILTER_SANITIZE_STRING);
+$stock = filter_input(INPUT_POST, 'stock', FILTER_SANITIZE_STRING);
 
 // Check if the form has been submitted
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Create an array with the product details
-    $product = array(
-        "productID" => $_POST['productID'],
-        "image" => $_POST['image'],
-        "name" => $_POST["name"],
-        "price" => $_POST['price'],
-        "category" => $_POST["category"],
-        "size" => $_POST["size"],
-        "colour" => $_POST["colour"],
-        "stock" => $_POST['stock']
-    );
+     // $product = array(
+    //     "image" => $_POST['image'],
+    //     "name" => $_POST["name"],
+    //     "price" => $_POST['price'],
+    //     "category" => $_POST["category"],
+    //     "size" => $_POST["size"],
+    //     "colour" => $_POST["colour"],
+    //     "stock" => $_POST['stock']
+    // );
+
+$product = [
+    "name" => $name,
+    "image_URL" => $filename_ext,
+    "price" => $price,
+    "category" => $category,
+    "size" => $size,
+    "colour" => $colour,
+    "stock" => $stock,
+];
+    
+    
 
     // Insert the product into the collection
-    $result = $collection->insertOne($product);
+$result = $collection->insertOne($product);
+    
 
-    // Check if the insertion was successful
+
+
+
+    //Check if the insertion was successful
     if ($result->getInsertedCount() == 1) {
-        echo "Product added successfully!";
+        header("Location: ../HTML/product.html");
     } else {
         echo "Product not added";
     }
+
+
 }
+
+//catch exception
+catch(Exception $e) {
+  echo 'Message: ' .$e->getMessage();
+}
+
+
 ?>
