@@ -8,14 +8,14 @@
 
     <!-- Link to favicon -->
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
-    
+
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/registration.css">
 </head>
 
 
-<body onload="onload()">
+<body>
 
     <div class="navigationContainer">
         <!-- Navigation section -->
@@ -41,16 +41,16 @@
         <div class="form-name">Sign In</div>
         <form onsubmit="return false" class="signup-form">
             <!-- input feild -->
-            <input type="text" id="user" name="username" placeholder="Username...">
+            <input type="text" id="mail" name="email" placeholder="Email...">
             <input type="password" id="password" name="" placeholder="Password...">
-
+            <p class="login-result" id="login-result" style="color: red;"></p>
 
             <!-- button that login the customer to the website -->
-            <button class="btnn"><a href="index.html" onclick="login()">Login</a></button>
+            <button class="btnn" id="loginBtn">Login</a></button>
 
             <!-- button that login the Admin to the Admin page -->
-            <button class="btnn"><a href="../CMS/HTML/login.html" onclick="login()">Admin Login</a></button>
-            <p class="login-result" id="login-result"></p>
+            <button class="btnn"><a href="../CMS/HTML/login.html">Admin Login</a></button>
+            
 
             <!-- register for new account -->
             <p style="font-size: 23px;">Don't have an account?<br>
@@ -72,31 +72,66 @@
 
         //searchbar functionality
         let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
+        searchBar.onsearch = function () {
             //add keyword to sessionStorage
             recommender.addKeyword(searchBar.value);
             //display searched product
             recommender.search();
         }
-    </script>
-    
-    <script>
-        function validateLogin() {
 
-            if (userobj.username == '') {
-                alert("Username must be filled out");
-                return false;
-            }
-            else if (userobj.password == '') {
-                alert("Password must be filled out");
-                return;
-            }
+        var emailInput = document.getElementById("mail");
+        var passwordInput = document.getElementById("password");
+        let loginBtn = document.getElementById("loginBtn");
+        loginBtn.onclick= login;
+        var loginText = document.getElementById("login-result");
+
+        function login() {
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+                    checkLoginValidation(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+
+            //Set up request and send it
+
+            request.open("POST", "../php/customers.php");
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.send("function=view");
         }
+
+        function checkLoginValidation(jsonCustomers) {
+            let email = emailInput.value;
+            let password = passwordInput.value;
+
+            let custArray = JSON.parse(jsonCustomers);
+            console.log(custArray);
+
+            for (let i=0;i<custArray.length;i++){
+                if(email===custArray[i].email){
+                    if(password=== custArray[i].password){
+                        console.log(custArray[i]);
+                        sessionStorage.loggedInUsr = JSON.stringify([{custId: custArray[i]._id.$oid, custName: custArray[i].name}]);
+                        window.confirm("Welcome " + custArray[i].name);
+                        location.reload();
+                    }
+                    else{loginText.innerText= "Wrong password";}
+                    return;
+                }
+
+            }
+            loginText.innerText= "No email found";
+        }
+
+
     </script>
-
-
-
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
 
     <div class="footer1">
