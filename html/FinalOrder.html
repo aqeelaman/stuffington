@@ -36,16 +36,16 @@
     <!-- Content of the Page-->
 
     <!--Headers-->
-    <h1 style="margin-left: 4%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
-    <h1 style=" font-size: 35pt;float: right;margin-right: 22%; margin-bottom: 10px;"> Shipping Address </h1>
+    <h1 style="margin-left: 3%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
+    <h1 style=" font-size: 35pt;float: right;margin-right: 23%; margin-bottom: 10px;"> Shipping Address </h1>
 
 
     <!--Cart display on the left that shows what product are about to be placed for order-->
     <div style="display: flex;">
-        <div class="cartDisplayContainer">
-            <div class="sideCart">
+        <div class="cartDisplayContainer" id="cartDisplayContainer">
+            <!-- <div class="sideCart">
                 <div class="itemImage">
-                    <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear">
+                    <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear">
                 </div>
                 <div class="itemText">
                     <h1>Brown Bear</h1>
@@ -56,14 +56,14 @@
 
             <div class="sideCart">
                 <div class="itemImage">
-                    <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon">
+                    <img src="../images/StuffedToys/BlackDragon.jpg" alt="BlackDragon">
                 </div>
                 <div class="itemText">
                     <h1>Black Dragon</h1>
                     <p class="price">AED75.00</p>
                     <p style="float:right; font-size: xx-large;">x1</p>
                 </div>
-            </div>
+            </div> -->
 
 
         </div>
@@ -120,8 +120,8 @@
             <!--A div that will display the final amount and a button for order submission-->
             <div class="placeOrderContainer">
                 <div class="amount">
-                    <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;AED</div>
-                    <div class="totalPrice" style="float: right;"> 216.90&nbsp;&nbsp;</div>
+                    <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;</div>
+                    <div class="totalPrice" style="float: right;" id="totalPriceContent"> 216.90&nbsp;&nbsp;</div>
                 </div>
                 <div class="placeOrderBtn">
                     <a href="orderPlaced.html"><button> Place Order </button></a>
@@ -150,6 +150,55 @@
             recommender.addKeyword(searchBar.value);
             //display searched product
             recommender.search();
+        }
+
+        window.onload=displayCart;
+        function displayCart() {
+            let sideCartDisplay = document.getElementById("cartDisplayContainer");
+
+            if(sessionStorage.Cart=== undefined || sessionStorage.Cart === "[]"){
+                sideCartDisplay.innerText = "NO ITEMS IN CART";
+                return;
+            }
+            let productList = JSON.parse(sessionStorage.allProducts);
+            
+            let cartList = JSON.parse(sessionStorage.Cart);
+            let total = 0;
+            let tableStr = "";
+            let sideCartStr = "";
+            
+
+            for (let i = 0; i < cartList.length; i++) {
+                for (let j = 0; j < productList.length; j++) {
+                    if (cartList[i].id == productList[j]._id.$oid) {
+                        sideCartStr += "<div class='sideCart'>";
+                        sideCartStr += "<div class='itemImage'>";
+                        sideCartStr += '<img src = "' + productList[j].image_url + '" alt = "' + productList[j].name + '" >';
+                        sideCartStr += '</div>';
+                        sideCartStr += '<div class="itemText">';
+                        sideCartStr += '<h1>' + productList[j].name + '</h1>';
+                        sideCartStr += '<p class="price">AED ' + productList[j].price.toFixed(2) + '</p>';
+                        sideCartStr += '<h4 style="margin-top:0;">Size : ' + productList[j].size + ' Inches</h4>';
+                        sideCartStr += '<p style="float:right; font-size: xx-large;">x' + cartList[i].qty + '</p>';
+                        // sideCartStr += '<p><select style="width: 8%; text-align: center;" onchange=\'change("'+cartList[i].id+'",this.options[this.selectedIndex].text)\'>';
+                        // for (let k = 1; k < 11; k++) {
+                        //     if (k == cartList[i].qty) {
+                        //         sideCartStr += '<option value="#" selected="selected">' + k + '</option>';
+                        //         continue;
+                        //     }
+                        //     sideCartStr += '<option value="#">' + k + '</option>';
+                        // }
+                        // sideCartStr += '</select></p>';
+                        // sideCartStr += '<button style="float:right; left: 100%;" onclick=\'deleteProduct("'+cartList[i].id+'")\'>Remove</button>';
+                        sideCartStr += '</div>';
+                        sideCartStr += '</div>';
+                        total += cartList[i].qty * productList[j].price;
+                    }
+                }
+            }
+            sideCartDisplay.innerHTML = sideCartStr;
+            document.getElementById("totalPriceContent").innerHTML = total.toFixed(2)+ " AED&nbsp;&nbsp;&nbsp;";
+
         }
     </script>
     
