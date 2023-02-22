@@ -13,7 +13,7 @@
 </head>
 
 
-<body>
+<body style="overflow-y: hidden;">
 
   <div class="bg-image"></div>
   <div class="title">
@@ -21,13 +21,13 @@
   </div>
 
 
- <!-- navigation bar -->
+  <!-- navigation bar -->
   <div class="sidebar close">
     <div class="logo-details">
       <!-- redirct to main.html 'onclick' = logo -->
       <a href="main.html">
-      <img src="../images/bear.png" style="width: 40px; margin-left:22px">
-      <span class="logo_name">StuffingTon</span>
+        <img src="../images/bear.png" style="width: 40px; margin-left:22px">
+        <span class="logo_name">StuffingTon</span>
     </div>
 
 
@@ -36,13 +36,13 @@
       <li>
         <div class="iocn-link">
           <a href="product.html">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <!-- category : product -->
             <span class="link_name">Product</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-        <ul class="sub-menu"> 
+        <ul class="sub-menu">
           <!-- dropdown menu for product category -->
           <li><a class="link_name" href="product.html">Product</a></li>
           <li><a href="add.html">Add Product</a></li>
@@ -54,11 +54,11 @@
       <li>
         <div class="iocn-link">
           <a href="customer.html">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <!-- category : customer -->
             <span class="link_name">Customer</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
 
         <ul class="sub-menu">
@@ -70,11 +70,11 @@
       <li>
         <div class="iocn-link">
           <a href="order.html">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <!-- category : order -->
             <span class="link_name">Orders</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
 
         <ul class="sub-menu">
@@ -86,9 +86,9 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <span class="link_name"></span>
-          <i class='bx bxs-chevron-down arrow' ></i>
+            <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
           <!-- Admin -->
@@ -97,7 +97,7 @@
           <li><a href="#">Kurt Patawaran - M00850500</a></li>
           <li><a href="#">Hooda AbdulShakoor - M00849592</a></li>
         </ul>
-      </li> 
+      </li>
 
     </ul>
   </div>
@@ -125,44 +125,45 @@
   </table>
   <script type="module">
 
-        let container = document.getElementById("displayTable");
-         window.onload = init;
+    let container = document.getElementById("displayTable");
+    window.onload = init;
 
-        //Downloads JSON description of products from server
-        function init() {
-            //Create request object 
-            let request = new XMLHttpRequest();
+    //Downloads JSON description of products from server
+    function init() {
+      //Create request object 
+      let request = new XMLHttpRequest();
 
-            //Create event handler that specifies what should happen when server responds
-            request.onload = () => {
-                //Check HTTP status code
-                if (request.status === 200) {;
-                    displayProducts(request.responseText);
-                }
-                else
-                    alert("Error communicating with server: " + request.status);
-            };
-
-
-            //Set up request and send it
-            
-            request.open("GET", "../php/product_management.php");
-                     
-            request.send();
+      //Create event handler that specifies what should happen when server responds
+      request.onload = () => {
+        //Check HTTP status code
+        if (request.status === 200) {
+          ;
+          displayProducts(request.responseText);
         }
+        else
+          alert("Error communicating with server: " + request.status);
+      };
 
-        function displayProducts(jsonProducts) {
 
-            
-            //Convert JSON to array of product objects
-            let prodArray = JSON.parse(jsonProducts);
-            console.log(prodArray);
-            let htmlStr = "";
+      //Set up request and send it
 
-            //Create HTML div containing product data
-            for (let i = 0; i < prodArray.length; i++) {
+      request.open("GET", "../php/product_management.php");
 
-              htmlStr += '<tr>';
+      request.send();
+    }
+
+    function displayProducts(jsonProducts) {
+
+
+      //Convert JSON to array of product objects
+      let prodArray = JSON.parse(jsonProducts);
+      console.log(prodArray);
+      let htmlStr = "";
+
+      //Create HTML div containing product data
+      for (let i = 0; i < prodArray.length; i++) {
+
+        htmlStr += '<tr>';
         htmlStr += '<td style="width:100px;" data-label="ProductID">' + prodArray[i]._id.$oid + '</td>';
         htmlStr += '<td data-label="Image"><img src="../' + prodArray[i].image_url + '" style="width: 40%;"></td>';
         htmlStr += '<td data-label="Name">' + prodArray[i].name + '</td>';
@@ -177,22 +178,50 @@
             }
             
 
-            container.innerHTML = htmlStr;
-            var elements = document.getElementsByClassName("cancel_product");
+      container.innerHTML = htmlStr;
+      var elements = document.getElementsByClassName("cancel_product");
 
-            for (var i = 0; i < elements.length; i++) {
-              elements[i].addEventListener('click', removeProduct);
-            }
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', removeProduct);
+      }
 
-           // document.getElementsByClassName("cancel_product").addEventListener("click", removeProduct);
+      // document.getElementsByClassName("cancel_product").addEventListener("click", removeProduct);
+    }
+
+
+    function removeProduct(selector) {
+
+      var data = selector.currentTarget.dataset;
+
+      let request = new XMLHttpRequest();
+
+      //Create event handler that specifies what should happen when server responds
+      request.onload = () => {
+        //Check HTTP status code
+        debugger;
+        if (request.status === 200) {
+          ;
+
         }
+        else
+          alert("Error communicating with server: " + request.status);
+      };
+
+      debugger;
+      //Set up request and send it
+      var data = {
+        id: data.id
+
+      };
+
+      var id = data.id;
+      request.open("POST", "../php/remove-product.php");
+
+      request.send(id);
+    }
 
 
-          function removeProduct(selector){
 
-          var data = selector.currentTarget.dataset;
-      
-          let request = new XMLHttpRequest();
 
             //Create event handler that specifies what should happen when server responds
             request.onload = () => {
@@ -216,23 +245,19 @@
             request.open("POST", "../php/remove-product.php");
                      
             request.send(id);
-        }
-    
-
-       
-
-</script>
+        
+  </script>
 
   <div class="bottomBtnContainer" style="display: table; margin: auto;margin-top: 2%;">
-  <a href="add.html">
-    <button style="display: flexbox; " class="btn" role="button">Add Product</button>
-  </a>
+    <a href="add.html">
+      <button style="display: flexbox; " class="btn" role="button">Add Product</button>
+    </a>
 
-  <a href="modify.html">
-    <button style="display: flexbox; " class="btn" role="button">Modify Details</button>
-  </a>
+    <a href="modify.html">
+      <button style="display: flexbox; " class="btn" role="button">Modify Details</button>
+    </a>
   </div>
-</div>
+  </div>
 
 
 

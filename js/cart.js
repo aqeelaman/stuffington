@@ -40,12 +40,12 @@ function loadCart(){
 }
 
 //Adds an item to the Cart
-function addToCart(prodID, prodName, prodPrice){
+function addToCart(prodID, prodName){
     let Cart = getCart();//Load or create Cart
     
     //Add product to Cart
     let count=1;
-    Cart.push({id: prodID, name: prodName, qty: count, price: prodPrice});
+    Cart.push({id: prodID, name: prodName, qty: count});
     //check for duplicates
     for(let i=0; i<Cart.length; i++){
         for(let j=i+1; j<Cart.length; j++){
@@ -59,9 +59,35 @@ function addToCart(prodID, prodName, prodPrice){
 
     //Store in local storage
     sessionStorage.Cart = JSON.stringify(Cart);
-    
-    //Display Cart in page.
-    loadCart();      
+       
+}
+
+function addToCartInCartPage(prodID, prodName){
+    addToCart(prodID, prodName);
+    location.reload();
+}
+
+function change(prodID,newProdQty){
+    let Cart = getCart();
+    console.log(prodID,newProdQty);
+    for(let i=0; i<Cart.length;i++){
+        if(Cart[i].id === prodID){
+            Cart[i].qty = newProdQty;
+        }
+    }
+    sessionStorage.Cart = JSON.stringify(Cart);
+    location.reload();
+}
+
+function deleteProduct(prodID){
+    let Cart = getCart();
+    for(let i=0; i<Cart.length;i++){
+        if(Cart[i].id === prodID){
+            Cart.splice(i,1);
+        }
+    }
+    sessionStorage.Cart = JSON.stringify(Cart);
+    location.reload();
 }
 
 //Deletes all products from Cart
