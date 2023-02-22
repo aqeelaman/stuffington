@@ -68,10 +68,11 @@
 .sideSummary{
     background-color: rgb(204, 202, 202);
     width: 89%;
-    padding: 10px;
-    margin-top: 4%;
-    margin-left: 4%;
+    padding: 10px; 
     margin: auto;
+    margin-top: 0%;
+    margin-left: 4%;
+   
     border-radius: 5px;
     box-shadow: 0 2px 8px 0 black;
 

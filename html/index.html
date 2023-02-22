@@ -170,8 +170,8 @@
                 htmlStr += '<a href="productDisplay.html?name=' + prodArray[index].name + '">';
                 htmlStr += '<img src="' + prodArray[index].image_url + '" alt="' + prodArray[index].name + '" style="width: 100%;">';
                 htmlStr += '<h1>' + prodArray[index].name + '</h1>';
-                htmlStr += '<p class="price">AED' + prodArray[index].price + '</p></a>';
-                htmlStr += '<p><button>Add to Cart</button></p></div>';
+                htmlStr += '<p class="price">AED' + prodArray[index].price.toFixed(2) + '</p></a>';
+                htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '")\'>Add to Cart</button></p></div>';
                 prodIDs.push(index);
                 index += 1;
                 i += 1;

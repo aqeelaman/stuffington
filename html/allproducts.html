@@ -248,12 +248,12 @@
                 htmlStr += '<a href="productDisplay.html?name=' + prodArray[i].name + '">';
                 htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name + '" style="width: 100%;">';
                 htmlStr += '<h1>' + prodArray[i].name + '</h1>';
-                htmlStr += '<p class="price">AED' + prodArray[i].price + '</p></a>';
+                htmlStr += '<p class="price">AED' + prodArray[i].price.toFixed(2) + '</p></a>';
                 // htmlStr += '<p><button onclick="addToCart("' + $document["_id"] + '", "' + $document["name"] + '")">Add to Cart</button></p></div>';
                 // htmlStr += '<p><button onclick="addToCart("'+prodArray[i]._id.$oid + ','+ prodArray[i].name+')">Add to Cart</button></p></div>';
                 // htmlStr += '<p><button onclick="addToCart('+prodArray[i]._id.$oid + ','+prodArray[i].name+')">Add to Cart</button></p></div>';
                 // htmlStr += '<p><button onclick="addToCart("'+prodArray[i]._id.$oid + '","'+ prodArray[i].name+'")">Add to Cart</button></p></div>';
-                htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '", "' + prodArray[i].price + '")\'>Add to Cart</button></p></div>';
+                htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '")\'>Add to Cart</button></p></div>';
             }
 
             container.innerHTML = htmlStr;
