@@ -17,6 +17,7 @@ $collection = $db->products;
 if (($_FILES['imageToUpload']['name']!="")){
 // Where the file is going to be stored
 	$target_dir = "../../images/StuffedToys/";
+    $target_dir2 = "../images/StuffedToys/";
 	$file = $_FILES['imageToUpload']['name'];
 	$path = pathinfo($file);
 	$filename = $path['filename'];
@@ -26,7 +27,9 @@ if (($_FILES['imageToUpload']['name']!="")){
 	$ext = $path['extension'];
 	$temp_name = $_FILES['imageToUpload']['tmp_name'];
 	$path_filename_ext = $target_dir.$filename.".".$ext;
+    $path_filename_ext_save = $target_dir2.$filename.".".$ext;
 	$filename_ext = $filename.".".$ext;
+    $filename_ext2 = "../" + $filename_ext;
  
     move_uploaded_file($temp_name,$path_filename_ext);
 }
@@ -54,7 +57,7 @@ $stock = filter_input(INPUT_POST, 'stock', FILTER_SANITIZE_STRING);
 
 $product = [
     "name" => $name,
-    "image_URL" => $filename_ext,
+    "image_url" => $path_filename_ext_save,
     "price" => $price,
     "category" => $category,
     "size" => $size,

@@ -117,6 +117,7 @@
       <th>Colour</th>
       <th>Stock</th>
       <th>Cancel Product</th>
+      <th>Modify Product</th>
     </thead>
 
     <tbody id="displayTable"></tbody>
@@ -163,17 +164,18 @@
 
               htmlStr += '<tr>';
         htmlStr += '<td style="width:100px;" data-label="ProductID">' + prodArray[i]._id.$oid + '</td>';
-        htmlStr += '<td data-label="Image"><img src="../../images/stuffedtoys/' + prodArray[i].image_URL + '" style="width: 40%;"></td>';
+        htmlStr += '<td data-label="Image"><img src="../' + prodArray[i].image_url + '" style="width: 40%;"></td>';
         htmlStr += '<td data-label="Name">' + prodArray[i].name + '</td>';
-        htmlStr += '<td data-label="Price (AED)">70.95</td>';
-        htmlStr += '<td data-label="Category">' + prodArray[i].price + '</td>';
+        htmlStr += '<td data-label="Price (AED)">' + prodArray[i].price + '</td>';
+        htmlStr += '<td data-label="Category">' + prodArray[i].category + '</td>';
         htmlStr += '<td data-label="Size">' + prodArray[i].size + '</td>';
         htmlStr += '<td data-label="Colour">' + prodArray[i].colour + '</td>';
         htmlStr += '<td data-label="Stock">' + prodArray[i].stock + '</td>';
         htmlStr += '<td data-Label="Cancel Product" class="cancel_product" data-id="'+prodArray[i]._id.$oid+'">X</td>';
+        htmlStr += '<td data-Label="Modify Product" class="modify_product" ><a href="../php/modify.php?name=' +prodArray[i].name+'">Modify</a></td>';
         htmlStr += '</tr>';
-
             }
+            
 
             container.innerHTML = htmlStr;
             var elements = document.getElementsByClassName("cancel_product");
@@ -195,7 +197,7 @@
             //Create event handler that specifies what should happen when server responds
             request.onload = () => {
                 //Check HTTP status code
-                debugger;
+                
                 if (request.status === 200) {;
                   
                 }
@@ -203,7 +205,7 @@
                     alert("Error communicating with server: " + request.status);
             };
 
-debugger;
+
             //Set up request and send it
             var data={
               id:data.id
