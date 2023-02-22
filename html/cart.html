@@ -229,6 +229,7 @@
                         sideCartStr += '<div class="itemText">';
                         sideCartStr += '<h1>' + productList[j].name + '</h1>';
                         sideCartStr += '<p class="price">AED ' + productList[j].price.toFixed(2) + '</p>';
+                        sideCartStr += '<h4 style="margin-top:0;">Size : ' + productList[j].size + ' Inches</h4>';
                         sideCartStr += '<p><select style="width: 8%; text-align: center;" onchange=\'change("'+cartList[i].id+'",this.options[this.selectedIndex].text)\'>';
                         for (let k = 1; k < 11; k++) {
                             if (k == cartList[i].qty) {
