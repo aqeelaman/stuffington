@@ -118,12 +118,11 @@
       <th>Phone Number</th>                  
       <th>Email Address)</th>  
       <th>Shipping Address</th> 
-      <th>Cancel Customer</th>
     </thead>
 
-    <tbody>
+    <tbody id="displayTable">
     <!-- details -->
-	    <tr>
+	    <!-- <tr>
        <td data-Label="Customer ID">0038193</td>
        <td data-label="Name">Marry</td>
        <td data-label="DOB">07/07/2003</td>
@@ -221,11 +220,134 @@
        <td data-label="Email Address">brianadams@gmail.com</td>
       <td data-label="Shipping Address">Majaz Waterfront</td>
       <td data-Label="Delete Customer"><img src="../images/cross.ico" style="width: 30%;"></td>
-     </tr>
+     </tr> -->
 
     </tbody>
 
   </table>
+
+  <script type="module">
+
+    let container = document.getElementById("displayTable");
+    window.onload = init;
+
+  //Downloads JSON description of products from server
+  function init() {
+    //Create request object 
+    let request = new XMLHttpRequest();
+
+    //Create event handler that specifies what should happen when server responds
+    request.onload = () => {
+
+      //Check HTTP status code
+      if (request.status === 200) {
+        ;
+        displayCustomers(request.responseText);
+      }
+      else
+        alert("Error communicating with server: " + request.status);
+    };
+
+    //Set up request and send it
+    request.open("GET", "../php/view_customer.php");
+    request.send();
+  }
+
+
+  function displayCustomers(jsonCustomers) {
+    //Convert JSON to array of product objects
+    let custArray = JSON.parse(jsonCustomers);
+    console.log(custArray);
+    let htmlStr = "";
+    
+    //Create HTML div containing product data
+    for (let i = 0; i < custArray.length; i++) {
+      htmlStr += '<tr>';
+      htmlStr += '<td style="width:100px;" data-label="CustomerID">' + custArray[i]._id.$oid + '</td>';
+      htmlStr += '<td data-label="Name">' + custArray[i].name + '</td>';
+      htmlStr += '<td data-label="DOB">' + custArray[i].dob + '</td>';
+      htmlStr += '<td data-label="Phone Number">' + custArray[i].phone + '</td>';
+      htmlStr += '<td data-label="Email Address">' + custArray[i].email + '</td>';
+      htmlStr += '<td data-label="Shipping Address">' + custArray[i].address + '</td>';
+      htmlStr += '</tr>';
+    }
+        
+  container.innerHTML = htmlStr;
+  // var elements = document.getElementsByClassName("cancel_customer");
+  for (var i = 0; i < elements.length; i++) {
+    // elements[i].addEventListener('click', removeProduct);
+  }
+  }
+
+
+  // function removeProduct(selector) {
+
+    //   var data = selector.currentTarget.dataset;
+
+    //   let request = new XMLHttpRequest();
+
+    //   //Create event handler that specifies what should happen when server responds
+    //   request.onload = () => {
+    //     //Check HTTP status code
+    //     debugger;
+    //     if (request.status === 200) {
+    //       ;
+
+    //     }
+    //     else
+    //       alert("Error communicating with server: " + request.status);
+    //   };
+
+    //   debugger;
+    //   //Set up request and send it
+    //   var data = {
+    //     id: data.id
+
+    //   };
+
+    //   var id = data.id;
+    //   request.open("POST", "../php/remove-product.php");
+
+    //   request.send(id);
+  // }
+
+
+
+
+    //Create event handler that specifies what should happen when server responds
+    request.onload = () => {
+        //Check HTTP status code
+        
+        if (request.status === 200) {;
+          
+        }
+        else
+            alert("Error communicating with server: " + request.status);
+    };
+    //Set up request and send it
+    var data={
+      id:data.id
+    };
+    var id = data.id;
+    // request.open("POST", "../php/remove-product.php");
+             
+    request.send(id);
+
+  </script>
+
+  <div class="bottomBtnContainer" style="display: table; margin: auto;margin-top: 2%;">
+    <a href="add.html">
+      <button style="display: flexbox; " class="btn" role="button">Add Product</button>
+    </a>
+
+    <a href="modify.html">
+      <button style="display: flexbox; " class="btn" role="button">Modify Details</button>
+    </a>
+  </div>
+  </div>
+
+
+
 
 
 
