@@ -15,7 +15,8 @@
       {
         "ignore": [
           "max-width: fit-content",
-          "backdrop-filter"
+          "backdrop-filter",
+          "width: fit-content"
         ]
       }
     ],

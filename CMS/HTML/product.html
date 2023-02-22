@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="../CSS/styles.css">
   <link rel="stylesheet" href="../CSS/navigation.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
   <!-- Link to favicon -->
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
@@ -46,7 +47,6 @@
           <!-- dropdown menu for product category -->
           <li><a class="link_name" href="product.html">Product</a></li>
           <li><a href="add.html">Add Product</a></li>
-          <li><a href="modify.html">Modify Details</a></li>
         </ul>
       </li>
 
@@ -116,7 +116,7 @@
       <th>Size</th>
       <th>Colour</th>
       <th>Stock</th>
-      <th>Cancel Product</th>
+      <!-- <th>Cancel Product</th> -->
       <th>Modify Product</th>
     </thead>
 
@@ -172,8 +172,8 @@
         htmlStr += '<td data-label="Size">' + prodArray[i].size + '</td>';
         htmlStr += '<td data-label="Colour">' + prodArray[i].colour + '</td>';
         htmlStr += '<td data-label="Stock">' + prodArray[i].stock + '</td>';
-        htmlStr += '<td data-Label="Cancel Product" class="cancel_product" data-id="'+prodArray[i]._id.$oid+'">X</td>';
-        htmlStr += '<td data-Label="Modify Product" class="modify_product" ><a href="../php/modify.php?name=' +prodArray[i].name+'">Modify</a></td>';
+        // htmlStr += '<td data-Label="Cancel Product" class="cancel_product" data-id="'+prodArray[i]._id.$oid+'">X</td>';
+        htmlStr += '<td data-Label="Modify Product" class="modify_product" ><a href="../php/modify.php?name=' +prodArray[i].name+'"><i class="fas fa-edit"></i></a></td>';
         htmlStr += '</tr>';
             }
             
@@ -250,11 +250,7 @@
 
   <div class="bottomBtnContainer" style="display: table; margin: auto;margin-top: 2%;">
     <a href="add.html">
-      <button style="display: flexbox; " class="btn" role="button">Add Product</button>
-    </a>
-
-    <a href="modify.html">
-      <button style="display: flexbox; " class="btn" role="button">Modify Details</button>
+      <button style="display: flexbox; " class="btn" role="button">Add New Product</button>
     </a>
   </div>
   </div>
