@@ -314,3 +314,13 @@
         left: 0;
     }
 }
+
+
+#login_bar {
+    width: 300px;
+    position: fixed;
+    z-index: 10;
+    border: 1px solid black;
+    top: -5px;
+    right: 0px;
+}

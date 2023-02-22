@@ -15,11 +15,19 @@
 </head>
   
 
-<body>
+<body style="font-family: segoe UI;">
 
   <div class="bg-image"></div>
+
+  <a href="../../html/login.html" style="margin: 10px;text-decoration: none;">
+    <button style="display: block; float:right; font-size: 20px; font-weight: bold; color: aliceblue; text-align: center;  width: 100px;" class="btn" role="button" onclick="logout()">Logout</button>
+  </a>
+
+  <h1 style="float:left; color: white; font-size: 30px;">Hello Admin</h1>
+
+
   <div style="margin: auto; display: table; margin-top:10%;">
-    <p style="font-size: 40px; font-weight: bold; color: aliceblue; margin-top: -20px; margin-bottom: 30px;">Welcome To Admin Page</p>
+    <p style="font-size: 50px; font-weight: bold; color: aliceblue; margin-top: -20px; margin-bottom: 30px;">Welcome To Admin Page</p>
     <a href="product.html" style="margin: 10px;text-decoration: none;">
       <button style="display: block; margin: auto; font-size: 20px; font-weight: bold; color: aliceblue;" class="btn" role="button">Product</button>
     </a>
@@ -36,10 +44,9 @@
       <button style="display: block; margin: auto; font-size: 20px; font-weight: bold; color: aliceblue;" class="btn" role="button">Stuffington</button>
     </a>
 
-    <a href="../../html/login.html" style="margin: 10px;text-decoration: none;">
-      <button style="display: block; margin: auto; font-size: 20px; font-weight: bold; color: aliceblue;" class="btn" role="button" onclick="logout()">Logout</button>
-    </a>
   </div>
+
+
   <script>
     function logout(){
       sessionStorage.loggedInStaffUsr="";
