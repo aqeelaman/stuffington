@@ -174,12 +174,11 @@ for (let i = 0; i < OrderArray.length; i++) {
     htmlStr += 'ProdID:' + OrderArray[i].products[j].product_id.$oid + " Qty:" + OrderArray[i].products[j].quantity + "<br>";
   }
   htmlStr += '</td>';
-  
+
   //Hidden form to pass data to remove.php
   htmlStr += '<td>';
   htmlStr += '<form action="../php/remove.php" method="post">';
-  htmlStr += '<input type="hidden" id="orderId" name="orderId" value="ORDER_ID">';
-  htmlStr += '<input type="hidden" id="productId" name="productId" value="PRODUCT_ID">';
+  htmlStr += '<input type="hidden" id="orderId" name="orderId" value="'+OrderArray[i]._id.$oid+'">';
   htmlStr += '<button type="submit" name="deleteproduct">Delete</button>';
   htmlStr += '</form>';
   htmlStr += '</td>';
