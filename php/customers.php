@@ -48,7 +48,7 @@ if ($function == "view") {
     //Echo final string
     echo $jsonCustomers;
 }
-else if($function = "find"){
+if($function = "find"){
     
     
     $findCriteria = ['_id' => 'ObjectId("' . $id . '")'];
