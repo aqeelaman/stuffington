@@ -1,25 +1,10 @@
 <?php
 
-require __DIR__ . '/vendor/autoload.php';
+require 'removeProductFromOrder.php';
 
-$mongoClient = new MongoDB\Client;
-
-$db = $mongoClient->stuffington;
-$collection = $db->Order;
-
-$OrderID = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
-
-$DeleteCriteria = [
-    "OrderID" => $OrderID
-];
-
-$returnVal = $collection->deleteOne($DeleteCriteria);
-
-if ($returnVal->getDeletedCount() == 1) {
-    header("Location: ../HTML/order.html");
-} else {
-
-    echo "Order not deleted";
+if(isset($_POST['deleteproduct'])) {
+    $orderId = $_POST['orderId'];
+    $productId = $_POST['productId'];
+    removeProductFromOrder($orderId, $productId);
 }
-
 ?>
