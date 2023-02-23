@@ -16,19 +16,19 @@
 </head>
 
 
-    
+
 <body>
     <div class="navigationContainer">
         <!-- Navigation section -->
-        <ul class="navbar">    
+        <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
             <li><input type="search" id="searchbar" class="searchbar" placeholder="Search.."></li>
-            <li style="float:right"><a href="cart.html" >🛒</a></li>
+            <li style="float:right"><a href="cart.html">🛒</a></li>
             <li style="float:right"><a href="profile.html">👤</a></li>
             <li style="float:right"><a href="login.html">SIGN IN</a></li>
             <li style="float:right"><a href="aboutUs.html">ABOUT US</a></li>
         </ul>
-        <ul class="categoryNavbar">    
+        <ul class="categoryNavbar">
             <li><a href="allproducts.html">All Products</a></li>
             <li><a href="allproducts.html?category=Teddy Bear">Teddy Bear</a></li>
             <li><a href="allproducts.html?category=House Pets">House Pets</a></li>
@@ -38,127 +38,124 @@
 
 
 
-<div class="user-details"> User Details </div>
- <div class="wrapper">
-    <!-- User Information (name & age) -->
-    <div class="left">
-        <img src="../images/profileID.png" alt="user" width="100">
-        <h4 id="nameText"></h4>
-         <p id="dobText"></p>
+    <div class="user-details"> User Details </div>
+    <div class="wrapper">
+        <!-- User Information (name & age) -->
+        <div class="left">
+            <img src="../images/profileID.png" alt="user" width="100">
+            <h4 id="nameText"></h4>
+        </div>
+
+        <!-- User Information(Email & Phone) -->
+        <div class="right">
+            <div class="info">
+                <h3>Information</h3>
+                <div class="info_data">
+                    <div class="data">
+                        <h4>Email</h4>
+                        <p id="emailText"></p>
+                    </div>
+                    <div class="data">
+                        <h4>DOB</h4>
+                        <p id="dobText"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- User Information(Email & Phone) -->
-    <div class="right">
-        <div class="info">
-            <h3>Information</h3>
-            <div class="info_data">
-                 <div class="data">
-                    <h4 >Email</h4>
-                    <p id="emailText"></p>
-                 </div>
-            </div>
+
+
+
+    <div class="recommendContainer">
+        <div class="user-details">
+            Order History
         </div>
-      
-        <!-- Personal Information(Shipping Address & Password) -->
-      <div class="projects">
-            <h3>Personal Details</h3>
-            <div class="projects_data">
-                 <div class="data">
-                    <h4>Shipping Address</h4>
-                    <p>Area, Building name and flat, Emirate, Country</p>
-                 </div>
-                 <div class="data">
-                   <h4>Password</h4>
-                    <p>*Strong Password*
-                        - Must be 8 digits and longer
-                    
-                    </p>
-              </div>
-            </div>
+        <div class="card">
+            <img src="../images/StuffedToys/HousePets/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
+            <h1>Brown Bunny</h1>
+            <p class="price">AED47.99</p>
         </div>
-      
-        
- </div>
-</div>
-
-
-
-
- <div class="recommendContainer">
-    <div class="user-details">
-        Order History
+        <div class="card">
+            <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
+            <h1>Black Dragon</h1>
+            <p class="price">AED39.99</p>
+        </div>
+        <div class="card">
+            <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear" style="width: 100%;">
+            <h1>Brown Bear</h1>
+            <p class="price">AED9.99</p>
+        </div>
+        <div class="card">
+            <img src="../images/StuffedToys/HousePets/BrownDog.jpg" alt="BrownDog" style="width: 100%;">
+            <h1>Brown Dog</h1>
+            <p class="price">AED39.99</p>
+        </div>
     </div>
-            <div class="card"> 
-                <img src="../images/StuffedToys/HousePets/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
-                <h1>Brown Bunny</h1>
-                <p class="price">AED47.99</p>
-            </div>
-            <div class="card">
-                <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
-                <h1>Black Dragon</h1>
-                <p class="price">AED39.99</p>
-            </div>
-            <div class="card">
-                <img src="../images/StuffedToys/TeddyBear/BrownBear.jpg" alt="BrownBear" style="width: 100%;">
-                <h1>Brown Bear</h1>
-                <p class="price">AED9.99</p>
-            </div>
-            <div class="card">
-                <img src="../images/StuffedToys/HousePets/BrownDog.jpg" alt="BrownDog" style="width: 100%;">
-                <h1>Brown Dog</h1>
-                <p class="price">AED39.99</p>
-            </div>
-        </div>
 </body>
 
-    <!-- js for searchbar functionality -->
-    <script type="module">
-        "use strict"
-        //Import recommender class
-        import { Recommender } from '../js/searchbar.js';
+<!-- js for searchbar functionality -->
+<script type="module">
+    "use strict"
+    //Import recommender class
+    import { Recommender } from '../js/searchbar.js';
 
-        //Create recommender object - it loads its state from session storage
-        let recommender = new Recommender();
+    //Create recommender object - it loads its state from session storage
+    let recommender = new Recommender();
 
-        //searchbar functionality
-        let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
-            //add keyword to sessionStorage
-            recommender.addKeyword(searchBar.value);
-            //display searched product
-            recommender.search();
+    //searchbar functionality
+    let searchBar = document.getElementById("searchbar");
+    searchBar.onsearch = function () {
+        //add keyword to sessionStorage
+        recommender.addKeyword(searchBar.value);
+        //display searched product
+        recommender.search();
+    }
+
+    window.onload = init;
+
+    function init() {
+        let loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
+        console.log(loggedInUsr);
+        //Create request object 
+        let request = new XMLHttpRequest();
+
+        //Create event handler that specifies what should happen when server responds
+        request.onload = () => {
+            //Check HTTP status code
+            if (request.status === 200) {
+                //Add data from server to page
+                console.log(request.responseText);
+                displayProfile(request.responseText);
+            }
+            else
+                alert("Error communicating with server: " + request.status);
+        };
+
+        let url = "../php/customers.php?id=" + loggedInUsr;
+        //Set up request and send it
+        request.open("GET", url);
+        request.send();
+    }
+
+    function displayProfile(jsonCustomer) {
+
+        if (jsonCustomer == "]") {
+            alert("Not logged in");
+            window.location.href = "login.html";
         }
 
-        window.onload = init;
+        let customerDetails = JSON.parse(jsonCustomer);
 
-        function init(){
-            let loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
-            console.log(loggedInUsr);
-            //Create request object 
-            let request = new XMLHttpRequest();
+        document.getElementById("nameText").innerText = "Name :  " + customerDetails[1];
+        document.getElementById("dobText").innerText = customerDetails[4];
+        document.getElementById("emailText").innerText = customerDetails[2];
+    }
 
-            //Create event handler that specifies what should happen when server responds
-            request.onload = () => {
-                //Check HTTP status code
-                if (request.status === 200) {
-                    //Add data from server to page
-                    console.log(request.responseText);
-                    // displayProduct(request.responseText);
-                }
-                else
-                    alert("Error communicating with server: " + request.status);
-            };
+</script>
 
-            let url = "../php/customers.php?function='find'&id="+ loggedInUsr;
-            //Set up request and send it
-            request.open("GET", url);
-            request.send();
-        }
-
-    </script>
-
-    <footer class="footer1">
-        <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
+<footer class="footer1">
+    <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
     <footer>
 
 
