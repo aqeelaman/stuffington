@@ -67,11 +67,11 @@
 
 
 
-    <div class="recommendContainer">
+    <div id ="orderContainer" class="orderContainer">
         <div class="user-details">
             Order History
         </div>
-        <div class="card">
+        <!-- <div class="card">
             <img src="../images/StuffedToys/HousePets/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
             <h1>Brown Bunny</h1>
             <p class="price">AED47.99</p>
@@ -90,7 +90,7 @@
             <img src="../images/StuffedToys/HousePets/BrownDog.jpg" alt="BrownDog" style="width: 100%;">
             <h1>Brown Dog</h1>
             <p class="price">AED39.99</p>
-        </div>
+        </div> -->
     </div>
 </body>
 
@@ -111,12 +111,13 @@
         //display searched product
         recommender.search();
     }
+    var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
+    console.log(loggedInUsr);
 
     window.onload = init;
 
     function init() {
-        let loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
-        console.log(loggedInUsr);
+
         //Create request object 
         let request = new XMLHttpRequest();
 
@@ -150,6 +151,48 @@
         document.getElementById("nameText").innerText = "Name :  " + customerDetails[1];
         document.getElementById("dobText").innerText = customerDetails[4];
         document.getElementById("emailText").innerText = customerDetails[2];
+
+        getPreviousOrders();
+    }
+
+    function getPreviousOrders() {
+
+        //Create request object 
+        let request = new XMLHttpRequest();
+
+        //Create event handler that specifies what should happen when server responds
+        request.onload = () => {
+            //Add data from server to page
+            //console.log(request.responseText);
+            displayPreviousOrders(request.responseText);
+        };
+
+        let url = "../php/getOrders.php?custId=" + loggedInUsr;
+        //Set up request and send it
+        request.open("GET", url);
+        request.send();
+    }
+
+    function displayPreviousOrders(jsonOrders){
+
+        let container = document.getElementById("orderContainer");
+        let orderStr = "";
+        
+        if (jsonOrders=="]"){
+            orderStr += '<div class="user-details">No Previous Orders</div>';
+            container.innerHTML = orderStr;
+            return
+        }
+
+        let orderArray = JSON.parse(jsonOrders);
+        console.log(orderArray);
+        
+        for(let i = 0; i< orderArray.length;i++){
+            for(let j = 0;j<orderArray[i].products.length;j++){
+                console.log("dd");
+            }
+        }
+
     }
 
 </script>

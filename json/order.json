@@ -1,7 +1,6 @@
 db.order.insert([
     {
         "customer_id": ObjectId("63d3e761caa7adf4d417f546"),
-        "OrderID": "1",
         "shipping_address": "Al Barsha, Dubai",
         "date":"23/01/2023",
         "time":"15:34",
@@ -19,7 +18,6 @@ db.order.insert([
     },
     {
         "customer_id": ObjectId("63d3e761caa7adf4d417f547"),
-        "OrderID": "2",
         "shipping_address": "Dubailand, Dubai",
         "date":"24/01/2023",
         "time":"09:10",
@@ -37,7 +35,6 @@ db.order.insert([
     },
     {
         "customer_id": ObjectId("63d3e761caa7adf4d417f548"),
-        "OrderID": "3",
         "shipping_address": "Marsa, Dubai",
         "date":"24/01/2023",
         "time":"20:41",
@@ -51,7 +48,6 @@ db.order.insert([
     },
     {
         "customer_id": ObjectId("63d3e761caa7adf4d417f549"),
-        "OrderID": "4",
         "shipping_address": "Al Barsha, Dubai",
         "date":"25/01/2023",
         "time":"21:34",
@@ -74,7 +70,6 @@ db.order.insert([
     {
         "customer_id": ObjectId("63d3e761caa7adf4d417f54c"),
         "shipping_address": "Jumeirah Lakes and Towers, Dubai",
-        "OrderID": "5",
         "date":"26/01/2023",
         "time":"04:14",
         "price": 231.67,
