@@ -14,6 +14,7 @@ $collection = $db->customers;
 
 //Extract the data that was sent to the server
 $function = filter_input(INPUT_POST, 'function', FILTER_SANITIZE_STRING);
+$id = filter_input(INPUT_GET,'id', FILTER_SANITIZE_STRING);
 $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_STRING);
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
@@ -33,8 +34,8 @@ if ($function == "view") {
     $jsonCustomers = '[';
 
     //work through products
-    foreach ($cursor as $product) {
-        $jsonCustomers .= json_encode($product); //Convert PHP representation into JSON 
+    foreach ($cursor as $customer) {
+        $jsonCustomers .= json_encode($customer); //Convert PHP representation into JSON 
         $jsonCustomers .= ','; //Separator between each element
     }
 
@@ -46,6 +47,33 @@ if ($function == "view") {
 
     //Echo final string
     echo $jsonCustomers;
+}
+if($function = "find"){
+    
+    
+    $findCriteria = ['_id' => 'ObjectId("' . $id . '")'];
+    
+    // $findCriteria= ['_id' => 'ObjectId("63d3e761caa7adf4d417f546")'];
+    $cursor = $db->customers->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
+    
+    //Output each product as a JSON object
+    $jsonCustomers = '[';
+
+    //work through products
+    foreach ($cursor as $customer) {
+        $jsonCustomers .= json_encode($customer); //Convert PHP representation into JSON 
+        $jsonCustomers .= ','; //Separator between each element
+    }
+
+    //Remove last comma
+    $jsonCustomers = substr($jsonCustomers, 0, strlen($jsonCustomers) - 1);
+
+    //Close array
+    $jsonCustomers .= ']';
+
+    //Echo final string
+    echo $jsonCustomers;
+
 } else {
     //Add the new product to the database
     $insertResult = $collection->insertOne($dataArray);
