@@ -110,6 +110,8 @@
 
     <thead>
       <th>Customer ID</th>  
+      <th>Order ID</th> 
+      
       <th>Shipping Address</th>
       <th>Date</th>
       <th>Time</th>
@@ -292,89 +294,99 @@
 
       //Create HTML div containing Order data
       for (let i = 0; i < OrderArray.length; i++) {
-
+        htmlStr += '<form action="../php/remove.php" action="post" enctype="multipart/form-data">';
         htmlStr += '<tr>';
-        htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i]._id.$oid + '</td>';
+          htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i].customer_id.$oid + '</td>';
+        htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i].OrderID + '</td>';
         // htmlStr += '<td data-label="Image"><img src="../' + OrderArray[i].image_url + '" style="width: 40%;"></td>';
-        htmlStr += '<td data-label="Shipping Address">' + OrderArray[i].shipping + '</td>';
+        htmlStr += '<td data-label="Shipping Address">' + OrderArray[i].shipping_address + '</td>';
         htmlStr += '<td data-label="Date">' + OrderArray[i].date + '</td>';
         htmlStr += '<td data-label="Time">' + OrderArray[i].time + '</td>';
         htmlStr += '<td data-label="Price">' + OrderArray[i].price + '</td>';
         htmlStr += '<td data-label="Products">' + OrderArray[i].products + '</td>';
-        // htmlStr += '<td data-label="Stock">' + OrderArray[i].stock + '</td>';
-        htmlStr += '<td data-Label="Cancel Order" class="cancel_Order" data-id="'+OrderArray[i]._id.$oid+'">X</td>';
-        // htmlStr += '<td data-Label="Modify Order" class="modify_Order" ><a href="../php/modify.php?name=' +OrderArray[i].name+'"><i class="fas fa-edit"></i></a></td>';
+
+        //Hidden form to pass data to remove.php
+        htmlStr += '<input type="hidden" id="id" name="id" value="'+OrderArray[i].OrderID+'">';
+        htmlStr += '<input type="hidden" name="shipping_address" value="'+OrderArray[i].shipping_address+'">';
+        htmlStr += '<input type="hidden" name="date" value="'+OrderArray[i].date+'">';
+        htmlStr += '<input type="hidden" name="time" value="'+OrderArray[i].time+'">';
+        htmlStr += '<input type="hidden" name="price" value="'+OrderArray[i].price+'">';
+        htmlStr += '<input type="hidden" name="products" value="'+OrderArray[i].products+'">';
+        htmlStr += '<td><button type="submit"> Delete</button></td>';
+        htmlStr += '</form>';
+         console.log( OrderArray[i]._id.$oid);
+        // htmlStr += '<td data-Label="Cancel Order" class="cancel_Order" data-id="'+OrderArray[i]._id.$oid+'"><a HREF="">X</a></td>';
         htmlStr += '</tr>';
             }
+        
             
 
       container.innerHTML = htmlStr;
-      var elements = document.getElementsByClassName("cancel_Order");
+    //   var elements = document.getElementsByClassName("cancel_Order");
 
-      for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', removeOrder);
-      }
+    //   for (var i = 0; i < elements.length; i++) {
+    //     elements[i].addEventListener('click', removeOrder);
+    //   }
 
-      document.getElementsByClassName("cancel_Order").addEventListener("click", removeOrder);
+    //   document.getElementsByClassName("cancel_Order").addEventListener("click", removeOrder);
     }
 
 
-    function removeOrder(selector) {
+    // function removeOrder(selector) {
 
-      var data = selector.currentTarget.dataset;
+    //   var data = selector.currentTarget.dataset;
 
-      let request = new XMLHttpRequest();
+    //   let request = new XMLHttpRequest();
 
-      //Create event handler that specifies what should happen when server responds
-      request.onload = () => {
-        //Check HTTP status code
-        debugger;
-        if (request.status === 200) {
-          ;
+    //   //Create event handler that specifies what should happen when server responds
+    //   request.onload = () => {
+    //     //Check HTTP status code
+        
+    //     if (request.status === 200) {
+    //       ;
 
-        }
-        else
-          alert("Error communicating with server: " + request.status);
-      };
+    //     }
+    //     else
+    //       alert("Error communicating with server: " + request.status);
+    //   };
 
-      debugger;
-      //Set up request and send it
-      var data = {
-        id: data.id
+    //   //Set up request and send it
+    //   var data = {
+    //     id: data.id
 
-      };
+    //   };
 
-      var id = data.id;
-      request.open("POST", "../php/remove-product.php");
+    //   var id = data.id;
+    //   request.open("POST", "../php/remove-product.php");
 
-      request.send(id);
-    }
-
+    //   request.send(id);
+    // }
 
 
 
-            //Create event handler that specifies what should happen when server responds
-            request.onload = () => {
-                //Check HTTP status code
+
+            // //Create event handler that specifies what should happen when server responds
+            // request.onload = () => {
+            //     //Check HTTP status code
                 
-                if (request.status === 200) {;
+            //     if (request.status === 200) {;
                   
-                }
-                else
-                    alert("Error communicating with server: " + request.status);
-            };
+            //     }
+            //     else
+            //         alert("Error communicating with server: " + request.status);
+            // };
 
 
-            //Set up request and send it
-            var data={
-              id:data.id
+            // //Set up request and send it
+            // var data={
+            //   id:data.id
 
-            };
+            // };
 
-            var id = data.id;
-            request.open("POST", "../php/remove-product.php");
+            // var id = data.id;
+            // request.open("POST", "../php/remove-product.php");
                      
-            request.send(id);
+            // request.send(id);
         
   </script>
 
