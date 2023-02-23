@@ -109,20 +109,17 @@
    <table class="table">
 
     <thead>
-      <th>Order ID</th>  
-      <th>Product ID</th> 
-      <th>Product Name</th>                  
-      <th>Quantity</th>  
-      <th>Price</th> 
-      <th>Customer ID</th> 
-      <th>Time</th>
+      <th>Customer ID</th>  
+      <th>Shipping Address</th>
       <th>Date</th>
-      <th>Shipping Address</th> 
+      <th>Time</th>
+      <th>Price</th> 
+      <th>Products</th>  
       <th>Cancel Order</th>
     </thead>
 
-    <tbody>
-	 <tr>
+    <tbody id="displayTable">
+	    <!-- <tr>
        <td data-label="Order ID">7920847</td>
        <td data-label="Product ID">T90278</td>
        <td data-label="Product Name">Black Bear</td>
@@ -133,9 +130,9 @@
        <td date-Label="Date">23/06/2020</td>
        <td data-label="Shipping Address">Al Barsha, Dubai</td>
        <td data-Label="Cancel Order"><img src="../images/cross.ico" style="width: 30%;"></td>
-     </tr>
+      </tr>
 
-	 <tr>
+	    <tr>
        <td data-label="Order ID">8927834</td>
        <td data-label="Product ID">H20993</td>
        <td data-label="Product Name">Brown Bunny</td>
@@ -250,11 +247,136 @@
        <td date-Label="Date">26/09/2003</td>
       <td data-label="Shipping Address">Majaz Waterfront</td>
       <td data-Label="Cancel Order"><img src="../images/cross.ico" style="width: 30%;"></td>
-     </tr>
+     </tr> -->
 
     </tbody>
 
   </table>
+
+    <script type="module">
+
+    let container = document.getElementById("displayTable");
+    window.onload = init;
+
+    //Downloads JSON description of Order from server
+    function init() {
+      //Create request object 
+      let request = new XMLHttpRequest();
+
+      //Create event handler that specifies what should happen when server responds
+      request.onload = () => {
+        //Check HTTP status code
+        if (request.status === 200) {
+          ;
+          displayorder(request.responseText);
+        }
+        else
+          alert("Error communicating with server: " + request.status);
+      };
+
+
+      //Set up request and send it
+
+      request.open("GET", "../php/order.php");
+
+      request.send();
+    }
+
+    function displayorder(jsonorder) {
+
+
+      //Convert JSON to array of Order objects
+      let OrderArray = JSON.parse(jsonorder);
+      console.log(OrderArray);
+      let htmlStr = "";
+
+      //Create HTML div containing Order data
+      for (let i = 0; i < OrderArray.length; i++) {
+
+        htmlStr += '<tr>';
+        htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i]._id.$oid + '</td>';
+        // htmlStr += '<td data-label="Image"><img src="../' + OrderArray[i].image_url + '" style="width: 40%;"></td>';
+        htmlStr += '<td data-label="Shipping Address">' + OrderArray[i].shipping + '</td>';
+        htmlStr += '<td data-label="Date">' + OrderArray[i].date + '</td>';
+        htmlStr += '<td data-label="Time">' + OrderArray[i].time + '</td>';
+        htmlStr += '<td data-label="Price">' + OrderArray[i].price + '</td>';
+        htmlStr += '<td data-label="Products">' + OrderArray[i].products + '</td>';
+        // htmlStr += '<td data-label="Stock">' + OrderArray[i].stock + '</td>';
+        htmlStr += '<td data-Label="Cancel Order" class="cancel_Order" data-id="'+OrderArray[i]._id.$oid+'">X</td>';
+        // htmlStr += '<td data-Label="Modify Order" class="modify_Order" ><a href="../php/modify.php?name=' +OrderArray[i].name+'"><i class="fas fa-edit"></i></a></td>';
+        htmlStr += '</tr>';
+            }
+            
+
+      container.innerHTML = htmlStr;
+      var elements = document.getElementsByClassName("cancel_Order");
+
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', removeOrder);
+      }
+
+      document.getElementsByClassName("cancel_Order").addEventListener("click", removeOrder);
+    }
+
+
+    function removeOrder(selector) {
+
+      var data = selector.currentTarget.dataset;
+
+      let request = new XMLHttpRequest();
+
+      //Create event handler that specifies what should happen when server responds
+      request.onload = () => {
+        //Check HTTP status code
+        debugger;
+        if (request.status === 200) {
+          ;
+
+        }
+        else
+          alert("Error communicating with server: " + request.status);
+      };
+
+      debugger;
+      //Set up request and send it
+      var data = {
+        id: data.id
+
+      };
+
+      var id = data.id;
+      request.open("POST", "../php/remove-product.php");
+
+      request.send(id);
+    }
+
+
+
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                
+                if (request.status === 200) {;
+                  
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+
+            //Set up request and send it
+            var data={
+              id:data.id
+
+            };
+
+            var id = data.id;
+            request.open("POST", "../php/remove-product.php");
+                     
+            request.send(id);
+        
+  </script>
 
 
 
