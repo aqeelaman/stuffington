@@ -292,6 +292,7 @@
       console.log(OrderArray);
       let htmlStr = "";
 
+<<<<<<< Updated upstream
       //Create HTML div containing Order data
       for (let i = 0; i < OrderArray.length; i++) {
         htmlStr += '<form action="../php/remove.php" action="post" enctype="multipart/form-data">';
@@ -329,6 +330,36 @@
         // htmlStr += '<td data-Label="Cancel Order" class="cancel_Order" data-id="'+OrderArray[i]._id.$oid+'"><a HREF="">X</a></td>';
         htmlStr += '</tr>';
             }
+=======
+      // Create HTML tr containing Order data
+for (let i = 0; i < OrderArray.length; i++) {
+  htmlStr += '<tr>';
+  htmlStr += '<td style="width:100px;" data-label="CustomerID">' + OrderArray[i].customer_id.$oid + '</td>';
+  htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i].OrderID + '</td>';
+  // htmlStr += '<td data-label="Image"><img src="../' + OrderArray[i].image_url + '" style="width: 40%;"></td>';
+  htmlStr += '<td data-label="Shipping Address">' + OrderArray[i].shipping_address + '</td>';
+  htmlStr += '<td data-label="Date">' + OrderArray[i].date + '</td>';
+  htmlStr += '<td data-label="Time">' + OrderArray[i].time + '</td>';
+  htmlStr += '<td data-label="Price">' + OrderArray[i].price + '</td>';
+  htmlStr += '<td data-label="Products">' + OrderArray[i].products + '</td>';
+  htmlStr += '<td>';
+  htmlStr += '<form action="../php/remove.php" method="post" enctype="multipart/form-data">';
+
+  // Hidden form to pass data to remove.php
+  htmlStr += '<input type="hidden" id="OrderID" name="id" value="'+OrderArray[i].OrderID+'">';
+  htmlStr += '<input type="hidden" name="shipping_address" value="'+OrderArray[i].shipping_address+'">';
+  htmlStr += '<input type="hidden" name="date" value="'+OrderArray[i].date+'">';
+  htmlStr += '<input type="hidden" name="time" value="'+OrderArray[i].time+'">';
+  htmlStr += '<input type="hidden" name="price" value="'+OrderArray[i].price+'">';
+  htmlStr += '<input type="hidden" name="products" value="'+OrderArray[i].products+'">';
+  htmlStr += '<button type="submit"> Delete</button></form></td>';
+  
+  // htmlStr += '<td data-Label="Cancel Order" class="cancel_Order" data-id="'+OrderArray[i]._id.$oid+'"><a HREF="">X</a></td>';
+  htmlStr += '</tr>';
+}
+
+container.innerHTML = htmlStr;
+>>>>>>> Stashed changes
         
             
 
