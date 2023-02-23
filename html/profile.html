@@ -43,8 +43,8 @@
     <!-- User Information (name & age) -->
     <div class="left">
         <img src="../images/profileID.png" alt="user" width="100">
-        <h4>Logged In User (Full name) </h4>
-         <p>Age : User Age (after registration) </p>
+        <h4 id="nameText"></h4>
+         <p id="dobText"></p>
     </div>
 
     <!-- User Information(Email & Phone) -->
@@ -53,13 +53,9 @@
             <h3>Information</h3>
             <div class="info_data">
                  <div class="data">
-                    <h4>Email</h4>
-                    <p>User Email (after registration)</p>
+                    <h4 >Email</h4>
+                    <p id="emailText"></p>
                  </div>
-                 <div class="data">
-                   <h4>Phone</h4>
-                    <p>User Phone (after registration)</p>
-              </div>
             </div>
         </div>
       
@@ -132,6 +128,33 @@
             //display searched product
             recommender.search();
         }
+
+        window.onload = init;
+
+        function init(){
+            let loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
+            console.log(loggedInUsr);
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+                    //Add data from server to page
+                    console.log(request.responseText);
+                    // displayProduct(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+            let url = "../php/customers.php?function='find'&id="+ loggedInUsr;
+            //Set up request and send it
+            request.open("GET", url);
+            request.send();
+        }
+
     </script>
 
     <footer class="footer1">
