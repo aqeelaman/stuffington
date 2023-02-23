@@ -24,13 +24,13 @@
       <h1>Modify Details</h1>
     </div>
 
- <!-- navigation bar -->
+  <!-- navigation bar -->
   <div class="sidebar close">
     <div class="logo-details">
       <!-- redirct to main.html 'onclick' = logo -->
       <a href="main.html">
-      <img src="../images/bear.png" style="width: 40px; margin-left:22px">
-      <span class="logo_name">StuffingTon</span>
+        <img src="../images/bear.png" style="width: 40px; margin-left:22px">
+        <span class="logo_name">StuffingTon</span>
     </div>
 
 
@@ -39,17 +39,16 @@
       <li>
         <div class="iocn-link">
           <a href="product.html">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <!-- category : product -->
             <span class="link_name">Product</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
-        <ul class="sub-menu"> 
+        <ul class="sub-menu">
           <!-- dropdown menu for product category -->
           <li><a class="link_name" href="product.html">Product</a></li>
           <li><a href="add.html">Add Product</a></li>
-          <li><a href="modify.html">Modify Details</a></li>
         </ul>
       </li>
 
@@ -57,11 +56,11 @@
       <li>
         <div class="iocn-link">
           <a href="customer.html">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <!-- category : customer -->
             <span class="link_name">Customer</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
 
         <ul class="sub-menu">
@@ -73,11 +72,11 @@
       <li>
         <div class="iocn-link">
           <a href="order.html">
-            <i class='bx bx-collection' ></i>
+            <i class='bx bx-collection'></i>
             <!-- category : order -->
             <span class="link_name">Orders</span>
           </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <i class='bx bxs-chevron-down arrow'></i>
         </div>
 
         <ul class="sub-menu">
@@ -85,28 +84,13 @@
         </ul>
       </li>
 
-      <!-- Main Wesbite -->
-      <li>
-        <div class="iocn-link">
-          <a href="index.html">
-            <i class='bx bx-collection' ></i>
-            <!-- category : order -->
-            <span class="link_name">Stuffington</span>
-          </a>
-          <i class='bx bxs-chevron-down arrow' ></i>
-        </div>
-
-        <ul class="sub-menu">
-          <li><a class="link_name" href="product.html">Stuffington</a></li>
-        </ul>
-      </li>
-
       <!-- Admin -->
       <li>
         <div class="iocn-link">
-          <i class='bx bx-collection' ></i>
-          <span class="link_name"></span>
-          <i class='bx bxs-chevron-down arrow' ></i>
+          <a href="#">
+            <i class='bx bx-collection'></i>
+            <span class="link_name"></span>
+            <i class='bx bxs-chevron-down arrow'></i>
         </div>
         <ul class="sub-menu">
           <!-- Admin -->
@@ -115,7 +99,7 @@
           <li><a href="#">Kurt Patawaran - M00850500</a></li>
           <li><a href="#">Hooda AbdulShakoor - M00849592</a></li>
         </ul>
-      </li> 
+      </li>
 
     </ul>
   </div>
