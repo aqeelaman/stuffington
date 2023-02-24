@@ -9,10 +9,6 @@ db.order.insert([
             {
                 "product_id":  ObjectId("63f0824472762bafae5871a6"),
                 "quantity": 2
-            },
-            {
-                "product_id": ObjectId("63f0824472762bafae5871a4"),
-                "quantity":1
             }
         ]
     },
@@ -26,10 +22,6 @@ db.order.insert([
             {
                 "product_id":  ObjectId("63d3bc492354b0f36cb6dc6b"),
                 "quantity": 1
-            },
-            {
-                "product_id": ObjectId("63d3bc492354b0f36cb6dc6f"),
-                "quantity":1
             }
         ]
     },
@@ -55,14 +47,6 @@ db.order.insert([
         "products":[
             {
                 "product_id":  ObjectId("63d3bc492354b0f36cb6dc70"),
-                "quantity": 1
-            },
-            {
-                "product_id": ObjectId("63d3bc492354b0f36cb6dc69"),
-                "quantity": 1
-            },
-            {
-                "product_id":  ObjectId("63d3bc492354b0f36cb6dc6c"),
                 "quantity": 1
             }
         ]
