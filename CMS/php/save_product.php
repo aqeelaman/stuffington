@@ -3,8 +3,8 @@
 
 //Include libraries
 require __DIR__ . '/vendor/autoload.php';
-function modify_product()
-{
+// function modify_product()
+// {
     //Connect to database
     $mongoClient = (new MongoDB\Client);
 
@@ -30,23 +30,24 @@ function modify_product()
         "category" => $category,
         "size" => $size,
         "colour" => $colour,
-        "stock" => $stock,
-        "_id" => $id
+        "stock" => $stock
+        //"_id" => $id
     ];
     $findCriteria = [
         '_id' => new MongoDB\BSON\ObjectID($id)
     ];
     //Save the product in the database - it will overwrite the data for the product with this ID
-    $returnVal = $db->products->updateOne(['_id' => new MongoDB\BSON\ObjectID($id)], $customerData);
+    $returnVal = $db->products->updateOne($findCriteria,['$set'=> $customerData]);
 
     //Echo result back to user
-    if ($returnVal['ok'] == 1) {
-        echo '<script>myfunction()</script>';
-        header("Location: index.php");
-    } else {
-        echo 'Error saving customer';
-    }
-}
+echo $returnVal->getModifiedCount();
+    // if ($returnVal->getModifiedCount() === 1) {
+    //     echo '<script>myfunction()</script>';
+    //     header("Location: index.php");
+    // } else {
+    //     echo 'Error saving customer';
+    // }
+//}
 ?>
 
 

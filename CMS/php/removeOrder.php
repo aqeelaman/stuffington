@@ -2,7 +2,7 @@
 
 require __DIR__ . '/vendor/autoload.php';
 try {
-    function removeProductFromOrder($orderId)
+    function removeOrder($orderId)
     {
         $mongoClient = new MongoDB\Client;
         $db = $mongoClient->stuffington;

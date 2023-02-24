@@ -1,10 +1,10 @@
 <?php
 
-require '../php/removeProductFromOrder.php';
+require '../php/removeOrder.php';
 
 if(isset($_POST['deleteproduct'])) {
     $orderId = $_POST['orderId'];
-    removeProductFromOrder($orderId);
+    removeOrder($orderId);
 }
 ?>
 
