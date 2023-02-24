@@ -228,18 +228,18 @@
 
             let total = document.getElementById("totalPriceContent").text;
 
-            const formData = new FormData();
-            formData.append("customer_id", custId);
-            formData.append("shipping_address", shipping_address);
-            formData.append("price", window.total);
-            for (let i = 0; i < cartList.length; i++) {
-                formData.append('products[product_id]', cartList[i].id);
-                formData.append('products[qty]', cartList[i].qty)
-            }
+            // const formData = new FormData();
+            // formData.append("customer_id", custId);
+            // formData.append("shipping_address", shipping_address);
+            // formData.append("price", window.total);
+            // for (let i = 0; i < cartList.length; i++) {
+            //     formData.append('products[product_id]', cartList[i].id);
+            //     formData.append('products[qty]', cartList[i].qty)
+            // }
 
-            for (var pair of formData.entries()) {
-                console.log(pair[0] + ', ' + pair[1]);
-            }
+            // for (var pair of formData.entries()) {
+            //     console.log(pair[0] + ', ' + pair[1]);
+            // }
 
             //Create request object 
             let request = new XMLHttpRequest();
@@ -260,8 +260,8 @@
             //Set up request and send it
 
             request.open("POST", "../php/placeOrder.php");
-            request.setRequestHeader("Content-Type","")
-            request.send(formData);
+            request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded")
+            request.send("customer_id="+ custId + "&shipping_address=" + shipping_address + "&total=" + window.total +"&prodId=" +cartList[0].id + "&qty=" + cartList[0].qty);
         }
     </script>
 
