@@ -13,6 +13,7 @@
 
   <!-- Link to favicon -->
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
   
 
@@ -56,7 +57,7 @@
       <li>
         <div class="iocn-link">
           <a href="customer.html">
-            <i class='bx bx-collection'></i>
+            <i class='fa fa-users'></i>
             <!-- category : customer -->
             <span class="link_name">Customer</span>
           </a>
@@ -72,7 +73,7 @@
       <li>
         <div class="iocn-link">
           <a href="order.html">
-            <i class='bx bx-collection'></i>
+            <i class='fa fa-cart-shopping'></i>
             <!-- category : order -->
             <span class="link_name">Orders</span>
           </a>
@@ -88,7 +89,7 @@
       <li>
         <div class="iocn-link">
           <a href="#">
-            <i class='bx bx-collection'></i>
+            <i class='fa fa-users-rays'></i>
             <span class="link_name"></span>
             <i class='bx bxs-chevron-down arrow'></i>
         </div>
