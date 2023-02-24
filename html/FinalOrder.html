@@ -36,35 +36,13 @@
     <!-- Content of the Page-->
 
     <!--Headers-->
-    <h1 style="margin-left: 3%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
-    <h1 style=" font-size: 35pt;float: right;margin-right: 23%; margin-bottom: 10px;"> Shipping Address </h1>
+    <h1 style="margin-left: 4%; font-size: 35pt; display: inline-flex;"> Review Order </h1>
+    <h1 style=" font-size: 35pt;float: right;margin-right: 22%; margin-bottom: 10px;"> Shipping Address </h1>
 
 
     <!--Cart display on the left that shows what product are about to be placed for order-->
     <div style="display: flex;">
         <div class="cartDisplayContainer" id="cartDisplayContainer">
-            <!-- <div class="sideCart">
-                <div class="itemImage">
-                    <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear">
-                </div>
-                <div class="itemText">
-                    <h1>Brown Bear</h1>
-                    <p class="price">AED70.90</p>
-                    <p style="float:right; font-size: xx-large;">x2</p>
-                </div>
-            </div>
-
-            <div class="sideCart">
-                <div class="itemImage">
-                    <img src="../images/StuffedToys/BlackDragon.jpg" alt="BlackDragon">
-                </div>
-                <div class="itemText">
-                    <h1>Black Dragon</h1>
-                    <p class="price">AED75.00</p>
-                    <p style="float:right; font-size: xx-large;">x1</p>
-                </div>
-            </div> -->
-
 
         </div>
 
@@ -75,14 +53,15 @@
 
                 <p style="float: left;"> Building No, Flat no, Area </p>
                 <p style="float: left; margin-left: 170px ;"> Street </p>
-                <input type="text" class="basicAddress" placeholder="Building No / Flat no / Area " required>
-                <input type="text" class="street" placeholder="Street" required>
+                <input type="text" class="basicAddress" id="addressInput" placeholder="Building No / Flat no / Area "
+                    required>
+                <input type="text" class="street" id="streetInput" placeholder="Street" required>
 
                 <p style="float: left; margin-right: 100px;"> Emirate </p>
                 <p style="float: left; margin-left: 170px ;"> Contact Number </p>
-                <select class="emirate" style="float: left; margin-left: 16px ;" required>
-                    <option value="" disabled selected hidden>-Select-</option>
-                    <option value="text" selected="selected"> Abu Dhabi </option>
+                <select id="emirateInput" class="emirate" style="float: left; margin-left: 16px ;" required>
+                    <option value="" disabled selected value>-Select-</option>
+                    <option value="text">Abu Dhabi</option>
                     <option value="text">Dubai</option>
                     <option value="text">Sharjah</option>
                     <option value="text">Ajman</option>
@@ -90,20 +69,21 @@
                     <option value="text">Umm Al-Quwain</option>
                     <option value="text">Fujairah</option>
                 </select>
-                <input type="tel" class="phoneNum" placeholder="05-/---/----" style="float: left; margin-left: 135px ;"
-                    required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <input id="telInput" type="tel" class="phoneNum" placeholder="05-/---/----"
+                    style="float: left; margin-left: 135px ;" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                <p style="color: red; text-align: center;" id="errorTxt"></p>
             </div>
 
             <!--A div that would let the user to select a delivery option-->
-            <h1 style=" font-size: 35pt; margin-left: 9%; margin-top: 9%;"> Delivery Option </h1>
+            <h1 style=" font-size: 35pt; margin-left: 10%; margin-top: 9%;"> Delivery Option </h1>
             <div class="sideDeliveryContainer">
                 <div class="sideDelivery">
-                    <input type="radio" name="deliver" value="deliver" class="radio">
+                    <input type="radio" name="deliver" value="deliver" class="radio" checked="checked">
                     <label for="deliver" class="deliveryText"> Ship to my address.</label><br>
                     <span>
                         <p style="margin-top: 0; float: left; margin-left: 55px; width: 100%;">Your order will be
-                            delivered
-                            straight to your door-step.</p>
+                            delivered straight to
+                            your door-step.</p>
                     </span>
 
                     <input type="radio" name="deliver" value="deliver" class="radio">
@@ -121,13 +101,16 @@
             <div class="placeOrderContainer">
                 <div class="amount">
                     <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;</div>
-                    <div class="totalPrice" style="float: right;" id="totalPriceContent"> 216.90&nbsp;&nbsp;</div>
+                    <div class="totalPrice" style="float: right; margin-top: 7%;margin-left: 9%;"
+                        id="totalPriceContent"> &nbsp;&nbsp;</div>
                 </div>
                 <div class="placeOrderBtn">
-                    <a href="orderPlaced.html"><button> Place Order </button></a>
+                    <!-- <a href="orderPlaced.html"> -->
+                    <button id="checkOutBtn"> Place Order </button>
+                    <!-- </a> -->
                 </div>
                 <div style=" font-size: larger;margin-left: 4%;">
-                    <p style="margin-top: -5px;">Total Amount (VAT inclusive)</p>
+                    <p style="margin-top: 20%;">Total Amount (VAT inclusive)</p>
                 </div>
             </div>
 
@@ -145,63 +128,142 @@
 
         //searchbar functionality
         let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
+        searchBar.onsearch = function () {
             //add keyword to sessionStorage
             recommender.addKeyword(searchBar.value);
             //display searched product
             recommender.search();
         }
 
-        window.onload=displayCart;
+        let checkOutBtn = document.getElementById("checkOutBtn");
+        checkOutBtn.onclick = checkOut;
+
+
+
+        window.onload = displayCart;
         function displayCart() {
             let sideCartDisplay = document.getElementById("cartDisplayContainer");
 
-            if(sessionStorage.Cart=== undefined || sessionStorage.Cart === "[]"){
+            if (sessionStorage.Cart === undefined || sessionStorage.Cart === "[]") {
                 sideCartDisplay.innerText = "NO ITEMS IN CART";
                 return;
             }
             let productList = JSON.parse(sessionStorage.allProducts);
-            
+
             let cartList = JSON.parse(sessionStorage.Cart);
-            let total = 0;
+            window.total = 0;
             let tableStr = "";
             let sideCartStr = "";
-            
+
 
             for (let i = 0; i < cartList.length; i++) {
                 for (let j = 0; j < productList.length; j++) {
                     if (cartList[i].id == productList[j]._id.$oid) {
                         sideCartStr += "<div class='sideCart'>";
                         sideCartStr += "<div class='itemImage'>";
-                        sideCartStr += '<img src = "' + productList[j].image_url + '" alt = "' + productList[j].name + '" >';
-                        sideCartStr += '</div>';
+                        sideCartStr += '<img src = "' + productList[j].image_url + '" alt = "' + productList[j].name + '" ></div>';
                         sideCartStr += '<div class="itemText">';
                         sideCartStr += '<h1>' + productList[j].name + '</h1>';
                         sideCartStr += '<p class="price">AED ' + productList[j].price.toFixed(2) + '</p>';
                         sideCartStr += '<h4 style="margin-top:0;">Size : ' + productList[j].size + ' Inches</h4>';
-                        sideCartStr += '<p style="float:right; font-size: xx-large;">x' + cartList[i].qty + '</p>';
-                        // sideCartStr += '<p><select style="width: 8%; text-align: center;" onchange=\'change("'+cartList[i].id+'",this.options[this.selectedIndex].text)\'>';
-                        // for (let k = 1; k < 11; k++) {
-                        //     if (k == cartList[i].qty) {
-                        //         sideCartStr += '<option value="#" selected="selected">' + k + '</option>';
-                        //         continue;
-                        //     }
-                        //     sideCartStr += '<option value="#">' + k + '</option>';
-                        // }
-                        // sideCartStr += '</select></p>';
-                        // sideCartStr += '<button style="float:right; left: 100%;" onclick=\'deleteProduct("'+cartList[i].id+'")\'>Remove</button>';
-                        sideCartStr += '</div>';
+                        sideCartStr += '<p style="float:right; font-size: xx-large;">x' + cartList[i].qty + '</p></div>';
                         sideCartStr += '</div>';
                         total += cartList[i].qty * productList[j].price;
                     }
                 }
             }
             sideCartDisplay.innerHTML = sideCartStr;
-            document.getElementById("totalPriceContent").innerHTML = total.toFixed(2)+ " AED&nbsp;&nbsp;&nbsp;";
+            document.getElementById("totalPriceContent").innerHTML = total.toFixed(2) + " AED&nbsp;&nbsp;&nbsp;";
 
+            console.log(window.total);
+        }
+
+
+        function checkOut() {
+
+            let errorTxt = document.getElementById("errorTxt");
+            errorTxt.innerText = "";
+
+            let addressInput = document.getElementById("addressInput").value;
+            if (addressInput === "") {
+                errorTxt.innerText = "Enter valid address";
+                alert("Enter valid address");
+                return;
+            }
+            let streetInput = document.getElementById("streetInput").value;
+            if (streetInput === "") {
+                errorTxt.innerText = "Enter valid street number";
+                alert("Enter valid street number");
+                return;
+            }
+
+            let emirateInput = document.getElementById("emirateInput");
+            let emirate = emirateInput.options[emirateInput.selectedIndex].text;
+
+            if (emirate === "-Select-") {
+                errorTxt.innerText = "Choose Emirate from drop down";
+                alert("Choose Emirate from drop down");
+                return;
+            }
+
+            let telInput = document.getElementById("telInput").value;
+            console.log(telInput);
+
+            if (!validatePhoneNumber(telInput)) {
+                errorTxt.innerText = "Enter valid phone number";
+                alert("Enter valid phone number");
+                return;
+            }
+            function validatePhoneNumber(input_str) {
+                var re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
+                return re.test(input_str);
+            }
+
+            let shipping_address = streetInput + "," + addressInput + "," + emirate;
+            console.log(shipping_address);
+
+            let custId = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
+            let cartList = JSON.parse(sessionStorage.Cart);
+
+            let total = document.getElementById("totalPriceContent").text;
+
+            const formData = new FormData();
+            formData.append("customer_id", custId);
+            formData.append("shipping_address", shipping_address);
+            formData.append("price", window.total);
+            for (let i = 0; i < cartList.length; i++) {
+                formData.append('products[product_id]', cartList[i].id);
+                formData.append('products[qty]', cartList[i].qty)
+            }
+
+            for (var pair of formData.entries()) {
+                console.log(pair[0] + ', ' + pair[1]);
+            }
+
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+
+                    //Add data from server to page
+                    console.log(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+
+            //Set up request and send it
+
+            request.open("POST", "../php/placeOrder.php");
+            request.setRequestHeader("Content-Type","")
+            request.send(formData);
         }
     </script>
-    
+
     <!--Footer-->
     <footer>
         <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
