@@ -111,13 +111,18 @@
         //display searched product
         recommender.search();
     }
-    var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
-    console.log(loggedInUsr);
+    
 
     window.onload = init;
 
     function init() {
 
+        
+        if(sessionStorage.loggedInUsr === undefined || sessionStorage.loggedInUsr==="[]"){
+            alert("Please Sign In to access Profile");
+            location.href="login.html";
+            return;
+        }
         //Create request object 
         let request = new XMLHttpRequest();
 
@@ -133,6 +138,7 @@
                 alert("Error communicating with server: " + request.status);
         };
 
+        var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
         let url = "../php/customers.php?id=" + loggedInUsr;
         //Set up request and send it
         request.open("GET", url);
@@ -166,7 +172,7 @@
             //console.log(request.responseText);
             displayPreviousOrders(request.responseText);
         };
-
+        var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
         let url = "../php/getOrders.php?custId=" + loggedInUsr;
         //Set up request and send it
         request.open("GET", url);
@@ -189,25 +195,33 @@
         let productList = JSON.parse(sessionStorage.allProducts);
         console.log(orderArray);
 
-        orderStr += '<div style="display: flexbox;">' 
+        orderStr += '<div style="display: block; height: 10%;">' 
         for (let i = 0; i < orderArray.length; i++) {
-            orderStr += '<div>' 
+
+            orderStr += '<div style="height: max-content; text-align: center; margin-top: 5%; margin-bottom: 5%;">';
+                orderStr +='<h1>Order Id : '+ orderArray[i]._id.$oid + ' </h1>'
+                orderStr += '<h2>Products</h2>';
             for (let j = 0; j < orderArray[i].products.length; j++) {
                 for (let k = 0; k < productList.length; k++) {
                     
 
                     if (orderArray[i].products[j].product_id.$oid == productList[k]._id.$oid) {
                         
-                        orderStr += '<div class="card">';
-                        orderStr += '<img src="'+productList[k].image_url+'" style="width: 100%;">';
-                        orderStr += '<h1>'+productList[k].name+'</h1>';
-                        orderStr += '<p class="price">'+productList[k].price+'</p>';
+                        // orderStr += '<div class="card">';
+                        orderStr += '<h4>'+productList[k].name+'</h4>';
+                        orderStr += '<p class="price">Price : '+productList[k].price+'</p>';
                         orderStr += '<p>Quantity : '+orderArray[i].products[j].quantity+'</p>';
-                        orderStr += '</div>';
+                        // orderStr += '</div>';
                     }
                 }
             }
-            orderStr += '<br><br></div>'
+            orderStr += '<div>';
+            orderStr += '<h3>Total : ' + orderArray[i].price +'</h3>';
+            orderStr += '<h3>Shipping Address: ' + orderArray[i].shipping_address + '</h3>';
+            orderStr += '<h3>Date : ' + orderArray[i].date + ' Date : ' + orderArray[i].time +'</h3>'; 
+            
+            orderStr += '</div>';
+            orderStr += '</div>';
         }
         orderStr += '</div>';
 
