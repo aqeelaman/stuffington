@@ -18,7 +18,9 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/registration.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 
@@ -55,12 +57,13 @@
             <input type="date" id="age" name="age" placeholder="Date of Birth"><br>
             <input type="submit" id="registrationBtn" class="btn btn-success" value="Register">
             <spam id="result" class="register-result"></spam>
-        </div> 
-        
+        </div>
+
         <!-- register for new account -->
-            <p style="font-size: 23px; text-align: center;">Login to your existing account<br>
-                <a style="font-size:23px; text-align: center; color: aliceblue;text-decoration: none;" href="login.html">Log in here</a>
-            </p>
+        <p style="font-size: 23px; text-align: center;">Login to your existing account<br>
+            <a style="font-size:23px; text-align: center; color: aliceblue;text-decoration: none;" href="login.html">Log
+                in here</a>
+        </p>
     </div>
 
 
@@ -69,7 +72,7 @@
         <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
     </footer>
 
-    <!-- js for searchbar functionality -->
+    <!-- js -->
     <script type="module">
         "use strict"
         //Import recommender class
@@ -87,6 +90,7 @@
             recommender.search();
         }
 
+        //get input values from registration form
         let regName = document.getElementById("name").value;
         let regMail = document.getElementById("mail").value;
         let regPass = document.getElementById("pass").value;
@@ -94,6 +98,7 @@
         let regBtn = document.getElementById("registrationBtn");
         regBtn.onclick = checkDuplicateEmail;
 
+        //error message text 
         let resultText = document.getElementById("result");
 
 
@@ -126,7 +131,7 @@
             request.send("function=view");
         }
 
-
+        //validates and checks if email already exists
         function checkDuplicateEmail() {
 
             window.regName = document.getElementById("name").value;
@@ -134,25 +139,26 @@
             window.regPass = document.getElementById("pass").value;
             window.regDOB = document.getElementById("age").value;
             if (window.regName === '') {
-                resultText.innerText="Name must be filled out";
+                resultText.innerText = "Name must be filled out";
                 return;
             }
             else if (window.regMail == '') {
-                resultText.innerText="Email must be filled out";
+                resultText.innerText = "Email must be filled out";
                 return;
 
             }
             else if (window.regPass == '') {
-                resultText.innerText="Password must be filled out";
+                resultText.innerText = "Password must be filled out";
                 return;
             }
             else if (window.regDOB == '') {
-                resultText.innerText="DOB must be filled out";
+                resultText.innerText = "DOB must be filled out";
                 return;
             }
 
 
             // console.log(window.registeredUserList);
+            //no emails in database then add Customer
             if (registeredUserList === "]") {
                 addCustomer();
             }
@@ -160,6 +166,7 @@
 
             let usersList = JSON.parse(registeredUserList);
 
+            //check similar emails
             for (let i = 0; i < usersList.length; i++) {
                 if (window.regMail === usersList[i].email) {
                     console.log("same email");
@@ -167,10 +174,12 @@
                     return;
                 }
             }
+            //adding customer to database
             addCustomer();
         }
 
 
+        //function to add customer to database
         function addCustomer() {
 
             //Create request object 

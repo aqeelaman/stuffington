@@ -28,14 +28,14 @@ $dataArray = [
     "dob" => $dob
 ];
 
-
+//if function is view
 if ($function == "view") {
     $cursor = $db->customers->find();
     
-    //Output each product as a JSON object
+    //Output each customer as a JSON object
     $jsonCustomers = '[';
 
-    //work through products
+    //work through customers
     foreach ($cursor as $customer) {
         $jsonCustomers .= json_encode($customer); //Convert PHP representation into JSON 
         $jsonCustomers .= ','; //Separator between each element
@@ -51,9 +51,10 @@ if ($function == "view") {
     echo $jsonCustomers;
 } 
 
+//if function is add
 elseif ($function == "add") {
 
-    //Add the new product to the database
+    //Add the new customer to the database
     $insertResult = $collection->insertOne($dataArray);
 
     //Echo result back to user
@@ -63,11 +64,9 @@ elseif ($function == "add") {
         echo 'Error adding customer';
     }
 }
+//for finding customer
 else {
 
-    $findCriteria = ['_id' => 'ObjectId("' . $id . '")'];
-
-    // $findCriteria= ['_id' => 'ObjectId("63d3e761caa7adf4d417f546")'];
     $cursor = $db->customers->findOne(["_id" => new MongoDB\BSON\ObjectID($id)]);
 
     //Output each product as a JSON object

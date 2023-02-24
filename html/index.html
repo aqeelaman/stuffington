@@ -8,8 +8,11 @@
     <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="../js/cart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--link to cart js  -->
+    <script src="../js/cart.js"></script>
 </head>
 
 <body>
@@ -53,11 +56,11 @@
     <h1 class="heading">FEATURED STUFFED TOYS</h1>
 
     <!-- div for displaying featured products -->
-    <div id ="recommendationContainer" class="recommendationContainer">
-        
+    <div id="recommendationContainer" class="recommendationContainer">
+
     </div>
 
-    <!-- js for searchbar functionality -->
+    <!-- js  -->
     <script type="module">
         "use strict"
         //Import recommender class
@@ -74,7 +77,7 @@
             //display searched product
             recommender.search();
         }
-
+        //top keyword for recommendation
         let topKeyword = recommender.getTopKeyword();
         let container = document.getElementById("recommendationContainer");
 
@@ -108,8 +111,10 @@
             request.send();
         }
 
+        // displays recommendation
         function displayRecommendedProducts(jsonProducts) {
 
+            // if no recommendations will refresh page with topKeyword none
             if (jsonProducts == "]") {
                 topKeyword = "";
                 init();
@@ -119,37 +124,35 @@
             let prodArray = JSON.parse(jsonProducts);
 
 
-            console.log(prodArray);
-            let htmlStr = "";
+            
 
             //Create HTML div containing product data
+            let htmlStr = "";
             let i = 0;
             let index = 0;
-            let prodIDs=[];
-            do  {
-                
-                if(prodArray.length>4){
+
+            do {
+                //when theres more than 4 recommendations it randoms all products
+                if (prodArray.length > 4) {
                     index = Math.floor(Math.random() * prodArray.length);
-                    if (index in prodIDs){
+                    if (index in prodIDs) {
                         continue;
                     }
                 }
-                
+                //string to be added into page
                 htmlStr += '<div class="card">';
-                // htmlStr += '<span style="visibility: hidden;" id="itemId">'+ prodArray[i]._id.$oid +'</span>';
                 htmlStr += '<a href="productDisplay.html?name=' + prodArray[index].name + '">';
                 htmlStr += '<img src="' + prodArray[index].image_url + '" alt="' + prodArray[index].name + '" style="width: 100%;">';
                 htmlStr += '<h1>' + prodArray[index].name + '</h1>';
                 htmlStr += '<p class="price">AED' + prodArray[index].price.toFixed(2) + '</p></a>';
                 htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '")\'>Add to Cart</button></p></div>';
-                prodIDs.push(index);
                 index += 1;
                 i += 1;
             }
-            while(i<4 && i<prodArray.length);
-            console.log(prodIDs);
+            while (i < 4 && i < prodArray.length);
+           
 
-
+            //displaying in page
             container.innerHTML = htmlStr;
 
         }

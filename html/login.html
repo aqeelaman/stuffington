@@ -12,7 +12,9 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/registration.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 
@@ -51,11 +53,12 @@
 
             <!-- button that login the Admin to the Admin page -->
             <button class="btnn"><a href="../CMS/HTML/login.html">Admin Login</a></button>
-            
+
 
             <!-- register for new account -->
             <p style="font-size: 23px;">Don't have an account?<br>
-                <a style="font-size:23px ; color: aliceblue;text-decoration: none;" href="registration.html">Sign up here</a>
+                <a style="font-size:23px ; color: aliceblue;text-decoration: none;" href="registration.html">Sign up
+                    here</a>
             </p>
 
         </form>
@@ -80,12 +83,14 @@
             recommender.search();
         }
 
+        //defining variables
         var emailInput = document.getElementById("mail");
         var passwordInput = document.getElementById("password");
         let loginBtn = document.getElementById("loginBtn");
-        loginBtn.onclick= login;
+        loginBtn.onclick = login;
         var loginText = document.getElementById("login-result");
 
+        //login function
         function login() {
             //Create request object 
             let request = new XMLHttpRequest();
@@ -106,6 +111,7 @@
             request.send("function=view");
         }
 
+        //checks if email and password are valid
         function checkLoginValidation(jsonCustomers) {
             let email = emailInput.value;
             let password = passwordInput.value;
@@ -113,26 +119,29 @@
             let custArray = JSON.parse(jsonCustomers);
             console.log(custArray);
 
-            for (let i=0;i<custArray.length;i++){
-                if(email===custArray[i].email){
-                    if(password=== custArray[i].password){
+
+            for (let i = 0; i < custArray.length; i++) {
+                if (email === custArray[i].email) {
+                    if (password === custArray[i].password) {
+                        //login valid
                         console.log(custArray[i]);
-                        sessionStorage.loggedInUsr = JSON.stringify([{custId: custArray[i]._id.$oid, custName: custArray[i].name}]);
+                        sessionStorage.loggedInUsr = JSON.stringify([{ custId: custArray[i]._id.$oid, custName: custArray[i].name }]);
                         window.confirm("Welcome " + custArray[i].name);
                         location.reload();
                     }
-                    else{loginText.innerText= "Wrong password";}
+                    else { loginText.innerText = "Wrong password"; }
                     return;
                 }
 
             }
-            loginText.innerText= "No email found";
+            //display error
+            loginText.innerText = "No email found";
         }
 
 
     </script>
 
-
+    <!-- footer -->
     <div class="footer1">
         <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
     </div>
