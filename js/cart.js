@@ -41,8 +41,11 @@ function loadCart(){
 
 //Adds an item to the Cart
 function addToCart(prodID, prodName){
+    alert("Product added to cart")
+
     let Cart = getCart();//Load or create Cart
     
+
     //Add product to Cart
     let count=1;
     Cart.push({id: prodID, name: prodName, qty: count});
