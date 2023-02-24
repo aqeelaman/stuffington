@@ -10,6 +10,8 @@
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/productDisplay.css">
 
+    <script src="../js/cart.js"></script>
+
     <script>
         function getParams() {
             var idx = document.URL.indexOf('?');
@@ -65,20 +67,7 @@
             <!-- <p style="visibility:hidden;" id="itemId"></p> -->
             <h1 id="itemName" style="margin-top: 5px;"></h1>
             <p><span id="itemPrice" class="itemPrice"></span> Inclusive of VAT</p>
-            <p>
-                <select style="width: 8%; text-align: center;">
-                    <option value="1" selected="selected"> 1 </option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                </select>
-                <span><button id="addToCartBtn" class="addToCartBtn">Add To Cart</button></span>
-            </p>
+            <p><span id="addToCartBtn"></span></p>
             <p>Delivered in 1 - 2 days</p>
             <div class="descriptionBox" id="descriptionBox">
                 <table>
@@ -168,7 +157,7 @@
             document.getElementById("itemSize").innerText = prodArray[0].size;
             document.getElementById("itemColour").innerText = prodArray[0].colour;
             document.getElementById("itemCategory").innerText = prodArray[0].category;
-
+            document.getElementById("addToCartBtn").innerHTML = '<button class="addToCartBtn" onclick=\'addToCart("' + prodArray[0]._id.$oid + '", "' + prodArray[0].name + '")\'>Add To Cart</button>';
             
             recommender.addKeyword(prodArray[0].category);
             recommender.addKeyword(prodArray[0].name);
