@@ -29,7 +29,9 @@
         console.log(params);
     </script>
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -99,7 +101,7 @@
 
     <!-- container for recommendations  -->
     <div id="recommendationContainer" class="recommendationContainer">
-        
+
     </div>
 
     <script type="module">
@@ -145,12 +147,12 @@
             request.send();
         }
 
+        //displaying product
         function displayProduct(jsonProduct) {
             let prodArray = JSON.parse(jsonProduct);
             console.log(prodArray);
 
             document.title = prodArray[0].name + " | Stuffington";
-            // document.getElementById("itemId").innerText = prodArray[0]._id.$oid;
             document.getElementById("itemImage").src = prodArray[0].image_url;
             document.getElementById("itemName").innerText = prodArray[0].name;
             document.getElementById("itemPrice").innerText = "AED" + prodArray[0].price.toFixed(2);
@@ -158,15 +160,18 @@
             document.getElementById("itemColour").innerText = prodArray[0].colour;
             document.getElementById("itemCategory").innerText = prodArray[0].category;
             document.getElementById("addToCartBtn").innerHTML = '<button class="addToCartBtn" onclick=\'addToCart("' + prodArray[0]._id.$oid + '", "' + prodArray[0].name + '")\'>Add To Cart</button>';
-            
+
+            //adding keywords to recommender
             recommender.addKeyword(prodArray[0].category);
             recommender.addKeyword(prodArray[0].name);
 
+            //get recommendations
             recommendSearch(prodArray[0].category);
         }
 
 
-        function recommendSearch(category){
+        //function to get recommendations from database
+        function recommendSearch(category) {
             //Create request object 
             let request = new XMLHttpRequest();
 
@@ -182,7 +187,8 @@
 
         }
 
-        function displayRecommendProducts(jsonRecommendProducts){
+        //diplaying recommendations in page
+        function displayRecommendProducts(jsonRecommendProducts) {
 
             //Convert JSON to array of product objects
             let prodArray = JSON.parse(jsonRecommendProducts);
@@ -193,10 +199,10 @@
             //Create HTML div containing product data
             for (let i = 0; i < prodArray.length; i++) {
 
-                if(prodArray[i].name=== productName){
+                if (prodArray[i].name === productName) {
                     continue;
                 }
-                else if(i>4){
+                else if (i > 4) {
                     break;
                 }
                 htmlStr += '<div class="card">';
@@ -210,8 +216,8 @@
 
             document.getElementById("recommendationContainer").innerHTML = htmlStr;
         }
-    
-    
+
+
     </script>
 
 

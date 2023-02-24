@@ -104,6 +104,7 @@
         recommender.search();
     }
 
+    //logout button and function
     let logoutBtn = document.getElementById("logoutBtn");
     logoutBtn.onclick= logout;
     function logout(){
@@ -116,12 +117,14 @@
 
     function init() {
 
-
+        //checks if user is logged in , if not then alert to log in
         if (sessionStorage.loggedInUsr === undefined || sessionStorage.loggedInUsr === "[]") {
             alert("Please Sign In to access Profile");
             location.href = "login.html";
             return;
         }
+
+
         //Create request object 
         let request = new XMLHttpRequest();
 
@@ -136,7 +139,8 @@
             else
                 alert("Error communicating with server: " + request.status);
         };
-
+        
+        //request with logged in user's customer id
         var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
         let url = "../php/customers.php?id=" + loggedInUsr;
         //Set up request and send it
@@ -144,22 +148,20 @@
         request.send();
     }
 
+    //display profile
     function displayProfile(jsonCustomer) {
 
-        if (jsonCustomer == "]") {
-            alert("Not logged in");
-            window.location.href = "login.html";
-        }
-
         let customerDetails = JSON.parse(jsonCustomer);
-
+        //displaying customer details
         document.getElementById("nameText").innerText = "Name :  " + customerDetails[1];
         document.getElementById("dobText").innerText = customerDetails[4];
         document.getElementById("emailText").innerText = customerDetails[2];
 
+        //function for previous orders
         getPreviousOrders();
     }
 
+    //function to get and display previous orders
     function getPreviousOrders() {
 
         //Create request object 
@@ -171,6 +173,8 @@
             //console.log(request.responseText);
             displayPreviousOrders(request.responseText);
         };
+
+        //request with customer id 
         var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
         let url = "../php/getOrders.php?function=customer&custId=" + loggedInUsr;
         //Set up request and send it
@@ -178,17 +182,21 @@
         request.send();
     }
 
+    //displaying previous orders
     function displayPreviousOrders(jsonOrders) {
 
+        //container
         let container = document.getElementById("orderContainer");
         let orderStr = "";
 
+        //no previous orders
         if (jsonOrders == "]") {
             orderStr += '<div class="user-details">No Previous Orders</div>';
             container.innerHTML = orderStr;
             return
         }
 
+        //orderStr which displays all previous orders
         orderStr += '<div class="user-details">Previous Orders</div>';
         let orderArray = JSON.parse(jsonOrders);
         let productList = JSON.parse(sessionStorage.allProducts);
@@ -214,12 +222,12 @@
             orderStr += '<h3>Total : ' + orderArray[i].price + '</h3>';
             orderStr += '<h3>Shipping Address: ' + orderArray[i].shipping_address + '</h3>';
             orderStr += '<h3>Date : ' + orderArray[i].date + ' Date : ' + orderArray[i].time + '</h3>';
-
             orderStr += '</div>';
             orderStr += '</div>';
         }
         orderStr += '</div>';
 
+        //display previous orders
         container.innerHTML = orderStr;
 
     }

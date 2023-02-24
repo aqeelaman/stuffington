@@ -11,6 +11,7 @@
     <link rel="stylesheet" type="text/css" href="../css/CategoryStyle.css">
     <script src="../js/cart.js"></script>
 
+    <!-- js to get parameters from the html url -->
     <script>
         function getParams() {
             var idx = document.URL.indexOf('?');
@@ -25,6 +26,7 @@
             return params;
         }
         params = getParams();
+        //defining variables extracted from url
         var category = unescape(params["category"]);
         var search = unescape(params["search"]);
 
@@ -98,9 +100,11 @@
         </div>
     </div>
 
+    <!-- js -->
     <script type="module">
         "use strict";
         
+        //defining variables
         let pageHeading = document.getElementById("heading");
         let container = document.getElementById("mainContainer");
         let timeoutText = document.getElementById("timeout");
@@ -110,11 +114,11 @@
 
         //Create recommender object - it loads its state from session storage
         let recommender = new Recommender();
-
         let searchBar = document.getElementById("searchbar");
         if(search!="" && search!="undefined"){
             searchBar.value = search;
         }
+        //search function
         searchBar.onsearch = () =>{
             console.log(searchBar.value);
             if(searchBar.value!=""){
@@ -123,8 +127,11 @@
             }
         }
 
+
+        //import apply from filter for applying filter in the products
         import { apply } from "../js/filter.js";
 
+        //filter button
         document.getElementById("filterApplyBtn").onclick = event => {
             var url = apply();
             console.log(url);
@@ -132,24 +139,28 @@
             filterSearch(url);
         }
 
+        //category navbar all products
         let allProductsBtn = document.getElementById("allProductsBtn");
         allProductsBtn.onclick = () => {
             category = "";
             filterSearch("");
         };
 
+        //category navbar teddy bear
         let teddyBearBtn = document.getElementById("teddyBearBtn");
         teddyBearBtn.onclick = () => {
             category = "Teddy Bear";
             filterSearch("category=Teddy Bear");
         };
 
+        //category navbar house pets
         let housePetsBtn = document.getElementById("housePetsBtn");
         housePetsBtn.onclick = () => {
             category = "House Pets";
             filterSearch("category=House Pets");
         };
 
+        //category navbar mythical
         let mythicalBtn = document.getElementById("mythicalBtn");
         mythicalBtn.onclick = () => {
             category = "Mythical";
@@ -178,18 +189,22 @@
 
 
             //Set up request and send it
+            //if search is defined 
             if(search!="" && search!= "undefined"){
                 request.open("GET", "../php/products.php?search=" + search);
             }
+            //if category is defined
             else if(category!="" && category!="undefined"){
                 request.open("GET", "../php/products.php?category=" + category);
             }
+            //if none of them defined
             else{
                 request.open("GET", "../php/products.php");
             }            
             request.send();
         }
 
+        //search in database with parameters
         function filterSearch(url) {
             //Create request object 
             let request = new XMLHttpRequest();
@@ -208,6 +223,7 @@
         //Loads products into page
         function displayProducts(jsonProducts) {
 
+            //checks if results from database are empty, if so then refreshes page after 5 seconds
             if(jsonProducts== "]"){
                 pageHeading.innerText = "No Results Available";
                 timeoutText.style.visibility = "visible";
@@ -221,16 +237,19 @@
                 return;
             }
 
-            
+            //category teddy bear
             if (category == "Teddy Bear") {
                 pageHeading.innerText = "TEDDY BEAR";
             }
+            //category house pets
             else if (category == "House Pets") {
                 pageHeading.innerText = "HOUSE PETS";
             }
+            //category mythical
             else if (category == "Mythical") {
                 pageHeading.innerText = "MYTHICAL";
             }
+            //all products category
             else {
                 pageHeading.innerText = "ALL PRODUCTS";
             }
@@ -244,18 +263,14 @@
             for (let i = 0; i < prodArray.length; i++) {
 
                 htmlStr += '<div class="card">';
-                // htmlStr += '<span style="visibility: hidden;" id="itemId">'+ prodArray[i]._id.$oid +'</span>';
                 htmlStr += '<a href="productDisplay.html?name=' + prodArray[i].name + '">';
                 htmlStr += '<img src="' + prodArray[i].image_url + '" alt="' + prodArray[i].name + '" style="width: 100%;">';
                 htmlStr += '<h1>' + prodArray[i].name + '</h1>';
                 htmlStr += '<p class="price">AED' + prodArray[i].price.toFixed(2) + '</p></a>';
-                // htmlStr += '<p><button onclick="addToCart("' + $document["_id"] + '", "' + $document["name"] + '")">Add to Cart</button></p></div>';
-                // htmlStr += '<p><button onclick="addToCart("'+prodArray[i]._id.$oid + ','+ prodArray[i].name+')">Add to Cart</button></p></div>';
-                // htmlStr += '<p><button onclick="addToCart('+prodArray[i]._id.$oid + ','+prodArray[i].name+')">Add to Cart</button></p></div>';
-                // htmlStr += '<p><button onclick="addToCart("'+prodArray[i]._id.$oid + '","'+ prodArray[i].name+'")">Add to Cart</button></p></div>';
                 htmlStr += '<p><button onclick=\'addToCart("' + prodArray[i]._id.$oid + '", "' + prodArray[i].name + '")\'>Add to Cart</button></p></div>';
             }
 
+            //display in page
             container.innerHTML = htmlStr;
         }
 

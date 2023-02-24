@@ -10,7 +10,6 @@ $mongoClient = (new MongoDB\Client);
 $db = $mongoClient->stuffington;
 
 //Extract the data that was sent to the server
-
 $category = filter_input(INPUT_GET, 'category', FILTER_SANITIZE_STRING);
 $name = filter_input(INPUT_GET, 'name', FILTER_SANITIZE_STRING);
 $sizeStr = filter_input(INPUT_GET, 'size', FILTER_SANITIZE_NUMBER_INT);
@@ -49,6 +48,7 @@ else if ($min > 0 && $max > 0) {
     $sort= ['sort' => ["price" => 1],];
 }
 
+//search by keywords used in searchbar
 else if ($search_string != ""){
     $findCriteria = [
         '$text' => [ '$search' => $search_string ] 
@@ -57,7 +57,6 @@ else if ($search_string != ""){
 
 
 
-// $cursor = $db->products->find($findCriteria);
 $cursor = $db->products->find($findCriteria,$sort);
 
 //Output each product as a JSON object
