@@ -12,7 +12,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+       
     <script>
+        
+        //To get parametere from the html URL
         function getParams() {
             var idx = document.URL.indexOf('?');
             var params = new Array();
@@ -60,28 +64,6 @@
     <div class="orderPlacedContainer">
         <!-- container for cart summary -->
         <div class="cartSummary" id="cartSummary">
-            <!-- container for a product
-            <div class="itemCard">
-                <div class="itemImage">
-                    <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear">
-                </div>
-                <div class="itemText">
-                    <h1>Brown Bear</h1>
-                    <p class="price">AED70.90</p>
-                    <p>x2</p>
-                </div>
-            </div>
-             container for a product
-            <div class="itemCard">
-                <div class="itemImage">
-                    <img src="../images/StuffedToys/RainbowKitycorn.jpg" alt="BlackDragon">
-                </div>
-                <div class="itemText">
-                    <h1>Rainbow Kitycorn</h1>
-                    <p class="price">AED75.00</p>
-                    <p>x1</p>
-                </div>
-            </div> -->
         </div>
 
         <!-- container for shipping address -->
@@ -105,17 +87,6 @@
                         </tr>
                     </thead>
                     <tbody id="tableConfirm"></tbody>
-                    <!-- <tr>
-                            <td>Brown Bear</td>
-                            <td>x2</td>
-                            <td>141.90</td>
-                        </tr>
-                        <tr>
-                            <td>Black Dragon</td>
-                            <td>x1</td>
-                            <td>75.00</td>
-                        </tr>
-                    </thead> -->
                 </table>
             </div>
             <!-- display to the final price -->
@@ -177,21 +148,24 @@
             request.send();
         }
 
+        //Display the confirmation content
         function displayConfirmation(jsonOrder) {
 
             let orderArray = JSON.parse(jsonOrder);
             console.log(orderArray);
 
+            //returning elements from their specified values
             document.getElementById("orderidText").innerText = orderId;
             document.getElementById("dateText").innerText = orderArray[0].date;
-
-            document.getElementById("addressText").innerText = orderArray[0].shipping_address;
+            document.getElementById("addressText").innerText = orderArray[0].shipping_address;      
             document.getElementById("totalText").innerHTML = orderArray[0].price + " AED&nbsp;&nbsp;&nbsp;";
             let productList = JSON.parse(sessionStorage.allProducts);
 
+            //declaration
             let confirmStr = "";
             let tableStr = "";
 
+            //for loops that generates the list of items that was ordered by the user
             for (let i = 0; i < productList.length; i++) {
                 if (orderArray[0].products.product_id.$oid == productList[i]._id.$oid) {
                     confirmStr += '<div class="itemCard">';
