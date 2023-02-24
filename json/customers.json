@@ -1,7 +1,6 @@
 db.customers.insert([
     {
         "name":"Marry",
-        "phone_number":"+971 54 3598368",
         "email":"mv_2348@gmail.com",
         "dob":"07/07/2003",
     },

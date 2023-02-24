@@ -27,7 +27,6 @@ function loadCart(){
         prodIDs.push({id: Cart[i].id, count: 1});//Add to product array
 
     }
-    //console.log(prodIDs);
     //Add hidden field to form that contains stringified version of product ids.
     htmlStr += "<input type='hidden' name='prodIDs' value='" + JSON.stringify(prodIDs) + "'>";
     
@@ -35,8 +34,6 @@ function loadCart(){
     htmlStr += "<input type='submit' value='Checkout'></form>";
     htmlStr += "<br><button onclick='emptyCart()'>Empty Cart</button>";
     
-    //Display nubmer of products in Cart
-    // document.getElementById("CartDiv").innerHTML = htmlStr;
 }
 
 //Adds an item to the Cart
@@ -70,18 +67,8 @@ function addToCartInCartPage(prodID, prodName){
     location.reload();
 }
 
-function change(prodID,newProdQty){
-    let Cart = getCart();
-    console.log(prodID,newProdQty);
-    for(let i=0; i<Cart.length;i++){
-        if(Cart[i].id === prodID){
-            Cart[i].qty = newProdQty;
-        }
-    }
-    sessionStorage.Cart = JSON.stringify(Cart);
-    location.reload();
-}
 
+//Deletes Products in the cart
 function deleteProduct(prodID){
     let Cart = getCart();
     for(let i=0; i<Cart.length;i++){

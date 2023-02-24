@@ -188,7 +188,7 @@
             request.onload = () => {
                 let responseArray = request.responseText;
                 sessionStorage.allProducts = responseArray;
-                displayCartTable();
+                displayCart();
 
             };
 
@@ -197,7 +197,8 @@
             request.send();
         }
 
-        function displayCartTable() {
+        //function that displays all products added to cart and summary of order
+        function displayCart() {
             let cartTable = document.getElementById("cartTable");
             let sideCartDisplay = document.getElementById("cartDisplayContainer");
 
@@ -206,22 +207,24 @@
                 return;
             }
             let productList = JSON.parse(sessionStorage.allProducts);
-            
             let cartList = JSON.parse(sessionStorage.Cart);
             let total = 0;
             let tableStr = "";
             let sideCartStr = "";
             
-
             for (let i = 0; i < cartList.length; i++) {
                 for (let j = 0; j < productList.length; j++) {
                     if (cartList[i].id == productList[j]._id.$oid) {
+
+                        //dispalys summary order
                         tableStr += "<tr>";
                         tableStr += "<td>" + cartList[i].name + "</td>";
                         tableStr += "<td>" + cartList[i].qty + "</td>";
                         tableStr += "<td>" + (cartList[i].qty * productList[j].price).toFixed(2) + "</td>";
                         total += cartList[i].qty * productList[j].price;
                         tableStr += "</tr>";
+
+                        //display side cart
                         sideCartStr += "<div class='sideCart'>";
                         sideCartStr += "<div class='itemImage'>";
                         sideCartStr += '<img src = "' + productList[j].image_url + '" alt = "' + productList[j].name + '" >';
@@ -231,6 +234,7 @@
                         sideCartStr += '<p class="price">AED ' + productList[j].price.toFixed(2) + '</p>';
                         sideCartStr += '<h4 style="margin-top:0;">Size : ' + productList[j].size + ' Inches</h4>';
                         sideCartStr += '<p><select style="width: 8%; text-align: center;" onchange=\'change("'+cartList[i].id+'",this.options[this.selectedIndex].text)\'>';
+                        //for loop that handles products quantity in cart
                         for (let k = 1; k < 11; k++) {
                             if (k == cartList[i].qty) {
                                 sideCartStr += '<option value="#" selected="selected">' + k + '</option>';
@@ -238,6 +242,8 @@
                             }
                             sideCartStr += '<option value="#">' + k + '</option>';
                         }
+
+                        //button that deletes the item
                         sideCartStr += '</select></p>';
                         sideCartStr += '<button style="float:right; left: 100%;" onclick=\'deleteProduct("'+cartList[i].id+'")\'>Remove</button>';
                         sideCartStr += '</div>';
