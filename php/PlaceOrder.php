@@ -17,10 +17,10 @@ $collection = $db->order;
 $customer_idStr = filter_input(INPUT_POST, 'customer_id', FILTER_SANITIZE_STRING);
 $shipping_address = filter_input(INPUT_POST, 'shipping_address',FILTER_SANITIZE_STRING);
 $totalStr = filter_input(INPUT_POST,"total",FILTER_SANITIZE_STRING);
-floatval($totalStr);
+$total = floatval($totalStr);
 $prodIdStr = filter_input(INPUT_POST, 'prodId', FILTER_SANITIZE_STRING);
 $qtyStr=filter_input(INPUT_POST, 'qty', FILTER_SANITIZE_STRING);
-intval($qtyStr);
+$qty = intval($qtyStr);
 //$productList = file_get_contents( "php://input" );
 //$productList = json_decode($productList);
 //filter_input(INPUT_POST,"cartList",FILTER_SANITIZE_STRIPPED);
@@ -34,10 +34,10 @@ $order = [
     "shipping_address" => $shipping_address,
     "date" => date("d/m/Y"),
     "time" => date("H:i"),
-    "price" => $totalStr,
+    "price" => $total,
     "products" => array(
         "product_id" => new MongoDB\BSON\ObjectID($prodIdStr),
-        "quantity" => $qtyStr
+        "quantity" => $qty
     )
     ];
 
@@ -45,7 +45,7 @@ $result = $collection->insertOne($order);
 
 //Check if the insertion was successful
 if ($result->getInsertedCount() == 1) {
-    echo "Order added";
+    echo $result->getInsertedID();
 } else {
     echo "Order not added";
 }

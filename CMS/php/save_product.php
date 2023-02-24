@@ -15,11 +15,14 @@ require __DIR__ . '/vendor/autoload.php';
     //Extract the customer details 
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $image_url = filter_input(INPUT_POST, 'image_url', FILTER_SANITIZE_STRING);
-    $price = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING);
+    $priceStr = filter_input(INPUT_POST, 'price', FILTER_SANITIZE_STRING);
+    $price = floatval($priceStr);
     $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_STRING);
-    $size = filter_input(INPUT_POST, 'size', FILTER_SANITIZE_STRING);
+    $sizeStr = filter_input(INPUT_POST, 'size', FILTER_SANITIZE_STRING);
+    $size = intval($sizeStr);
     $colour = filter_input(INPUT_POST, 'colour', FILTER_SANITIZE_STRING);
-    $stock = filter_input(INPUT_POST, 'stock', FILTER_SANITIZE_STRING);
+    $stockStr = filter_input(INPUT_POST, 'stock', FILTER_SANITIZE_STRING);
+    $stock = intval($stockStr);
     $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_STRING);
 
 
