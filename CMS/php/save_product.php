@@ -3,8 +3,7 @@
 
 //Include libraries
 require __DIR__ . '/vendor/autoload.php';
-// function modify_product()
-// {
+
     //Connect to database
     $mongoClient = (new MongoDB\Client);
 
@@ -35,7 +34,6 @@ require __DIR__ . '/vendor/autoload.php';
         "size" => $size,
         "colour" => $colour,
         "stock" => $stock
-        //"_id" => $id
     ];
     $findCriteria = [
     '_id' => new MongoDB\BSON\ObjectID($id)

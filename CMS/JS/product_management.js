@@ -5,6 +5,7 @@ $('#add-product').submit(function(event) {
   var price = $('input[name="price"]').val();
   var description = $('input[name="description"]').val();
   
+  // Display Product
   $.ajax({
     url: '/api/product_management.php',
     method: 'POST',

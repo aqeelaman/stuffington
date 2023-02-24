@@ -32,38 +32,6 @@ $jsonorder .= ']';
 //Echo final string
 echo $jsonorder;
 
-// add a new product
-//$product = array(
-  //  "productID" => "productID",
-    //"image" => "product-x.jpg",
-  //  "name" => "name",
-//     "price" => 29.99,
-//     "category" => "Product Category",
-//     "size" => "12'",
-//     "colour" => "Product Colour",
-//     "stock" => 12,
-// );
-// $result = $productCollection->insertOne($product);
-
-// if ($result->getInsertedCount() == 1) {
-//     echo "Prodcut added Successfully";
-// } else {
-//     echo "Product not added.";
-// }
-
-// // update a product
-// $productCollection->updateOne(
-//     array('name' => 'Product A'),
-//     array('$set' => array('price' => 24.99))
-// );
-// echo "Updated product A price to 24.99";
-
-// // delete a product
-// $productCollection->deleteOne(array('name' => 'Product B'));
-// echo "Deleted product B";
-
-
-
 ?>
 
 
