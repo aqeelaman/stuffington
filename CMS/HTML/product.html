@@ -130,6 +130,7 @@
 
   </table>
 
+  <!-- js script to fetch data from html to mongoDB -->
   <script type="module">
 
 
@@ -171,6 +172,7 @@
       //Create HTML div containing product data
       for (let i = 0; i < prodArray.length; i++) {
 
+        // form that retieves data from MongoDB back to html after staoring in database
         htmlStr += '<tr>';
         htmlStr += '<td style="width:100px;" data-label="ProductID">' + prodArray[i]._id.$oid + '</td>';
         htmlStr += '<td data-label="Image"><img src="../' + prodArray[i].image_url + '" style="width: 40%;"></td>';
@@ -180,12 +182,10 @@
         htmlStr += '<td data-label="Size">' + prodArray[i].size + '</td>';
         htmlStr += '<td data-label="Colour">' + prodArray[i].colour + '</td>';
         htmlStr += '<td data-label="Stock">' + prodArray[i].stock + '</td>';
-        // htmlStr += '<td data-Label="Cancel Product" class="cancel_product" data-id="'+prodArray[i]._id.$oid+'">X</td>';
         htmlStr += '<td data-Label="Modify Product" class="modify_product" ><a href="../php/modify.php?id=' +prodArray[i]._id.$oid+'"><i class="fas fa-edit"></i></a></td>';
         htmlStr += '</tr>';
             }
             
-
       container.innerHTML = htmlStr;
       var elements = document.getElementsByClassName("cancel_product");
 
@@ -193,7 +193,6 @@
         elements[i].addEventListener('click', removeProduct);
       }
 
-      // document.getElementsByClassName("cancel_product").addEventListener("click", removeProduct);
     }
 
 
@@ -231,31 +230,28 @@
 
 
 
-            //Create event handler that specifies what should happen when server responds
-            request.onload = () => {
-                //Check HTTP status code
-                
-                if (request.status === 200) {;
-                  
-                }
-                else
-                    alert("Error communicating with server: " + request.status);
-            };
-
-
-            //Set up request and send it
-            var data={
-              id:data.id
-
-            };
-
-            var id = data.id;
-            request.open("POST", "../php/remove-product.php");
-                     
-            request.send(id);
+  //Create event handler that specifies what should happen when server responds
+  request.onload = () => {
+      //Check HTTP status code
+      
+      if (request.status === 200) {;
+        
+      }
+      else
+          alert("Error communicating with server: " + request.status);
+  };
+  //Set up request and send it
+  var data={
+    id:data.id
+  };
+  var id = data.id;
+  request.open("POST", "../php/remove-product.php");
+           
+  request.send(id);
         
   </script>
 
+<!-- button to add product -->
   <div class="bottomBtnContainer" style="display: table; margin: auto;margin-top: 2%;">
     <a href="add.html">
       <button style="display: flexbox; " class="btn" role="button">Add New Product</button>
