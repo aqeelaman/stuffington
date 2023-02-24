@@ -27,7 +27,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
-    height: 45%;
+    height: 40%;
     display: flex;
     box-shadow: 0 1px 20px 0 rgba(69, 90, 100, .08);
 }
