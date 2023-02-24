@@ -140,3 +140,18 @@ body {
 	color: red;
 
 }
+
+.btn-menu {
+	display: block;
+	margin: auto;
+	font-size: 20px;
+	font-weight: bold;
+	color: #0040a1;
+	background-color: #fdfcff8f !important;
+	border-radius: 10px;
+
+}
+
+.btn-menu:hover {
+	color: black;
+}

@@ -123,60 +123,62 @@ require __DIR__ . '/vendor/autoload.php';
     $db = $mongoClient->stuffington;
 
     //Get ID from link
-    $link = $_GET['name'];
+    $id = $_GET['id'];
     
-echo $link;
+
     
 
 //Create a PHP array with our search criteria
 $findCriteria = [
-    'name' => $link
+    '_id' => new MongoDB\BSON\ObjectID($id)
  ];
 
 //Find all of the products that match  this criteria
 $cursor = $db->products->findOne($findCriteria);
 
 
+
 echo '<div class="input-container ic1">
-        <input id="id" class="input" type="text" placeholder=" " value='.$cursor['_id'].' />
+        <input class="input" type="text" placeholder=" " value="'.$cursor['_id'].'" disabled/>
         <div class="cut"></div>
         <label for="name" class="placeholder">Full ID of the product to be modified </label>
+         <input name="id" type="hidden" value="'.$cursor['_id'].'"/>
       </div>';
 
-echo '<input id="image_url" class="input" type="hidden" placeholder=" " value='.$cursor['image_url'].' />';
+echo '<input name="image_url" class="input" type="hidden" placeholder=" " value="'.$cursor['image_url'].'" />';
 
 echo '<div class="input-container ic1">
-        <input id="name" class="input" type="text" placeholder=" " value='.$cursor['name'].'/>
+        <input name="name" class="input" type="text" placeholder=" " value="'.$cursor['name'].'"/>
         <div class="cut"></div>
         <label for="name" class="placeholder">Full Name of product to be modified</label>
       </div>';
 
 echo '<div class="input-container ic1">
-        <input id="price" class="input" type="text" placeholder=" " value='.$cursor['price'].' />
+        <input name="price" class="input" type="text" placeholder=" " value="'.$cursor['price'].'" />
         <div class="cut"></div>
         <label for="price" class="placeholder">Price in AED</label>
       </div>';
 
 echo '<div class="input-container ic2">
-        <input id="category" class="input" type="text" placeholder=" " value='.$cursor['category'].' />
+        <input name="category" class="input" type="text" placeholder=" " value="'.$cursor['category'].'" />
         <div class="cut"></div>
         <label for="category" class="placeholder">Category</label>
       </div>';
 
 echo '<div class="input-container ic2">
-        <input id="size" class="input" type="text" placeholder=" " value='.$cursor['size'].' />
+        <input name="size" class="input" type="text" placeholder=" " value="'.$cursor['size'].'" />
         <div class="cut cut-short"></div>
         <label for="size" class="placeholder">Size in inches</>
       </div>';
 
 echo '<div class="input-container ic2">
-        <input id="colour" class="input" type="text" placeholder=" "  value='.$cursor['colour'].' />
+        <input name="colour" class="input" type="text" placeholder=" "  value="'.$cursor['colour'].'" />
         <div class="cut cut-short"></div>
         <label for="colour" class="placeholder">Colour of Product</>
       </div>';
 
 echo '<div class="input-container ic2">
-        <input id="stock" class="input" type="text" placeholder=" " value='.$cursor['stock'].' />
+        <input name="stock" class="input" type="text" placeholder=" " value="'.$cursor['stock'].'" />
         <div class="cut cut-short"></div>
         <label for="stock" class="placeholder">Stock Available</>
       </div>';
@@ -186,40 +188,12 @@ echo '<div class="input-container ic2">
   
 
 
-        <!-- id of product -->
-      
-
-      <!-- name of product -->
-      
-
-      <!-- image -->
-      <!-- <div class="input-container ic1">
-        <input id="image" class="input" type="text" placeholder=" " />
-        <div class="cut"></div>
-        <label for="image" class="placeholder">Place an image of the new Product</label>
-      </div> -->
-
-
-      <!-- price -->
-      
-
-      <!-- category -->
-      
-
-      <!-- size -->
-      
-
-      <!-- colour -->
-      
-      <!-- stock -->
-      
-
-
+  
 
       <!-- submit btn that redirects to products page and shows the modified data -->
-      <a href="product.html">
-        <button type="submit" class="submit" href="product.html">Modify Entry</button>
-      </a>
+      
+        <button type="submit" class="submit">Modify Entry</button>
+      
     </form>
 
     </div>

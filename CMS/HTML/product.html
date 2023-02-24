@@ -130,7 +130,7 @@
 
   <script type="module">
 
-    
+
     let container = document.getElementById("displayTable");
     window.onload = init;
 
@@ -179,7 +179,7 @@
         htmlStr += '<td data-label="Colour">' + prodArray[i].colour + '</td>';
         htmlStr += '<td data-label="Stock">' + prodArray[i].stock + '</td>';
         // htmlStr += '<td data-Label="Cancel Product" class="cancel_product" data-id="'+prodArray[i]._id.$oid+'">X</td>';
-        htmlStr += '<td data-Label="Modify Product" class="modify_product" ><a href="../php/modify.php?name=' +prodArray[i].name+'"><i class="fas fa-edit"></i></a></td>';
+        htmlStr += '<td data-Label="Modify Product" class="modify_product" ><a href="../php/modify.php?id=' +prodArray[i]._id.$oid+'"><i class="fas fa-edit"></i></a></td>';
         htmlStr += '</tr>';
             }
             

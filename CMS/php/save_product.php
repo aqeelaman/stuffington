@@ -10,6 +10,7 @@ require __DIR__ . '/vendor/autoload.php';
 
     //Select a database
     $db = $mongoClient->stuffington;
+    $collection = $db->products;
 
     //Extract the customer details 
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
@@ -23,7 +24,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 
     //Construct PHP array with data
-    $customerData = [
+    $productData = [
         "name" => $name,
         "image_url" => $image_url,
         "price" => $price,
@@ -34,19 +35,17 @@ require __DIR__ . '/vendor/autoload.php';
         //"_id" => $id
     ];
     $findCriteria = [
-        '_id' => new MongoDB\BSON\ObjectID($id)
+    '_id' => new MongoDB\BSON\ObjectID($id)
     ];
-    //Save the product in the database - it will overwrite the data for the product with this ID
-    $returnVal = $db->products->updateOne($findCriteria,['$set'=> $customerData]);
 
-    //Echo result back to user
-echo $returnVal->getModifiedCount();
-    // if ($returnVal->getModifiedCount() === 1) {
-    //     echo '<script>myfunction()</script>';
-    //     header("Location: index.php");
-    // } else {
-    //     echo 'Error saving customer';
-    // }
+    //Save the product in the database - it will overwrite the data for the product with this ID
+    $returnVal = $collection->updateOne($findCriteria,['$set'=> $productData]);
+
+    if ($returnVal->getModifiedCount() === 1) {
+        header("Location: ../html/product.html");
+    } else {
+        echo 'Error saving product';
+    }
 //}
 ?>
 
