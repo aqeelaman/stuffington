@@ -7,11 +7,11 @@ db.order.insert([
         "price": 62.00,
         "products":[
             {
-                "product_id":  ObjectId("63d3bc492354b0f36cb6dc6f"),
+                "product_id":  ObjectId("63f0824472762bafae5871a6"),
                 "quantity": 2
             },
             {
-                "product_id": ObjectId("63d3bc492354b0f36cb6dc62"),
+                "product_id": ObjectId("63f0824472762bafae5871a4"),
                 "quantity":1
             }
         ]

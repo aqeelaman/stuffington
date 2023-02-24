@@ -67,16 +67,16 @@
 
 
 
-    <div id ="orderContainer" class="orderContainer">
+    <div id="orderContainer" class="orderContainer">
         <div class="user-details">
             Order History
         </div>
         <!-- <div class="card">
-            <img src="../images/StuffedToys/HousePets/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
+            <img src="../images/StuffedToys/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
             <h1>Brown Bunny</h1>
             <p class="price">AED47.99</p>
-        </div>
-        <div class="card">
+        </div> -->
+        <!-- <div class="card">
             <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
             <h1>Black Dragon</h1>
             <p class="price">AED39.99</p>
@@ -173,25 +173,45 @@
         request.send();
     }
 
-    function displayPreviousOrders(jsonOrders){
+    function displayPreviousOrders(jsonOrders) {
 
         let container = document.getElementById("orderContainer");
         let orderStr = "";
-        
-        if (jsonOrders=="]"){
+
+        if (jsonOrders == "]") {
             orderStr += '<div class="user-details">No Previous Orders</div>';
             container.innerHTML = orderStr;
             return
         }
 
+        orderStr += '<div class="user-details">Previous Orders</div>';
         let orderArray = JSON.parse(jsonOrders);
+        let productList = JSON.parse(sessionStorage.allProducts);
         console.log(orderArray);
-        
-        for(let i = 0; i< orderArray.length;i++){
-            for(let j = 0;j<orderArray[i].products.length;j++){
-                console.log("dd");
+
+        orderStr += '<div style="display: flexbox;">' 
+        for (let i = 0; i < orderArray.length; i++) {
+            orderStr += '<div>' 
+            for (let j = 0; j < orderArray[i].products.length; j++) {
+                for (let k = 0; k < productList.length; k++) {
+                    
+
+                    if (orderArray[i].products[j].product_id.$oid == productList[k]._id.$oid) {
+                        
+                        orderStr += '<div class="card">';
+                        orderStr += '<img src="'+productList[k].image_url+'" style="width: 100%;">';
+                        orderStr += '<h1>'+productList[k].name+'</h1>';
+                        orderStr += '<p class="price">'+productList[k].price+'</p>';
+                        orderStr += '<p>Quantity : '+orderArray[i].products[j].quantity+'</p>';
+                        orderStr += '</div>';
+                    }
+                }
             }
+            orderStr += '<br><br></div>'
         }
+        orderStr += '</div>';
+
+        container.innerHTML = orderStr;
 
     }
 
