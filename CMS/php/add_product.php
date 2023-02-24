@@ -1,5 +1,4 @@
 <?php
-
 // Include libraries
 require __DIR__ . '/vendor/autoload.php';
 
@@ -45,19 +44,6 @@ try {
     $stockStr = filter_input(INPUT_POST, 'stock', FILTER_SANITIZE_STRING);
     $stock = intval($stockStr);
 
-    // Check if the form has been submitted
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Create an array with the product details
-    // $product = array(
-    //     "image" => $_POST['image'],
-    //     "name" => $_POST["name"],
-    //     "price" => $_POST['price'],
-    //     "category" => $_POST["category"],
-    //     "size" => $_POST["size"],
-    //     "colour" => $_POST["colour"],
-    //     "stock" => $_POST['stock']
-    // );
-
     $product = [
         "name" => $name,
         "image_url" => $path_filename_ext_save,
@@ -68,14 +54,8 @@ try {
         "stock" => $stock,
     ];
 
-
-
     // Insert the product into the collection
     $result = $collection->insertOne($product);
-
-
-
-
 
     //Check if the insertion was successful
     if ($result->getInsertedCount() == 1) {
@@ -83,14 +63,9 @@ try {
     } else {
         echo "Product not added";
     }
-
-
 }
-
 //catch exception
 catch (Exception $e) {
     echo 'Message: ' . $e->getMessage();
 }
-
-
 ?>

@@ -1,8 +1,5 @@
 "use strict";
 
-//Globals
-window.onload = loadCart;
-
 //Get Cart from session storage or create one if it does not exist
 function getCart(){
     let Cart;
@@ -18,15 +15,15 @@ function getCart(){
 //Displays Cart in page.
 function loadCart(){
     let Cart = getCart();//Load or create Cart
-    
+
     //Build string with Cart HTML
     let htmlStr = "<form action='checkout.php' method='post'>";
     let prodIDs = [];
     for(let i=0; i<Cart.length; ++i){
         htmlStr += "Product name: " + Cart[i].name + "<br>";
         prodIDs.push({id: Cart[i].id, count: 1});//Add to product array
-
     }
+
     //Add hidden field to form that contains stringified version of product ids.
     htmlStr += "<input type='hidden' name='prodIDs' value='" + JSON.stringify(prodIDs) + "'>";
     
@@ -46,6 +43,7 @@ function addToCart(prodID, prodName){
     //Add product to Cart
     let count=1;
     Cart.push({id: prodID, name: prodName, qty: count});
+    
     //check for duplicates
     for(let i=0; i<Cart.length; i++){
         for(let j=i+1; j<Cart.length; j++){
@@ -67,7 +65,6 @@ function addToCartInCartPage(prodID, prodName){
     location.reload();
 }
 
-
 //Deletes Products in the cart
 function deleteProduct(prodID){
     let Cart = getCart();
@@ -78,10 +75,4 @@ function deleteProduct(prodID){
     }
     sessionStorage.Cart = JSON.stringify(Cart);
     location.reload();
-}
-
-//Deletes all products from Cart
-function emptyCart(){
-    sessionStorage.clear();
-    loadCart();
 }
