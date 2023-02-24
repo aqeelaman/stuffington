@@ -106,10 +106,10 @@
   </div>
 
     <!-- Product modification -->
-    <div class="form">
+    <div class="form"> <!--Form Start-->
       <div class="title">Modify the Details of the Product</div>
 
-      
+      <!-- Access form from save_products.php -->
       <form action="save_product.php" method="post">
 
 <?php
@@ -138,7 +138,7 @@ $findCriteria = [
 $cursor = $db->products->findOne($findCriteria);
 
 
-
+// ID of products (hidden)
 echo '<div class="input-container ic1">
         <input class="input" type="text" placeholder=" " value="'.$cursor['_id'].'" disabled/>
         <div class="cut"></div>
@@ -146,38 +146,45 @@ echo '<div class="input-container ic1">
          <input name="id" type="hidden" value="'.$cursor['_id'].'"/>
       </div>';
 
+// Image
 echo '<input name="image_url" class="input" type="hidden" placeholder=" " value="'.$cursor['image_url'].'" />';
 
+// Name
 echo '<div class="input-container ic1">
         <input name="name" class="input" type="text" placeholder=" " value="'.$cursor['name'].'"/>
         <div class="cut"></div>
         <label for="name" class="placeholder">Full Name of product to be modified</label>
       </div>';
 
+// Price
 echo '<div class="input-container ic1">
         <input name="price" class="input" type="text" placeholder=" " value="'.$cursor['price'].'" />
         <div class="cut"></div>
         <label for="price" class="placeholder">Price in AED</label>
       </div>';
 
+// Category
 echo '<div class="input-container ic2">
         <input name="category" class="input" type="text" placeholder=" " value="'.$cursor['category'].'" />
         <div class="cut"></div>
         <label for="category" class="placeholder">Category</label>
       </div>';
 
+// Size
 echo '<div class="input-container ic2">
         <input name="size" class="input" type="text" placeholder=" " value="'.$cursor['size'].'" />
         <div class="cut cut-short"></div>
         <label for="size" class="placeholder">Size in inches</>
       </div>';
 
+// Colour
 echo '<div class="input-container ic2">
         <input name="colour" class="input" type="text" placeholder=" "  value="'.$cursor['colour'].'" />
         <div class="cut cut-short"></div>
         <label for="colour" class="placeholder">Colour of Product</>
       </div>';
 
+// Stock
 echo '<div class="input-container ic2">
         <input name="stock" class="input" type="text" placeholder=" " value="'.$cursor['stock'].'" />
         <div class="cut cut-short"></div>
@@ -188,11 +195,7 @@ echo '<div class="input-container ic2">
 
   
 
-
-  
-
       <!-- submit btn that redirects to products page and shows the modified data -->
-      
         <button type="submit" class="submit">Modify Entry</button>
       
     </form>

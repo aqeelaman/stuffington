@@ -11,24 +11,21 @@ $db = $mongoClient->stuffington;
 //select a collection
 $collection = $db->order;
 
-//extract from session storage
-//$user = "<script language='JavaScript'>var n=sessionStorage.getItem('user');document.write(n);</script>";
 
+//Extract the data that was sent to the server
 $customer_idStr = filter_input(INPUT_POST, 'customer_id', FILTER_SANITIZE_STRING);
-$shipping_address = filter_input(INPUT_POST, 'shipping_address',FILTER_SANITIZE_STRING);
-$totalStr = filter_input(INPUT_POST,"total",FILTER_SANITIZE_STRING);
+$shipping_address = filter_input(INPUT_POST, 'shipping_address', FILTER_SANITIZE_STRING);
+$totalStr = filter_input(INPUT_POST, "total", FILTER_SANITIZE_STRING);
 $total = floatval($totalStr);
 $prodIdStr = filter_input(INPUT_POST, 'prodId', FILTER_SANITIZE_STRING);
-$qtyStr=filter_input(INPUT_POST, 'qty', FILTER_SANITIZE_STRING);
+$qtyStr = filter_input(INPUT_POST, 'qty', FILTER_SANITIZE_STRING);
 $qty = intval($qtyStr);
-//$productList = file_get_contents( "php://input" );
-//$productList = json_decode($productList);
-//filter_input(INPUT_POST,"cartList",FILTER_SANITIZE_STRIPPED);
-
-//$price = $productList["price"];
 
 
+//setting timezone for database
 date_default_timezone_set("Asia/Dubai");
+
+//Convert to PHP array
 $order = [
     "customer_id" => new MongoDB\BSON\ObjectID($customer_idStr),
     "shipping_address" => $shipping_address,
@@ -39,13 +36,14 @@ $order = [
         "product_id" => new MongoDB\BSON\ObjectID($prodIdStr),
         "quantity" => $qty
     )
-    ];
+];
 
+//Add the new order to the database
 $result = $collection->insertOne($order);
 
 //Check if the insertion was successful
 if ($result->getInsertedCount() == 1) {
-    echo $result->getInsertedID();
+    echo $result->getInsertedID();//returns order id 
 } else {
     echo "Order not added";
 }

@@ -126,7 +126,7 @@
   </table>
 
   <!-- js script to display order histry table -->
-    <script type="module">
+<script type="module">
 
     let container = document.getElementById("displayTable");
     window.onload = init;
@@ -149,116 +149,43 @@
 
 
       //Set up request and send it
-
       request.open("GET", "../php/order.php");
-
       request.send();
     }
 
     function displayorder(jsonorder) {
-
-
       //Convert JSON to array of Order objects
       let OrderArray = JSON.parse(jsonorder);
       console.log(OrderArray);
       let htmlStr = "";
 
-// Create HTML div containing Order data
-for (let i = 0; i < OrderArray.length; i++) {
-  htmlStr += '<tr>';
-  htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i]._id.$oid + '</td>';
-  htmlStr += '<td style="width:100px;" data-label="CustomerID">' + OrderArray[i].customer_id.$oid + '</td>';
-  htmlStr += '<td data-label="Shipping Address">' + OrderArray[i].shipping_address + '</td>';
-  htmlStr += '<td data-label="Date">' + OrderArray[i].date + '</td>';
-  htmlStr += '<td data-label="Time">' + OrderArray[i].time + '</td>';
-  htmlStr += '<td data-label="Price">' + OrderArray[i].price + '</td>';
-  htmlStr += '<td data-label="Products">';
-  for (let j = 0; j < OrderArray[i].products.length; j++) {
-    htmlStr += 'ProdID:' + OrderArray[i].products[j].product_id.$oid + " Qty:" + OrderArray[i].products[j].quantity + "<br>";
-  }
-  htmlStr += '</td>';
-
-  //Hidden form to pass data to remove.php
-  htmlStr += '<td>';
-  htmlStr += '<form action="../php/remove.php" method="post">';
-  htmlStr += '<input type="hidden" id="orderId" name="orderId" value="'+OrderArray[i]._id.$oid+'">';
-  htmlStr += '<button type="submit" name="deleteproduct">Delete</button>';
-  htmlStr += '</form>';
-  htmlStr += '</td>';
-  htmlStr += '</tr>';
-}
-
-
-container.innerHTML = htmlStr;
-
-
-    //   var elements = document.getElementsByClassName("cancel_Order");
-
-    //   for (var i = 0; i < elements.length; i++) {
-    //     elements[i].addEventListener('click', removeOrder);
-    //   }
-
-    //   document.getElementsByClassName("cancel_Order").addEventListener("click", removeOrder);
+  // Create HTML div containing Order data
+  for (let i = 0; i < OrderArray.length; i++) {
+    htmlStr += '<tr>';
+    htmlStr += '<td style="width:100px;" data-label="OrderID">' + OrderArray[i]._id.$oid + '</td>';
+    htmlStr += '<td style="width:100px;" data-label="CustomerID">' + OrderArray[i].customer_id.$oid + '</td>';
+    htmlStr += '<td data-label="Shipping Address">' + OrderArray[i].shipping_address + '</td>';
+    htmlStr += '<td data-label="Date">' + OrderArray[i].date + '</td>';
+    htmlStr += '<td data-label="Time">' + OrderArray[i].time + '</td>';
+    htmlStr += '<td data-label="Price">' + OrderArray[i].price + '</td>';
+    htmlStr += '<td data-label="Products">';
+    for (let j = 0; j < OrderArray[i].products.length; j++) {
+      htmlStr += 'ProdID:' + OrderArray[i].products[j].product_id.$oid + " Qty:" + OrderArray[i].products[j].quantity + "<br>";
     }
+    htmlStr += '</td>';
+  
+    //Hidden form to pass data to remove.php
+    htmlStr += '<td>';
+    htmlStr += '<form action="../php/remove.php" method="post">';
+    htmlStr += '<input type="hidden" id="orderId" name="orderId" value="'+OrderArray[i]._id.$oid+'">';
+    htmlStr += '<button type="submit" name="deleteproduct">Delete</button>';
+    htmlStr += '</form>';
+    htmlStr += '</td>';
+    htmlStr += '</tr>';
+  }
+  container.innerHTML = htmlStr;
 
-
-    // function removeOrder(selector) {
-
-    //   var data = selector.currentTarget.dataset;
-
-    //   let request = new XMLHttpRequest();
-
-    //   //Create event handler that specifies what should happen when server responds
-    //   request.onload = () => {
-    //     //Check HTTP status code
-        
-    //     if (request.status === 200) {
-    //       ;
-
-    //     }
-    //     else
-    //       alert("Error communicating with server: " + request.status);
-    //   };
-
-    //   //Set up request and send it
-    //   var data = {
-    //     id: data.id
-
-    //   };
-
-    //   var id = data.id;
-    //   request.open("POST", "../php/remove-product.php");
-
-    //   request.send(id);
-    // }
-
-
-
-
-            // //Create event handler that specifies what should happen when server responds
-            // request.onload = () => {
-            //     //Check HTTP status code
-                
-            //     if (request.status === 200) {;
-                  
-            //     }
-            //     else
-            //         alert("Error communicating with server: " + request.status);
-            // };
-
-
-            // //Set up request and send it
-            // var data={
-            //   id:data.id
-
-            // };
-
-            // var id = data.id;
-            // request.open("POST", "../php/remove-product.php");
-                     
-            // request.send(id);
-        
-  </script>
+</script>
 
 
 

@@ -6,6 +6,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 try {
 
+    // MongoDB connection
     $mongoClient = new MongoDB\Client('mongodb://localhost:27017');
     $db = $mongoClient->stuffington;
 
@@ -16,6 +17,7 @@ try {
 
     echo $id;
 
+    // deleting order by accessing OrderID
     if (!is_null($id)) {
 
         $returnVal = $collection->deleteOne($id);

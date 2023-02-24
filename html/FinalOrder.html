@@ -138,27 +138,33 @@
             recommender.search();
         }
 
+        //defining check out button
         let checkOutBtn = document.getElementById("checkOutBtn");
         checkOutBtn.onclick = checkOut;
 
 
 
         window.onload = displayCart;
+
+        //display cart items in page
         function displayCart() {
+            //container
             let sideCartDisplay = document.getElementById("cartDisplayContainer");
 
+            //check if cart is empty
             if (sessionStorage.Cart === undefined || sessionStorage.Cart === "[]") {
                 sideCartDisplay.innerText = "NO ITEMS IN CART";
                 return;
             }
             let productList = JSON.parse(sessionStorage.allProducts);
 
+            //getting cart and defining variables
             let cartList = JSON.parse(sessionStorage.Cart);
             window.total = 0;
             let tableStr = "";
             let sideCartStr = "";
 
-
+            //looping through cartList and productList to display in page
             for (let i = 0; i < cartList.length; i++) {
                 for (let j = 0; j < productList.length; j++) {
                     if (cartList[i].id == productList[j]._id.$oid) {
@@ -175,23 +181,36 @@
                     }
                 }
             }
+            //display in page
             sideCartDisplay.innerHTML = sideCartStr;
             document.getElementById("totalPriceContent").innerHTML = total.toFixed(2) + " AED&nbsp;&nbsp;&nbsp;";
 
         }
 
 
+        //when checkout button is pressed 
         function checkOut() {
 
+            //checkout only when user logged in
+            if (sessionStorage.loggedInUsr === undefined || sessionStorage.loggedInUsr === "[]") {
+                alert("Please Sign In before checkout");
+                location.href = "login.html";
+                return;
+            }
+
+            //getting inputs and validation
             let errorTxt = document.getElementById("errorTxt");
             errorTxt.innerText = "";
 
+            //address input
             let addressInput = document.getElementById("addressInput").value;
             if (addressInput === "") {
                 errorTxt.innerText = "Enter valid address";
                 alert("Enter valid address");
                 return;
             }
+
+            //street input
             let streetInput = document.getElementById("streetInput").value;
             if (streetInput === "") {
                 errorTxt.innerText = "Enter valid street number";
@@ -199,6 +218,7 @@
                 return;
             }
 
+            //emirate input
             let emirateInput = document.getElementById("emirateInput");
             let emirate = emirateInput.options[emirateInput.selectedIndex].text;
 
@@ -208,20 +228,23 @@
                 return;
             }
 
+            //phone number input
             let telInput = document.getElementById("telInput").value;
-
             if (!validatePhoneNumber(telInput)) {
                 errorTxt.innerText = "Enter valid phone number";
                 alert("Enter valid phone number");
                 return;
             }
+            //check if phone number is in valid form
             function validatePhoneNumber(input_str) {
                 var re = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
                 return re.test(input_str);
             }
 
+            //shipping address
             let shipping_address = streetInput + "," + addressInput + "," + emirate;
 
+            //defining variables
             let custId = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
             let cartList = JSON.parse(sessionStorage.Cart);
             let total = document.getElementById("totalPriceContent").text;
@@ -235,11 +258,11 @@
                 //Check HTTP status code
                 if (request.status === 200) {
 
-                    //Add data from server to page
-                    console.log(request.responseText);
+                    //if order not added
                     if (request.responseText === "Order not added") {
                         alert(request.responseText);
                     }
+                    //if order added then clear cart and next page
                     else
                         clearCart(request.responseText);
                 }
@@ -255,7 +278,7 @@
             request.send("customer_id=" + custId + "&shipping_address=" + shipping_address + "&total=" + window.total + "&prodId=" + cartList[0].id + "&qty=" + cartList[0].qty);
         }
 
-
+        //function to clear cart and move to next page
         function clearCart(orderId) {
             sessionStorage.removeItem("Cart");
             window.location.href = 'orderPlaced.html?orderId=' + orderId;

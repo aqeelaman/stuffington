@@ -20,6 +20,7 @@
     <h1>StuffingTon</h1>
   </div>
 
+  <!-- Login Form for CMS -->
   <div class="wrapper">
     <div class="inner-warpper text-center">
       <h2 class="title">Login to your account</h2>
@@ -39,21 +40,22 @@
 
         <input type="button" id="login" style="background-color:#00A885" value="Submit" onclick="checkLogin()">
 
-        <!-- <button style="background-color:#00A885">
-          <a type="submit" id="login" href="">Log In</a>
-        </button> -->
 
         <script>
 
           window.onload = init();
 
+          // Session Storage - when user logs in to the account, they dont have to type their Login details again unless they logout
           function init() {
             
+
             if (sessionStorage.loggedInStaffUsr != "" && sessionStorage.loggedInStaffUsr != undefined) {
               window.location.href = "main.html"; // Redirect to dashboard page
             }
 
           }
+
+          // function that checks the Username and Password credentials. 
           function checkLogin() {
             var username = document.getElementById("userName").value;
             var password = document.getElementById("userPassword").value;

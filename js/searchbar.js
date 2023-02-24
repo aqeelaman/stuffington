@@ -11,6 +11,7 @@ export class Recommender {
         this.load();
     }
 
+    //searchbar function
     search() {
         let searchBar = document.getElementById("searchbar");
         var searchUrl = 'allproducts.html?search=' + searchBar.value;
