@@ -11,11 +11,20 @@ $db = $mongoClient->stuffington;
 
 //Extract the data that was sent to the server
 
+$function = filter_input(INPUT_GET,"function",FILTER_SANITIZE_STRING);
 $custId = filter_input(INPUT_GET, 'custId', FILTER_SANITIZE_STRING);
+$orderId = filter_input(INPUT_GET,"orderId",FILTER_SANITIZE_STRING);
 
-$id = "63d3e761caa7adf4d417f546";
+
+if($function =="customer"){
+    //$id = "63d3e761caa7adf4d417f546";
 // $findCriteria = ['customer_id' => new MongoDB\BSON\ObjectID($id)];
-$cursor = $db->order->find(["customer_id" => new MongoDB\BSON\ObjectID($id)]);
+$cursor = $db->order->find(["customer_id" => new MongoDB\BSON\ObjectID($custId)]);
+}
+else{
+    $cursor = $db->order->find(["_id" => new MongoDB\BSON\ObjectID($orderId)]);
+}
+
 
 //Output each product as a JSON object
 $jsonProducts = '[';

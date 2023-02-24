@@ -13,7 +13,9 @@
     <link rel="stylesheet" type="text/css" href="../css/profile.css">
 
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 
@@ -62,16 +64,12 @@
                     </div>
                     <div class="data">
                         <h4>Logout User</h4>
-                        <button type="button">Logout</button>
+                        <button type="button" id="logoutBtn">Logout</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
-
-
 
 
     <div id="orderContainer" class="orderContainer">
@@ -82,6 +80,11 @@
 
     
 </body>
+
+
+
+
+
 
 <!-- js for searchbar functionality -->
 <script type="module">
@@ -100,16 +103,23 @@
         //display searched product
         recommender.search();
     }
-    
+
+    let logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.onclick= logout;
+    function logout(){
+        sessionStorage.removeItem("loggedInUsr");
+        alert("Logged Out Successfully. Please come again");
+        window.location.href="login.html";
+    }
 
     window.onload = init;
 
     function init() {
 
-        
-        if(sessionStorage.loggedInUsr === undefined || sessionStorage.loggedInUsr==="[]"){
+
+        if (sessionStorage.loggedInUsr === undefined || sessionStorage.loggedInUsr === "[]") {
             alert("Please Sign In to access Profile");
-            location.href="login.html";
+            location.href = "login.html";
             return;
         }
         //Create request object 
@@ -162,7 +172,7 @@
             displayPreviousOrders(request.responseText);
         };
         var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
-        let url = "../php/getOrders.php?custId=" + loggedInUsr;
+        let url = "../php/getOrders.php?function=customer&custId=" + loggedInUsr;
         //Set up request and send it
         request.open("GET", url);
         request.send();
@@ -184,31 +194,27 @@
         let productList = JSON.parse(sessionStorage.allProducts);
         console.log(orderArray);
 
-        orderStr += '<div style="display: block; height: 10%;">' 
+        orderStr += '<div style="display: block; height: 10%;">'
         for (let i = 0; i < orderArray.length; i++) {
 
             orderStr += '<div style="height: max-content; text-align: center; margin-top: 5%; margin-bottom: 5%;">';
-                orderStr +='<h1>Order Id : '+ orderArray[i]._id.$oid + ' </h1>'
-                orderStr += '<h2>Products</h2>';
-            for (let j = 0; j < orderArray[i].products.length; j++) {
-                for (let k = 0; k < productList.length; k++) {
-                    
+            orderStr += '<h1>Order Id : ' + orderArray[i]._id.$oid + ' </h1>'
+            orderStr += '<h2>Products</h2>';
+            for (let j = 0; j < productList.length; j++) {
+                if (orderArray[i].products.product_id.$oid == productList[j]._id.$oid) {
 
-                    if (orderArray[i].products[j].product_id.$oid == productList[k]._id.$oid) {
-                        
-                        // orderStr += '<div class="card">';
-                        orderStr += '<h4>'+productList[k].name+'</h4>';
-                        orderStr += '<p class="price">Price : '+productList[k].price+'</p>';
-                        orderStr += '<p>Quantity : '+orderArray[i].products[j].quantity+'</p>';
-                        // orderStr += '</div>';
-                    }
+                    orderStr += '<h4>' + productList[j].name + '</h4>';
+                    orderStr += '<p class="price">Price : ' + productList[j].price + '</p>';
+                    orderStr += '<p>Quantity : ' + orderArray[i].products.quantity + '</p>';
+
                 }
             }
+
             orderStr += '<div>';
-            orderStr += '<h3>Total : ' + orderArray[i].price +'</h3>';
+            orderStr += '<h3>Total : ' + orderArray[i].price + '</h3>';
             orderStr += '<h3>Shipping Address: ' + orderArray[i].shipping_address + '</h3>';
-            orderStr += '<h3>Date : ' + orderArray[i].date + ' Date : ' + orderArray[i].time +'</h3>'; 
-            
+            orderStr += '<h3>Date : ' + orderArray[i].date + ' Date : ' + orderArray[i].time + '</h3>';
+
             orderStr += '</div>';
             orderStr += '</div>';
         }

@@ -9,11 +9,30 @@
     <!-- Link to external style sheet -->
     <link rel="stylesheet" type="text/css" href="../css/navigation.css">
     <link rel="stylesheet" type="text/css" href="../css/orderPlaced.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script>
+        function getParams() {
+            var idx = document.URL.indexOf('?');
+            var params = new Array();
+            if (idx != -1) {
+                var pairs = document.URL.substring(idx + 1, document.URL.length).split('&');
+                for (var i = 0; i < pairs.length; i++) {
+                    nameVal = pairs[i].split('=');
+                    params[nameVal[0]] = nameVal[1];
+                }
+            }
+            return params;
+        }
+        params = getParams();
+        var orderId = unescape(params["orderId"]);
+
+    </script>
 </head>
 
 <body>
-<!-- Navigation section -->
+    <!-- Navigation section -->
     <div class="navigationContainer">
         <ul class="navbar">
             <li><a href="index.html"><img src="../images/Stuffed.png"></a></li>
@@ -34,13 +53,14 @@
 
     <!-- Contents of page -->
     <h1 style="text-align: center; margin-top: 2%;">Order Placed Successfully !</h1>
-    <h2 style="text-align: center;">Order ID - 40328 <br> Placed On 25/01/2023</h2>
+    <h2 style="text-align: center;">Order ID - <span id="orderidText"></span> <br> Placed On <span id="dateText"></span>
+    </h2>
 
     <!-- order summary container -->
     <div class="orderPlacedContainer">
         <!-- container for cart summary -->
-        <div class="cartSummary">
-            <!-- container for a product -->
+        <div class="cartSummary" id="cartSummary">
+            <!-- container for a product
             <div class="itemCard">
                 <div class="itemImage">
                     <img src="../images/StuffedToys/BrownBear.jpg" alt="BrownBear">
@@ -51,7 +71,7 @@
                     <p>x2</p>
                 </div>
             </div>
-            <!-- container for a product -->
+             container for a product
             <div class="itemCard">
                 <div class="itemImage">
                     <img src="../images/StuffedToys/RainbowKitycorn.jpg" alt="BlackDragon">
@@ -61,13 +81,13 @@
                     <p class="price">AED75.00</p>
                     <p>x1</p>
                 </div>
-            </div>
+            </div> -->
         </div>
 
         <!-- container for shipping address -->
         <div class="shippingSummary">
             <p style="margin-bottom: 0%; margin-top: 0%; font-size:40px;">Shipping Address: </p>
-            <p>Enter Shipping Details Here</p>
+            <h2 id="addressText"></h2>
             <p style="font-size: 20px;">Delivered in 1 - 2 Days</p>
         </div>
 
@@ -83,7 +103,9 @@
                             <th>Quantity</th>
                             <th>Price</th>
                         </tr>
-                        <tr>
+                    </thead>
+                    <tbody id="tableConfirm"></tbody>
+                    <!-- <tr>
                             <td>Brown Bear</td>
                             <td>x2</td>
                             <td>141.90</td>
@@ -93,13 +115,13 @@
                             <td>x1</td>
                             <td>75.00</td>
                         </tr>
-                    </thead>
+                    </thead> -->
                 </table>
             </div>
             <!-- display to the final price -->
             <div class="totalPriceContainer">
                 <div class="totalPrice" style="float: left;"> &nbsp;&nbsp;&nbsp;Total Amount </div>
-                <div class="totalPrice" style="float: right;"> 216.90 AED&nbsp;&nbsp;&nbsp; </div>
+                <div class="totalPrice" id="totalText" style="float: right;">AED&nbsp;&nbsp;&nbsp; </div>
             </div>
         </div>
 
@@ -120,14 +142,82 @@
 
         //searchbar functionality
         let searchBar = document.getElementById("searchbar");
-        searchBar.onsearch = function(){
+        searchBar.onsearch = function () {
             //add keyword to sessionStorage
             recommender.addKeyword(searchBar.value);
             //display searched product
             recommender.search();
         }
+
+
+
+        window.onload = init;
+
+        function init() {
+
+            //Create request object 
+            let request = new XMLHttpRequest();
+
+            //Create event handler that specifies what should happen when server responds
+            request.onload = () => {
+                //Check HTTP status code
+                if (request.status === 200) {
+
+                    //Add data from server to page
+                    console.log(request.responseText);
+                    displayConfirmation(request.responseText);
+                }
+                else
+                    alert("Error communicating with server: " + request.status);
+            };
+
+
+            //Set up request and send it
+            request.open("GET", "../php/getOrders.php?orderId=" + orderId);
+            request.send();
+        }
+
+        function displayConfirmation(jsonOrder) {
+
+            let orderArray = JSON.parse(jsonOrder);
+            console.log(orderArray);
+
+            document.getElementById("orderidText").innerText = orderId;
+            document.getElementById("dateText").innerText = orderArray[0].date;
+
+            document.getElementById("addressText").innerText = orderArray[0].shipping_address;
+            document.getElementById("totalText").innerHTML = orderArray[0].price + " AED&nbsp;&nbsp;&nbsp;";
+            let productList = JSON.parse(sessionStorage.allProducts);
+
+            let confirmStr = "";
+            let tableStr = "";
+
+            for (let i = 0; i < productList.length; i++) {
+                if (orderArray[0].products.product_id.$oid == productList[i]._id.$oid) {
+                    confirmStr += '<div class="itemCard">';
+                    confirmStr += '<div class="itemImage">';
+                    confirmStr += '<img src="' + productList[i].image_url + '">';
+                    confirmStr += '</div>';
+                    confirmStr += '<div class="itemText">';
+                    confirmStr += '<h1>'+productList[i].name+'</h1>';
+                    confirmStr += '<p class="price">AED '+productList[i].price+'</p>';
+                    confirmStr += '<p>x '+orderArray[0].products.quantity+'</p>';
+                    confirmStr += '</div>';
+                    confirmStr += '</div>';
+                    tableStr +='<tr><td>'+productList[i].name+'</td>';
+                    tableStr += '<td>'+ orderArray[0].products.quantity +'</td>';
+                    tableStr += '<td>' + orderArray[0].products.quantity * productList[i].price + '</td></tr>'
+
+                }
+
+            }
+
+            document.getElementById("cartSummary").innerHTML = confirmStr;
+            document.getElementById("tableConfirm").innerHTML = tableStr;
+        }
+
     </script>
-    
+
     <!-- footer -->
     <footer>
         <p>©️ 2023 - STUFFINGTON - All Rights Reserved</p>
