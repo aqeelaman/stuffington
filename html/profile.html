@@ -67,16 +67,16 @@
 
 
 
-    <div id ="orderContainer" class="orderContainer">
+    <div id="orderContainer" class="orderContainer">
         <div class="user-details">
             Order History
         </div>
         <!-- <div class="card">
-            <img src="../images/StuffedToys/HousePets/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
+            <img src="../images/StuffedToys/BrownBunny.jpg" alt="BrownBunny" style="width: 100%;">
             <h1>Brown Bunny</h1>
             <p class="price">AED47.99</p>
-        </div>
-        <div class="card">
+        </div> -->
+        <!-- <div class="card">
             <img src="../images/StuffedToys/Mythical/BlackDragon.jpg" alt="BlackDragon" style="width: 100%;">
             <h1>Black Dragon</h1>
             <p class="price">AED39.99</p>
@@ -111,13 +111,18 @@
         //display searched product
         recommender.search();
     }
-    var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
-    console.log(loggedInUsr);
+    
 
     window.onload = init;
 
     function init() {
 
+        
+        if(sessionStorage.loggedInUsr === undefined || sessionStorage.loggedInUsr==="[]"){
+            alert("Please Sign In to access Profile");
+            location.href="login.html";
+            return;
+        }
         //Create request object 
         let request = new XMLHttpRequest();
 
@@ -133,6 +138,7 @@
                 alert("Error communicating with server: " + request.status);
         };
 
+        var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
         let url = "../php/customers.php?id=" + loggedInUsr;
         //Set up request and send it
         request.open("GET", url);
@@ -166,32 +172,60 @@
             //console.log(request.responseText);
             displayPreviousOrders(request.responseText);
         };
-
+        var loggedInUsr = JSON.parse(sessionStorage.loggedInUsr)[0].custId;
         let url = "../php/getOrders.php?custId=" + loggedInUsr;
         //Set up request and send it
         request.open("GET", url);
         request.send();
     }
 
-    function displayPreviousOrders(jsonOrders){
+    function displayPreviousOrders(jsonOrders) {
 
         let container = document.getElementById("orderContainer");
         let orderStr = "";
-        
-        if (jsonOrders=="]"){
+
+        if (jsonOrders == "]") {
             orderStr += '<div class="user-details">No Previous Orders</div>';
             container.innerHTML = orderStr;
             return
         }
 
+        orderStr += '<div class="user-details">Previous Orders</div>';
         let orderArray = JSON.parse(jsonOrders);
+        let productList = JSON.parse(sessionStorage.allProducts);
         console.log(orderArray);
-        
-        for(let i = 0; i< orderArray.length;i++){
-            for(let j = 0;j<orderArray[i].products.length;j++){
-                console.log("dd");
+
+        orderStr += '<div style="display: block; height: 10%;">' 
+        for (let i = 0; i < orderArray.length; i++) {
+
+            orderStr += '<div style="height: max-content; text-align: center; margin-top: 5%; margin-bottom: 5%;">';
+                orderStr +='<h1>Order Id : '+ orderArray[i]._id.$oid + ' </h1>'
+                orderStr += '<h2>Products</h2>';
+            for (let j = 0; j < orderArray[i].products.length; j++) {
+                for (let k = 0; k < productList.length; k++) {
+                    
+
+                    if (orderArray[i].products[j].product_id.$oid == productList[k]._id.$oid) {
+                        
+                        // orderStr += '<div class="card">';
+                        orderStr += '<h4>'+productList[k].name+'</h4>';
+                        orderStr += '<p class="price">Price : '+productList[k].price+'</p>';
+                        orderStr += '<p>Quantity : '+orderArray[i].products[j].quantity+'</p>';
+                        // orderStr += '</div>';
+                    }
+                }
             }
+            orderStr += '<div>';
+            orderStr += '<h3>Total : ' + orderArray[i].price +'</h3>';
+            orderStr += '<h3>Shipping Address: ' + orderArray[i].shipping_address + '</h3>';
+            orderStr += '<h3>Date : ' + orderArray[i].date + ' Date : ' + orderArray[i].time +'</h3>'; 
+            
+            orderStr += '</div>';
+            orderStr += '</div>';
         }
+        orderStr += '</div>';
+
+        container.innerHTML = orderStr;
 
     }
 
