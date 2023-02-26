@@ -135,9 +135,6 @@
                 //when theres more than 4 recommendations it randoms all products
                 if (prodArray.length > 4) {
                     index = Math.floor(Math.random() * prodArray.length);
-                    if (index in prodIDs) {
-                        continue;
-                    }
                 }
                 //string to be added into page
                 htmlStr += '<div class="card">';

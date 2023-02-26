@@ -65,6 +65,18 @@ function addToCartInCartPage(prodID, prodName){
     location.reload();
 }
 
+function change(prodID,newProdQty){
+    let Cart = getCart();
+    console.log(prodID,newProdQty);
+    for(let i=0; i<Cart.length;i++){
+        if(Cart[i].id === prodID){
+            Cart[i].qty = newProdQty;
+        }
+    }
+    sessionStorage.Cart = JSON.stringify(Cart);
+    location.reload();
+}
+
 //Deletes Products in the cart
 function deleteProduct(prodID){
     let Cart = getCart();
